@@ -19,13 +19,9 @@ MIDDLEWARE_CLASSES += [  # noqa
 ]
 
 INSTALLED_APPS += [  # noqa
-    'bootstrap3',
+    'bootstrap4',
     'infranil',
     'django_extensions',
-    'registration',
-    'pagetree',
-    'pageblocks',
-    'quizblock',
 
     'wagtail.wagtailforms',
     'wagtail.wagtailredirects',
@@ -44,17 +40,7 @@ INSTALLED_APPS += [  # noqa
     'portfolio.main',
 ]
 
-PAGEBLOCKS = [
-    'pageblocks.TextBlock',
-    'pageblocks.HTMLBlock',
-    'pageblocks.PullQuoteBlock',
-    'pageblocks.SimpleImageBlock',
-    'quizblock.Quiz',
-]
-
 THUMBNAIL_SUBDIR = "thumbs"
 LOGIN_REDIRECT_URL = "/"
-
-ACCOUNT_ACTIVATION_DAYS = 7
 
 WAGTAIL_SITE_NAME = 'portfolio'

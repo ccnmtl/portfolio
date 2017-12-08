@@ -1,13 +1,14 @@
 from django.conf.urls import include, url
 from django.contrib import admin
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import logout
 from django.conf import settings
 from django.views.generic import TemplateView
 from django.views.static import serve
-from pagetree.generic.views import PageView, EditView, InstructorView
 from portfolio.main import views
 import os.path
+from wagtail.wagtailadmin import urls as wagtailadmin_urls
+from wagtail.wagtaildocs import urls as wagtaildocs_urls
+from wagtail.wagtailcore import urls as wagtail_urls
 
 site_media_root = os.path.join(os.path.dirname(__file__), "../media")
 
@@ -28,7 +29,6 @@ if hasattr(settings, 'CAS_BASE'):
 urlpatterns = [
     auth_urls,
     logout_page,
-    url(r'^registration/', include('registration.backends.default.urls')),
     url(r'^$', views.IndexView.as_view()),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^_impersonate/', include('impersonate.urls')),
@@ -37,19 +37,9 @@ urlpatterns = [
     url(r'infranil/', include('infranil.urls')),
     url(r'^uploads/(?P<path>.*)$',
         serve, {'document_root': settings.MEDIA_ROOT}),
-    url(r'^pagetree/', include('pagetree.urls')),
-    url(r'^quizblock/', include('quizblock.urls')),
-    url(r'^pages/edit/(?P<path>.*)$', login_required(EditView.as_view(
-        hierarchy_name="main",
-        hierarchy_base="/pages/")),
-        {}, 'edit-page'),
-    url(r'^pages/instructor/(?P<path>.*)$',
-        login_required(InstructorView.as_view(
-            hierarchy_name="main",
-            hierarchy_base="/pages/"))),
-    url(r'^pages/(?P<path>.*)$', PageView.as_view(
-        hierarchy_name="main",
-        hierarchy_base="/pages/")),
+    url(r'^cms/', include(wagtailadmin_urls)),
+    url(r'^documents/', include(wagtaildocs_urls)),
+    url(r'^pages/', include(wagtail_urls)),
 ]
 
 if settings.DEBUG:
