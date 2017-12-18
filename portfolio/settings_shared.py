@@ -43,4 +43,4 @@ INSTALLED_APPS += [  # noqa
 THUMBNAIL_SUBDIR = "thumbs"
 LOGIN_REDIRECT_URL = "/"
 
-WAGTAIL_SITE_NAME = 'portfolio'
+WAGTAIL_SITE_NAME = 'CTL Portfolio'
