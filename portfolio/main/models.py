@@ -13,7 +13,6 @@ class Entry(Page):
     body = RichTextField(blank=True)
     site_url = models.URLField(blank=True)
 
-
     content_panels = Page.content_panels + [
         FieldPanel('nut_graph'),
         FieldPanel('body', classname="full"),
