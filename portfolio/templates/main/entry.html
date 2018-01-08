@@ -7,4 +7,14 @@
 
 {{page.body|richtext}}
 
+{% if page.site_url %}    
+<dl>
+    <dt>Site_Url</dt>
+    <dd>{{page.site_url}}</dd>
+</dl>
+{% endif %}
+
+<hr />
+{{page.search_description}}
+
 {% endblock %}
