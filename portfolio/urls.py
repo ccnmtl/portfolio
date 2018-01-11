@@ -35,11 +35,11 @@ urlpatterns = [
     url(r'^stats/$', TemplateView.as_view(template_name="stats.html")),
     url(r'smoketest/', include('smoketest.urls')),
     url(r'infranil/', include('infranil.urls')),
-    url(r'^uploads/(?P<path>.*)$',
-        serve, {'document_root': settings.MEDIA_ROOT}),
     url(r'^cms/', include(wagtailadmin_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),
     url(r'^pages/', include(wagtail_urls)),
+    url(r'^uploads/(?P<path>.*)$',
+        serve, {'document_root': settings.MEDIA_ROOT}),
 ]
 
 if settings.DEBUG:
