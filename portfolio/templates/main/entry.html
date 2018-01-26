@@ -15,8 +15,24 @@
     <dt>Entry description:</dt>
     <dd>{{page.description|richtext}}</dd>
 
-    <dt></dt>
-    <dd></dd>
+    <dt>Partner:</dt>
+    <dd>
+{% with partners=page.partners.all %}
+    {% if partners %}
+        <ul>
+            {% for partner in partners %}
+                <li>
+                    {{ partner.name }},
+                    {{ partner.short_title }},
+                    {{ partner.affiliation }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}    
+    
+    
+    </dd>
 
 </dl>
 
