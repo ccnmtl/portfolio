@@ -2,13 +2,15 @@ from __future__ import unicode_literals
 
 from django.db import models
 
+from django_extensions.db.models import TimeStampedModel
+
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailcore.fields import RichTextField
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel
 from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
 
 
-class Entry(Page):
+class Entry(Page, TimeStampedModel):
 
     overview = models.CharField(max_length=255, blank=True)
     description = RichTextField(
