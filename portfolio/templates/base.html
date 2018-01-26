@@ -1,5 +1,6 @@
 {% load compress %}
 {% load bootstrap4 %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +12,7 @@
     <!-- The above 2 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <!-- FontAwesome CSS -->
     <link rel="stylesheet" href="https://opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css"
@@ -46,7 +47,7 @@
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:site" content="@ccnmtl" />
+    <meta name="twitter:site" content="@columbiactl" />
     <meta name="twitter:title" content="CTL Portfolio: Title" />
     <meta name="twitter:description" content="" />
     <meta name="twitter:image" content="{{STATIC_URL}}img/favicon.png" />
@@ -127,77 +128,7 @@
 
 <main role="main" class="pb-4">
 
-    <section class="jumbotron text-center">
-        <div class="container">
-            <h1 class="jumbotron-heading">Banner placeholder</h1>
-            <!-- Login modal -->
-{% block loginbox %}
-{% if request.user.is_anonymous %}
-            <button type="button" class="btn btn-primary mt-4" data-toggle="modal" data-target="#loginmodal">
-              Log in
-            </button>
-            <!-- Modal -->
-            <div class="modal fade" id="loginmodal" tabindex="-1" role="dialog" aria-labelledby="LoginModalLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="LoginModalLabel">Choose a log in option</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    {% if CAS_BASE %}
-                        <form method="get" action="{{ CAS_BASE }}cas/login">
-                        {% csrf_token %}
-                        <input type="hidden" name="destination" value="https://{{ request.get_host }}/accounts/caslogin/?next={{ request.get_full_path|urlencode }}" />
-                        <h6>If you have a Columbia University Network ID (UNI)...</h6>
-                        <input class="btn btn-primary" type="submit" value="Columbia Log In" />
-                        </form>
-                    {% endif %}
-                    <p class="mt-2"><a href="http://cuit.columbia.edu/cuit/manage-my-uni" title="Learn more about UNI" target="_blank">What is a UNI?</a></p>
-                    <!-- End UNI LOG IN -->
-                    {% if login_form.errors %}
-                    <p class="text-danger">
-                        <span>
-                            <b>ERROR:</b> Invalid username or password.
-                        </span>
-                        Please try again. Note that both username and password are case-sensitive.
-                    </p>
-                    {% endif %}
-                    <hr />
-                    <h6>If you have a guest account...</h6>
-                    <form id="login-local" name="login_local" method="post" action="/accounts/login/">
-                        {% csrf_token %}
-                        <div class="login-local-form" {% if not login_form.errors %}style="display: none"{% endif %}>
-                            <div class="form-group">
-                                <label for="id_username">Username:</label>
-                                {{ login_form.username }}
-                            </div><!-- form-group -->
-                
-                            <div class="form-group">
-                                <label for="id_password">Password:</label>
-                                {{ login_form.password }}
-                            </div><!-- form-group -->
-                        </div>      
-                        <input class="btn btn-primary" type="button" value="Guest Log In" {% if login_form.errors %}style="display: none"{% endif %}
-                            onclick="jQuery('.login-local-form').show(); jQuery(this).hide(); return false;"/>
-                        <input class="btn btn-primary login-local-form" type="submit" value="Log In" {% if not login_form.errors %}style="display: none;"{% endif %} />                        
-                        <input type="hidden" name="next" value="{{ request.get_full_path }}" />
-                    </form>
-                    <p class="mt-2"><a href="/registration/register/" title="Create your new project account">Need a new account?</a></p>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-{% endif %}
-{% endblock %}
-
-        </div>
-    </section>
+    {% block featured_banner %}{% endblock %}
 
     <section id="content">
         <div class="container">
@@ -221,13 +152,16 @@
         </li>
     </ul>
 
-    <span itemscope itemtype="http://schema.org/EducationalOrganization"><a href="http://ctl.columbia.edu" target="_blank" itemprop="url"><img src="{{STATIC_URL}}img/logo-ctl-color.png" class="mx-auto d-block img-fluid mt-3" alt="" itemprop="logo" width="290" /><span class="sr-only" itemprop="name">Center for Teaching and Learning at Columbia University</span></a></span>
+    <span itemscope itemtype="http://schema.org/EducationalOrganization"><a href="http://ctl.columbia.edu" target="_blank" itemprop="url"><img src="{% static 'img/logo-ctl-color.png' %}" class="mx-auto d-block img-fluid mt-3" alt="" itemprop="logo" width="290" /><span class="sr-only" itemprop="name">Center for Teaching and Learning at Columbia University</span></a></span>
+
+    <span itemscope itemtype="http://schema.org/EducationalOrganization"><a href="http://ctl.columbia.edu" target="_blank" itemprop="url"><img src="{% static 'img/logo-ctl-color.svg' %}" class="mx-auto d-block img-fluid mt-3" alt="" itemprop="logo" width="290" /><span class="sr-only" itemprop="name">Center for Teaching and Learning at Columbia University</span></a></span>
+
 
 </footer>
 
 <script src="{{STATIC_URL}}js/lib/jquery-3.2.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script
      data-main="{{STATIC_URL}}js/src/main.js"
      src="{{STATIC_URL}}js/lib/require/require.js"></script>
