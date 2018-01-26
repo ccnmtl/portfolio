@@ -1,22 +1,26 @@
 {% extends 'base.html' %}
 {% load wagtailcore_tags %}
 
+{% block title %}{{page.title}}{% endblock %}
+
 {% block content %}
-<h1>{{page.title}}</h1>
 
-
-{{page.body|richtext}}
-
-{% if page.project_url %}    
 <dl>
-    <dt>Project URL:</dt>
-    <dd>{{page.project_url}}</dd>
-    <dt>Released:</dt>
-    <dd>{{page.release_date|date:"F Y" }}</dd>
-</dl>
-{% endif %}
+    <dt>Entry title:</dt>
+    <dd>{{page.title}}</dd>
 
-<hr />
-{{page.search_description}}
+    <dt>Entry ID:</dt>
+    <dd>{{page.id}}</dd>
+
+    <dt>Entry description:</dt>
+    <dd>{{page.description|richtext}}</dd>
+
+    <dt></dt>
+    <dd></dd>
+
+</dl>
+
+
+
 
 {% endblock %}

@@ -11,7 +11,7 @@ from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
 class Entry(Page):
 
     overview = models.CharField(max_length=255, blank=True)
-    body = RichTextField(
+    description = RichTextField(
         help_text='The main content of this Portfolio entry page', blank=True)
     project_url = models.URLField(
         help_text='URL of this project', blank=True)
@@ -28,7 +28,7 @@ class Entry(Page):
 
     content_panels = Page.content_panels + [
         FieldPanel('overview'),
-        FieldPanel('body', classname="full"),
+        FieldPanel('description', classname="full"),
         FieldPanel('release_date'),
         DocumentChooserPanel('infosheet'),
     ]
