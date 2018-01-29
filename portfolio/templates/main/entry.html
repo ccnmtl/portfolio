@@ -1,9 +1,50 @@
 {% extends 'base.html' %}
 {% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
 
 {% block title %}{{page.title}}{% endblock %}
 
+{% block entry_published_og %}
+<meta property="article:published_time" content="2018-01-25" />
+<meta property="article:modified_time" content="2018-01-25" />
+{% endblock %}
+
+{% block entry_jsonld %}
+    <!-- JSON Structured data: Entry/Article specific -->
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Article",
+        "name": "{{page.title}} -- CTL Portfolio",
+        "description": "{{page.search_description}}",
+        "url": "url",
+        "mainEntityOfPage": "url",
+        "headline": "{{page.title}}",
+        "datePublished": "CCYY-MM-DD",
+        "dateModified": "CCYY-MM-DD",
+        "dateCreated": "CCYY-MM-DD",
+        "author": "Center for Teaching and Learning at Columbia University",
+        "publisher": {
+            "@type": "EducationalOrganization",
+            "url": "https://ctl.columbia.edu",
+            "name": "Center for Teaching and Learning at Columbia University",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "ctl logo url"
+            }
+        }
+        "image": {
+            "@type": "ImageObject",
+            "representativeOfPage": "True",
+            "url": "url of thumbnail"
+        }
+    }
+    </script>
+{% endblock %}
+
+
 {% block content %}
+
 
 <dl>
     <dt>Entry title:</dt>
@@ -12,11 +53,36 @@
     <dt>Entry ID:</dt>
     <dd>{{page.id}}</dd>
 
-    <dt>Entry overview:</dt>
+    <dt>Entry first published:</dt>
+    <dd>{{page.first_published_at}}</dd>
+
+     <dt>Entry last published:</dt>
+    <dd>{{page.last_published_at}}</dd>
+
+   <dt>Entry overview:</dt>
     <dd>{{page.overview}}</dd>
+
+   <dt>Entry search description:</dt>
+    <dd>{{page.search_description}}</dd>
+
+    {% if page.thumbnail %}
+   {% image page.thumbnail original as entry_thumbnail %}
+    <dt>Entry thumbnail:</dt>
+    <dd>{{ entry_thumbnail.url }}</dd>
+    {% image page.thumbnail original %}
+    {% endif %}
+
+    {% if page.poster %}
+    {% image page.poster original as entry_poster %}
+    <dt>Entry poster:</dt>
+    <dd>{{ entry_poster.url }}</dd>
+    {% image page.poster original %}
+    {% endif %}
+
 
     <dt>Entry description:</dt>
     <dd>{{page.description|richtext}}</dd>
+
 
     <dt>Partner:</dt>
     <dd>
@@ -36,8 +102,5 @@
     </dd>
 
 </dl>
-
-
-
 
 {% endblock %}
