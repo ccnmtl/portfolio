@@ -42,7 +42,7 @@ selenium==3.8.1
 coverage==4.4.2
 pyasn1==0.4.2
 pyOpenSSL==17.5.0
-ndg-httpsclient==0.4.3
+ndg-httpsclient==0.4.4
 requests==2.18.4
 logilab-common==1.4.1
 logilab-astng==0.24.3
@@ -51,7 +51,7 @@ pylint==1.8.2
 six==1.11.0
 ipaddress==1.0.19  # faker
 faker==0.8.10  # factory_boy
-factory_boy==2.9.2
+factory_boy==2.10.0
 ldap3==2.4.1
 sqlparse==0.2.4
 contextlib2==0.5.5
