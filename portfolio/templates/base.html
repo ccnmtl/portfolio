@@ -4,65 +4,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>CTL Portfolio: {% block title %}{% endblock %}</title>
+    <title>{% block title %}{% endblock %} &mdash; CTL Portfolio</title>
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- The above 2 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
+    <!-- Remove after site is completed -->
+    <meta name="robots" content="noindex" />
+    <meta name="robots" content="nofollow" />
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <!-- FontAwesome CSS -->
-    <link rel="stylesheet" href="https://opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css"
-        integrity="sha384-dNpIIXE8U05kAbPhy3G1cz+yZmTzA6CY8Vg/u2L9xRnHjJiAK76m2BIEaSEV+/aU"
-        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css" integrity="sha384-dNpIIXE8U05kAbPhy3G1cz+yZmTzA6CY8Vg/u2L9xRnHjJiAK76m2BIEaSEV+/aU" crossorigin="anonymous">
 
     <!-- Local CSS -->
     {% compress css %}
-    <link href="{{STATIC_URL}}css/main.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/main.css">
     {% endcompress %}
     {% block css %}{% endblock %}
     
-
     <!-- Standard Meta Data -->
-    <meta name="description" content="{% if page.nut_graph %}{{page.nut_graph}}{% endif %}" />
-    <meta name="keywords" content="" />
-    <meta name="author" content="" />
-    <meta name="copyright" content="">
+    <meta name="description"
+        content="{% if page.search_description %}{{page.search_description}}{% else %}The CTL Portfolio is the complete list of CTL projects{% endif %}" />
 
     <!-- Dublin Core Metadata -->
-    <meta name="DC.Title" content="CTL Portfolio: : Title" />
-    <meta name="DC.Description" content="" />
+    <meta name="DC.Title" content="{{page.title}} -- CTL Portfolio" />
+    <meta name="DC.Description" content="{% if page.search_description %}{{page.search_description}}{% else %}The CTL Portfolio is the complete list of CTL projects{% endif %}" />
 
     <!-- Open Graph -->
-    <meta property="og:title" content="CTL Portfolio: : Title" />
-    <meta property="og:type" content="" />
-    <meta property="og:image" 
-          content="" />
-    <meta property="og:description" content="" />
-    <meta property="og:url" content="" />
-    <meta property="og:site_name" content="CTL Portfolio: : Title" />
+    <meta property="og:title" content="{{page.title}} -- CTL Portfolio" />
+    <meta property="og:site_name" content="CTL Portfolio" />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="Entry thumbnail" />
+    <meta property="og:description" content="Search description" />
+    <meta property="og:url" content="Entry URL" />
+    {% block entry_published_og %}{% endblock %}
 
     <!-- Twitter -->
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@columbiactl" />
-    <meta name="twitter:title" content="CTL Portfolio: Title" />
-    <meta name="twitter:description" content="" />
-    <meta name="twitter:image" content="{{STATIC_URL}}img/favicon.png" />
+    <meta name="twitter:title" content="{{page.title}} -- CTL Portfolio" />
+    <meta name="twitter:description" content="Search description" />
+    <meta name="twitter:image" content="Entry thumbnail" />
 
-    <!-- JSON Structured data -->
+    <!-- JSON Structured data: Webpage -->
     <script type="application/ld+json">
     {
         "@context": "http://schema.org",
-        "@type": "WebSite",
-        "url": "url",
-        "name": "title",
-        "about": "description",
-        "keywords": "keywords here"
+        "@type": "WebPage",
+        "sameAs": "https://portfolio.ctl.columbia.edu",
+        "relatedLink": "https://ctl.columbia.edu",
+        "name": "CTL Portfolio",
+        "about": "Portfolio description",
+        "publisher": {
+            "@type": "EducationalOrganization",
+            "url": "https://ctl.columbia.edu",
+            "name": "Center for Teaching and Learning at Columbia University",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "ctl logo url"
+            }
     }
     </script>
+
+    {% block entry_jsonld %}{% endblock %}
 
     <!-- Favicons -->
     <link rel="apple-touch-icon" href="{{STATIC_URL}}img/apple-touch-icon.png">
