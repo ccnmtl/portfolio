@@ -1,6 +1,7 @@
 {% load compress %}
 {% load bootstrap4 %}
 {% load static %}
+{% load waffle_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,10 +11,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- The above 2 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
-    <!-- Remove after site is completed -->
-    <meta name="robots" content="noindex" />
-    <meta name="robots" content="nofollow" />
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -27,6 +24,8 @@
     {% endcompress %}
     {% block css %}{% endblock %}
     
+{% flag "seo-meta-jsonld" %}
+<!-- WAFFLE OUT SEO TAGS, till project is done -->
     <!-- Standard Meta Data -->
     <meta name="description"
         content="{% if page.search_description %}{{page.search_description}}{% else %}The CTL Portfolio is the complete list of CTL projects{% endif %}" />
@@ -72,6 +71,7 @@
     </script>
 
     {% block entry_jsonld %}{% endblock %}
+{% endflag %}
 
     <!-- Favicons -->
     <link rel="apple-touch-icon" href="{{STATIC_URL}}img/apple-touch-icon.png">
