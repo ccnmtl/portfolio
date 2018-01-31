@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load wagtailcore_tags %}
 {% load wagtailimages_tags %}
+{% load wagtailuserbar %}
 
 {% block title %}{{page.title}}{% endblock %}
 
@@ -42,9 +43,9 @@
     </script>
 {% endblock %}
 
-
 {% block content %}
 
+{% wagtailuserbar %}
 
 <dl>
     <dt>Entry title:</dt>
