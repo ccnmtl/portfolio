@@ -33,6 +33,9 @@ class Partner(Orderable):
 
 class Entry(Page, TimeStampedModel):
 
+    affiliation = models.CharField(
+        help_text='What department is this project for?',
+        max_length=255, blank=True)
     overview = models.CharField(
         help_text='A blurb highlighting the project\'s purpose and effort. '
         'Think of it as an elevator pitch',
@@ -73,6 +76,7 @@ class Entry(Page, TimeStampedModel):
         FieldPanel('overview'),
         FieldPanel('description', classname="full"),
         FieldPanel('release_date'),
+        FieldPanel('affiliation'),
         FieldPanel('partners', widget=forms.SelectMultiple),
         FieldPanel('project_url'),
         MultiFieldPanel(

@@ -48,7 +48,7 @@
 
 <dl>
     <dt>Entry title:</dt>
-    <dd>{{page.title}}</dd>
+    <dd class="border-bottom">{{page.title}}</dd>
 
     <dt>Entry ID:</dt>
     <dd>{{page.id}}</dd>
@@ -69,14 +69,12 @@
    {% image page.thumbnail original as entry_thumbnail %}
     <dt>Entry thumbnail:</dt>
     <dd>{{ entry_thumbnail.url }}</dd>
-    {% image page.thumbnail original %}
     {% endif %}
 
     {% if page.poster %}
     {% image page.poster original as entry_poster %}
     <dt>Entry poster:</dt>
     <dd>{{ entry_poster.url }}</dd>
-    {% image page.poster original %}
     {% endif %}
 
 
@@ -100,6 +98,9 @@
     {% endif %}
 {% endwith %}    
     </dd>
+
+    <dt>Project affiliation</dt>
+    <dd>{{ page.affiliation }}</dd>
 
 </dl>
 
