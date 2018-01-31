@@ -4,7 +4,6 @@ from django.contrib.auth.views import logout
 from django.conf import settings
 from django.views.generic import TemplateView
 from django.views.static import serve
-from portfolio.main import views
 import os.path
 from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
@@ -29,17 +28,16 @@ if hasattr(settings, 'CAS_BASE'):
 urlpatterns = [
     auth_urls,
     logout_page,
-    url(r'^$', views.IndexView.as_view()),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^_impersonate/', include('impersonate.urls')),
     url(r'^stats/$', TemplateView.as_view(template_name="stats.html")),
     url(r'smoketest/', include('smoketest.urls')),
     url(r'infranil/', include('infranil.urls')),
-    url(r'^cms/', include(wagtailadmin_urls)),
-    url(r'^documents/', include(wagtaildocs_urls)),
-    url(r'^pages/', include(wagtail_urls)),
     url(r'^uploads/(?P<path>.*)$',
         serve, {'document_root': settings.MEDIA_ROOT}),
+    url(r'^cms/', include(wagtailadmin_urls)),
+    url(r'^documents/', include(wagtaildocs_urls)),
+    url(r'', include(wagtail_urls)),
 ]
 
 if settings.DEBUG:
