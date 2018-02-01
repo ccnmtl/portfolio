@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+{% load wagtailuserbar %}
+{% block title %}{{ page.title }}{% endblock %}
+
+
+{% block content %}
+    <h1>{{ page.title }}</h1>
+
+    <div class="intro">{{ page.intro|richtext }}</div>
+
+    {% if page.entries %}
+    <h2>Entry</h2>
+        {% for entry in page.entries %}
+            <h2><a href="{% pageurl entry %}">{{entry.title}}</a></h2>
+        {% endfor %}
+    {% endif %}
+
+{% endblock %}

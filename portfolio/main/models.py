@@ -31,6 +31,49 @@ class Partner(Orderable):
     ]
 
 
+class HomePage(Page):
+    body = RichTextField(blank=True)
+
+    content_panels = Page.content_panels + [
+        FieldPanel('body', classname="full"),
+    ]
+
+    @property
+    def entries(self):
+        # Get list of project Entries
+        entries = Entry.objects.live().public()
+        # sort here if desired
+        return entries
+
+
+class VisualIndex(Page):
+    intro = RichTextField(blank=True)
+
+    content_panels = Page.content_panels + [
+        FieldPanel('intro', classname="full")
+    ]
+
+    parent_page_types = ['HomePage']
+    subpage_types = ['Entry']
+
+
+class TextualIndex(Page):
+    intro = RichTextField(blank=True)
+
+    content_panels = Page.content_panels + [
+        FieldPanel('intro', classname="full")
+    ]
+
+    subpage_types = []
+
+    @property
+    def entries(self):
+        # Get list of project Entries
+        entries = Entry.objects.live().public()
+        # sort here if desired
+        return entries
+
+
 class Entry(Page, TimeStampedModel):
 
     affiliation = models.CharField(
@@ -71,6 +114,9 @@ class Entry(Page, TimeStampedModel):
         related_name='+',
         help_text='PDF information sheet for printing, if available.'
     )
+
+    parent_page_types = ['VisualIndex']
+    subpage_types = []
 
     content_panels = Page.content_panels + [
         FieldPanel('overview'),

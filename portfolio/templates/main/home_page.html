@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+{% load wagtailuserbar %}
+
+{% block body_class %}template-homepage{% endblock %}
+
+{% block content %}
+{% wagtailuserbar %}
+
+    {{ page.body|richtext }}
+
+<h2>Indexes</h2>
+    {% for post in page.get_children %}
+        <h2><a href="{% pageurl post %}">{{ post.title }}</a></h2>
+    {% endfor %}
+
+<hr />
+
+    {% if page.entries %}
+    <h2>Entry</h2>
+        {% for entry in page.entries %}
+            <h2><a href="{% pageurl entry %}">{{entry.title}}</a></h2>
+        {% endfor %}
+    {% endif %}
+
+
+{% endblock %}
