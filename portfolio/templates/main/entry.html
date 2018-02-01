@@ -6,8 +6,8 @@
 {% block title %}{{page.title}}{% endblock %}
 
 {% block entry_published_og %}
-<meta property="article:published_time" content="2018-01-25" />
-<meta property="article:modified_time" content="2018-01-25" />
+<meta property="article:published_time" content="{{page.first_published_at|date:"Y-m-d"}}" />
+<meta property="article:modified_time" content="{{page.last_published_at|date:"Y-m-d"}}" />
 {% endblock %}
 
 {% block entry_jsonld %}
