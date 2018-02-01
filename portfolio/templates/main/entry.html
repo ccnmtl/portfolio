@@ -21,8 +21,8 @@
         "url": "url",
         "mainEntityOfPage": "url",
         "headline": "{{page.title}}",
-        "datePublished": "CCYY-MM-DD",
-        "dateModified": "CCYY-MM-DD",
+        "datePublished": "{{page.first_published_at|date:"Y-m-d"}}",
+        "dateModified": "{{page.last_published_at|date:"Y-m-d"}}",
         "dateCreated": "CCYY-MM-DD",
         "author": "Center for Teaching and Learning at Columbia University",
         "publisher": {
@@ -55,10 +55,10 @@
     <dd>{{page.id}}</dd>
 
     <dt>Entry first published:</dt>
-    <dd>{{page.first_published_at}}</dd>
+    <dd>{{page.first_published_at|date:"Y-m-d"}}</dd>
 
      <dt>Entry last published:</dt>
-    <dd>{{page.last_published_at}}</dd>
+    <dd>{{page.last_published_at|date:"Y-m-d"}}</dd>
 
    <dt>Entry overview:</dt>
     <dd>{{page.overview}}</dd>
