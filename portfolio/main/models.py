@@ -38,11 +38,12 @@ class HomePage(Page):
         FieldPanel('body', classname="full"),
     ]
 
-    @property
     def entries(self):
         # Get list of project Entries
         entries = Entry.objects.live().public()
-        # sort here if desired
+        # sort here
+        entries = entries.order_by('-release_date')
+
         return entries
 
 
@@ -66,7 +67,6 @@ class TextualIndex(Page):
 
     subpage_types = []
 
-    @property
     def entries(self):
         # Get list of project Entries
         entries = Entry.objects.live().public()
