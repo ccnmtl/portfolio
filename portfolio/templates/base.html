@@ -83,90 +83,43 @@
 </head>
 <body>
 
-<a id="skippy" class="sr-only sr-only-focusable" href="#content">
-    <div class="container">
-        <span class="skiplink-text">Skip to main content</span>
-    </div>
-</a>
-
-<header>
-{% block topnavbar %}
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">ProjectName</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topNavbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="topNavbar">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-        </ul>
-    </div>
-
-    {% block usernav %}
-    <ul class="navbar-nav flex-row ml-md-auto d-md-flex">
-        <li class="nav-item"><span class="nav-link">
-            {% if request.user.is_anonymous %}
-            You're not logged in
-            {% else %}
-            Logged in as
-                {% if request.user.last_name %}
-                {{request.user.first_name}} {{request.user.last_name}}
-                {% else %}
-                {{ request.user.username }}
-                {% endif %}
-            (<a href="/accounts/logout/">logout</a>)
-            {% endif %}
-            </span>
-        </li>
-        {% if request.user.is_superuser %}
-        <li class="nav-item">
-            <a href="{% url 'impersonate-list' %}" class="nav-link">impersonate</a>
-        </li>
-        {% endif %}
-    </ul>
-    {% endblock %}
-</nav>
-{% endblock %}
-</header>
-
-<main role="main" class="pb-4">
-
-    {% block featured_banner %}{% endblock %}
-
-    <section id="content">
-        <div class="container">
-        {% block pagetitle %}{% endblock %}
-        {% block content %}{% endblock %}
+    <a id="skippy" class="sr-only sr-only-focusable" href="#maincontent">
+        <div class="container text-center">
+            <span class="skiplink-text">Skip to main content</span>
         </div>
-    </section>
+    </a>
 
-</main>
+    {% include "main/includes/top_institution.html" %}
 
-<footer class="bg-light text-dark pt-2 pb-5">
-    <ul class="nav d-flex justify-content-center">
-        <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Help</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
-        </li>
-    </ul>
+    <header class="container bg-white px-0 d-print-none" id="header-portfolio">
+        <div class="logo-project py-3 d-flex flex-row">
+            <img src="{{STATIC_URL}}img/ctl-avatar.svg" style="height: 70px;" class="d-block" />
+            <h1><a href="/">STUFF WE MAKE</a></h1>
+        </div>
+        <nav class="navbar navbar-expand navbar-light bg-light" id="navbar-portfolio">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav m-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/our-work/">Our Work</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
 
-    <span itemscope itemtype="http://schema.org/EducationalOrganization"><a href="http://ctl.columbia.edu" target="_blank" itemprop="url"><img src="{% static 'img/logo-ctl-color.png' %}" class="mx-auto d-block img-fluid mt-3" alt="" itemprop="logo" width="290" /><span class="sr-only" itemprop="name">Center for Teaching and Learning at Columbia University</span></a></span>
+    <main class="container bg-white px-0">
 
-    <span itemscope itemtype="http://schema.org/EducationalOrganization"><a href="http://ctl.columbia.edu" target="_blank" itemprop="url"><img src="{% static 'img/logo-ctl-color.svg' %}" class="mx-auto d-block img-fluid mt-3" alt="" itemprop="logo" width="290" /><span class="sr-only" itemprop="name">Center for Teaching and Learning at Columbia University</span></a></span>
+    {% block content %}{% endblock %}
 
+    </main>
 
-</footer>
+    {% include "main/includes/footer.html" %}
 
 {% if request.user.is_anonymous %}
 {% else %}
