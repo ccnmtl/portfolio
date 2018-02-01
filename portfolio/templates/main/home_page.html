@@ -1,8 +1,7 @@
 {% extends "base.html" %}
 {% load wagtailcore_tags %}
 {% load wagtailuserbar %}
-
-{% block body_class %}template-homepage{% endblock %}
+{% load wagtailimages_tags %}
 
 {% block title %}{{ page.title }}{% endblock %}
 
@@ -80,8 +79,28 @@
         </div>
     </section>
 
+        {% if page.entries %}
+        <section class="container px-4 px-sm-3" id="portfolio-cards">
+            <h2 class="text-center">Our recent work</h2>
+            <div class="row">
+                {% for entry in page.entries %}
+                <div class="col-md-6 col-lg-4">
+                    <div class="card mb-4 border-0">
+                        <a href="{% pageurl entry %}">{% image entry.thumbnail original class="card-img-top d-block rounded-0 img-fluid" aria-hidden="true" alt="" %}</a>
+                        <div class="card-body px-0 px-sm-3">
+                            <h5 class="card-title"><a href="{% pageurl entry %}">{{entry.title}}</a></h5>
+                            <p class="card-text">Entry search description TBD</p>
+                        </div>
+                    </div>
+                </div>
+                 {% endfor %}
+            </div>
+        </section>
+        {% endif %}
 
-    {{ page.body|richtext }}
+
+
+
 
 <h2>Indexes</h2>
     {% for post in page.get_children %}
@@ -90,12 +109,6 @@
 
 <hr />
 
-    {% if page.entries %}
-    <h2>Entry</h2>
-        {% for entry in page.entries %}
-            <h2><a href="{% pageurl entry %}">{{entry.title}}</a></h2>
-        {% endfor %}
-    {% endif %}
 
 {% if not request.user.is_anonymous %}
 <hr />
