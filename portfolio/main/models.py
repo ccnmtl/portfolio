@@ -77,7 +77,7 @@ class TextualIndex(Page):
 class Entry(Page, TimeStampedModel):
 
     affiliation = models.CharField(
-        help_text='What department is this project for?',
+        help_text='Which department is this project for?',
         max_length=255, blank=True)
     overview = models.CharField(
         help_text='A blurb highlighting the project\'s purpose and effort. '
@@ -90,6 +90,10 @@ class Entry(Page, TimeStampedModel):
     release_date = models.DateField(
         help_text='Format YYYY-MM-DD')
     partners = ParentalManyToManyField(Partner, blank=True)
+    feature_on_homepage = models.BooleanField(default=False)
+    feature_blurb = models.CharField(
+        help_text='A very short blurb on this entry for the feature carousel',
+        max_length=255, blank=True)
     poster = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -133,6 +137,13 @@ class Entry(Page, TimeStampedModel):
             heading="Representational images"
         ),
         DocumentChooserPanel('infosheet'),
+        MultiFieldPanel(
+            [
+                FieldPanel('feature_on_homepage'),
+                FieldPanel('feature_blurb'),
+            ],
+            heading="Homepage Feature Carousel"
+        ),
     ]
 
     promote_panels = [
