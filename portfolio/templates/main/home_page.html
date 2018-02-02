@@ -107,14 +107,4 @@
         <h2><a href="{% pageurl post %}">{{ post.title }}</a></h2>
     {% endfor %}
 
-<hr />
-
-
-{% if not request.user.is_anonymous %}
-<hr />
-
-<p class="lead text-center"><a href="cms/">Wagtail CMS</a></p>
-{% endif %}
-
-
 {% endblock %}
