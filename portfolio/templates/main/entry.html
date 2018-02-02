@@ -37,7 +37,9 @@
         "image": {
             "@type": "ImageObject",
             "representativeOfPage": "True",
-            "url": "url of thumbnail"
+            {% if page.thumbnail %}
+            "url": "{{STATIC_URL}}img/"
+            {% endif %}
         }
     }
     </script>
@@ -47,27 +49,44 @@
 
 {% wagtailuserbar %}
 
+<article class="hentry">
+    <header class="entry-header">
+        <figure class="entry-poster mb-0">
+            {% image page.poster original class="img-fluid" alt="" %}
+        </figure>
+    </header>
+    <div class="row" style="margin-top: -4rem;">
+        <div class="col-12 col-sm-10 offset-sm-1 bg-white">
+            <h1 class="bg-white text-center py-2" style="margin: 0 -15px;" id="maincontent">{{page.title}}</h1>
+        
+            <section class="project-info text-muted border-top border-bottom mb-5">
+                <dl class="row m-0">
+                    <dt class="col-2">Released: </dt>
+                        <dd class="col-10">{{page.release_date|date:"F Y"}}</dd>
+                     <dt class="col-2">URL:</dt>
+                        <dd class="col-10">{{ page.project_url }}</dd>
+                    <dt class="col-2">Infosheet:</dt>
+                        <dd class="col-10">infosheet</dd>
+               </dl>
+            </section>
+        
+            <section class="overview lead mb-2">
+            <p>{{page.overview}}</p>
+            </section>
+        
+            <section class="description mb-5">
+            {{page.description|richtext}}
+            </section>
+
+        </div>
+    </div>
+</article>
+
+
+
+
+
 <dl>
-    <dt>Entry title:</dt>
-    <dd class="border-bottom">{{page.title}}</dd>
-
-    <dt>Entry ID:</dt>
-    <dd>{{page.id}}</dd>
-
-    <dt>Entry first published:</dt>
-    <dd>{{page.first_published_at|date:"Y-m-d"}}</dd>
-
-     <dt>Entry last published:</dt>
-    <dd>{{page.last_published_at|date:"Y-m-d"}}</dd>
-
-     <dt>Project release date:</dt>
-    <dd>{{page.release_date|date:"Y-m-d"}}</dd>
-
-   <dt>Entry overview:</dt>
-    <dd>{{page.overview}}</dd>
-
-   <dt>Entry search description:</dt>
-    <dd>{{page.search_description}}</dd>
 
     {% if page.thumbnail %}
    {% image page.thumbnail original as entry_thumbnail %}
@@ -80,10 +99,6 @@
     <dt>Entry poster:</dt>
     <dd>{{ entry_poster.url }}</dd>
     {% endif %}
-
-
-    <dt>Entry description:</dt>
-    <dd>{{page.description|richtext}}</dd>
 
 
     <dt>Partner:</dt>

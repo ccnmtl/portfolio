@@ -41,8 +41,8 @@ class HomePage(Page):
     def entries(self):
         # Get list of project Entries
         entries = Entry.objects.live().public()
-        # sort here
-        entries = entries.order_by('-release_date')
+        # sort here, return only six cards
+        entries = entries.order_by('-release_date')[:6]
 
         return entries
 
@@ -100,7 +100,7 @@ class Entry(Page, TimeStampedModel):
         blank=True,
         on_delete=models.SET_NULL,
         related_name='+',
-        help_text='Dimension 1110px by 540px. Format: PNG or JPG.'
+        help_text='Dimension 1140px by 555px. Format: PNG or JPG.'
     )
     thumbnail = models.ForeignKey(
         'wagtailimages.Image',
