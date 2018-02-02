@@ -31,15 +31,17 @@
             "name": "Center for Teaching and Learning at Columbia University",
             "logo": {
                 "@type": "ImageObject",
-                "url": "ctl logo url"
+                "url": "{{STATIC_URL}}img/logo-ctl-color.png"
             }
         }
         "image": {
             "@type": "ImageObject",
             "representativeOfPage": "True",
-            {% if page.thumbnail %}
-            "url": "{{STATIC_URL}}img/"
-            {% endif %}
+        {% if page.thumbnail %}
+            "url": "{{ entry_thumbnail.url }}"
+        {% else %}
+            "url": "{{STATIC_URL}}img/og_ctlportfolio.png"
+        {% endif %}
         }
     }
     </script>
@@ -66,7 +68,9 @@
                      <dt class="col-2">URL:</dt>
                         <dd class="col-10">{{ page.project_url }}</dd>
                     <dt class="col-2">Infosheet:</dt>
-                        <dd class="col-10">infosheet</dd>
+                        <dd class="col-10"><a href="{{ page.infosheet.url }}" target="_blank">infosheet</a></dd>
+                    <dt class="col-2">Project affiliation</dt>
+                        <dd>{{ page.affiliation }}</dd>
                </dl>
             </section>
         
@@ -118,9 +122,15 @@
 {% endwith %}    
     </dd>
 
-    <dt>Project affiliation</dt>
-    <dd>{{ page.affiliation }}</dd>
 
 </dl>
+
+
+{% if page.thumbnail %}
+    {{ entry_thumbnail.url }}
+{% else %}
+    {{STATIC_URL}}img/og_ctlportfolio.png
+{% endif %}
+
 
 {% endblock %}
