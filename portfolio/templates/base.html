@@ -88,10 +88,10 @@
 
     {% include "main/includes/top_institution.html" %}
 
-    <header class="container bg-white px-0 d-print-none" id="header-portfolio">
-        <div class="py-3 d-flex flex-row" id="logo-portfolio">
-            <img src="{{STATIC_URL}}img/ctl-avatar.svg" style="height: 70px;" class="d-block" />
-            <h1><a href="/">STUFF WE MAKE</a></h1>
+    <header class="container d-print-none" id="header-portfolio">
+        <div class="d-flex flex-row" id="logo-portfolio">
+            <h1 class="order-2"><a href="/" title="Go to Portfolio home"><span class="sr-only">Go to</span> PORTFOLIO <span class="sr-only">home</span></a></h1>
+            <a href="https://ctl.columbia.edu" title="Go to CTL Website"><img class="order-1" src="{{STATIC_URL}}img/ctl-avatar.svg" alt="Logo: Go to CTL Website" /></a>
         </div>
         <nav class="navbar navbar-expand navbar-light bg-white" id="navbar-portfolio">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarPortfolioGlobal" aria-controls="navbarPortfolioGlobal" aria-expanded="false" aria-label="Toggle navigation">
@@ -99,11 +99,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarPortfolioGlobal">
                 <ul class="navbar-nav m-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
-                    </li>
-                    <li class="nav-item">
+                    <li class="nav-item px-3">
                         <a class="nav-link" href="/our-work/">Our Work</a>
+                    </li>
+                    <li class="nav-item px-3">
+                        <a class="nav-link" href="#">About</a>
                     </li>
                 </ul>
             </div>
