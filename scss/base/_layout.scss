@@ -1,0 +1,31 @@
+//
+// Top header with Columbia and Provost links
+//
+
+#top-institution {
+    background-color: $darkblue;
+    font-family: $cardo;
+    font-size: 0.75rem;
+    padding: 0;
+    .dropdown-menu {
+        font-size: 0.9rem;
+        margin-top: 0;
+        background-color: $darkblue;
+        border-color: $darkblue;
+        @include border-top-radius(0);
+    }
+    .nav-link, .dropdown-item {
+        color:  rgba($white, 1);
+        padding-bottom: 0.3rem;
+        padding-top: 0.3rem;
+    }
+    .nav-link:hover, .dropdown-item:hover {
+        text-decoration: underline;
+    }
+    .dropdown-item:hover {
+        background-color: #0046A6;
+    }
+    @media print {
+        display: none;
+    }
+}
