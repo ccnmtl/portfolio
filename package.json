@@ -1,5 +1,5 @@
 {
-  "name": "CTL Portfolio",
+  "name": "portfolio",
   "version": "0.1.0",
   "description": "CTL Portfolio",
   "license": "GPL-2.0+",
@@ -8,7 +8,7 @@
     "build-scss": "node-sass --output media/css scss/main.scss && postcss -u autoprefixer -r media/css/main.css",
     "watch-scss": "nodemon -e scss -x 'npm run build-scss'"
   },
-"repository": {
+  "repository": {
     "type": "git",
     "url": "git://github.com/ccnmtl/portfolio.git"
   },
