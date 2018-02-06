@@ -1,12 +1,16 @@
 {
   "name": "portfolio",
   "version": "0.1.0",
-  "description": "portfolio",
+  "description": "CTL Portfolio",
   "license": "GPL-2.0+",
   "scripts": {
     "test": "mocha",
     "build-scss": "node-sass --output media/css scss/main.scss && postcss -u autoprefixer -r media/css/main.css",
     "watch-scss": "nodemon -e scss -x 'npm run build-scss'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ccnmtl/portfolio.git"
   },
   "devDependencies": {
     "eslint": "~4.17.0",
