@@ -32,7 +32,8 @@
     .nav-link:hover, .dropdown-item:hover {
         text-decoration: underline;
     }
-    .dropdown-item:hover {
+    .dropdown-item:hover,
+    .dropdown-item:focus {
         background-color: #0046A6;
     }
     @media print {
