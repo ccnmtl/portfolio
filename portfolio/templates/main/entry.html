@@ -53,15 +53,16 @@
 
 <article class="hentry">
     <header class="entry-header">
-        <figure class="entry-poster mb-0">
+        <figure class="entry-poster">
             {% image page.poster original class="img-fluid" alt="" %}
         </figure>
     </header>
-    <div class="row" style="margin-top: -4rem;">
-        <div class="col-12 col-sm-10 offset-sm-1 bg-white">
-            <h1 class="bg-white text-center py-2" style="margin: 0 -15px;" id="maincontent">{{page.title}}</h1>
-        
-            <section class="project-info text-muted border-top border-bottom mb-5">
+    <div class="row entry-body">
+        <div class="col-12 col-md-10 offset-md-1">
+            <div class="headline d-flex justify-content-center">
+                <h1 class="align-self-center" id="maincontent">{{page.title}}</h1>
+            </div>
+            <section class="project-info text-muted border-bottom mb-5">
                 <dl class="row m-0">
                     <dt class="col-2">Released: </dt>
                         <dd class="col-10">{{page.release_date|date:"F Y"}}</dd>

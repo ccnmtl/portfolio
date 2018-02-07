@@ -49,13 +49,14 @@
 }
 
 #logo-portfolio {
-    padding: $spacer 0 0 0;
+    padding: 1.25rem 0 0 0;
     img {
         display: block;
         height: 80px;
         margin-right: ($spacer * .5);
     }
     h1 {
+        margin-bottom: 0;
         font-weight: 400;
         line-height: 80px;
     }
@@ -65,11 +66,63 @@
 }
 
 #navbar-portfolio {
-    padding-top: 0;
+    padding-top: 0.5rem;
     .nav-link {
         font-weight: 400;
-        font-size: 1rem;
+        font-size: $font-size-lg;
         color: $black;
         text-transform: uppercase;
     }
 }
+
+.entry-poster {
+    margin: 0;
+}
+
+.entry-body {
+    margin-top: $spacer;
+    @include media-breakpoint-up(md) {
+        margin-top: -4.5rem;       
+    }
+    @include media-breakpoint-up(lg) {
+        margin-top: -5.875rem;       
+    }
+    @include media-breakpoint-up(xl) {
+        margin-top: -6.875rem;       
+    }
+}
+
+.headline {
+    height: auto;
+    background-color: $white;
+    overflow: hidden;
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom: $spacer;
+    h1 {
+        font-size: 1.5rem;
+        font-weight: 500;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        @include media-breakpoint-up(md) {
+            font-size: 1.5rem;       
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+        @include media-breakpoint-up(lg) {
+            font-size: 1.75rem;       
+        }
+        @include media-breakpoint-up(xl) {
+            font-size: 2rem;       
+        }
+    }
+    @include media-breakpoint-up(md) {
+        height: 5.875rem;       
+        margin-bottom: 0;
+    }
+    @include media-breakpoint-up(xl) {
+        height: 6.875rem;       
+    }
+}
+
