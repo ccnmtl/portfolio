@@ -7,12 +7,22 @@
     font-family: $cardo;
     font-size: 0.75rem;
     padding: 0;
+    #navbar-univ {
+        margin-left: -$spacer;
+    }
+    #navbar-ctl {
+        margin-right: -$spacer;
+    }
     .dropdown-menu {
         font-size: 0.9rem;
         margin-top: 0;
         background-color: $darkblue;
         border-color: $darkblue;
         @include border-top-radius(0);
+    }
+    .nav-link {
+        padding-left: $spacer;
+        padding-right: $spacer;
     }
     .nav-link, .dropdown-item {
         color:  rgba($white, 1);
