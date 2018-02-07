@@ -52,7 +52,7 @@
                 {% for entry in page.entries %}
                 <div class="col-md-6 col-lg-4">
                     <div class="card mb-4 border-0">
-                        <a href="{% pageurl entry %}">{% image entry.thumbnail original class="card-img-top d-block rounded-0 img-fluid" aria-hidden="true" alt="" %}</a>
+                        <a href="{% pageurl entry %}">{% image entry.thumbnail original class="border card-img-top d-block rounded-0 img-fluid" aria-hidden="true" alt="" %}</a>
                         <div class="card-body px-0 px-sm-3">
                             <h5 class="card-title"><a href="{% pageurl entry %}">{{entry.title}}</a></h5>
                             <p class="card-text">Entry search description TBD</p>
