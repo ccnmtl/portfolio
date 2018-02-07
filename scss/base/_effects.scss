@@ -1,0 +1,16 @@
+#navbar-portfolio {
+    .nav-link::after {
+        content: '';
+        display: block;
+        width: 0;
+        height: 1px;
+        background-color: $link-color;
+        transition: width .2s;
+    }
+    .nav-link:hover::after {
+        width: 100%;
+    }
+    .nav-link:hover {
+        color: $link-color;
+    }
+}

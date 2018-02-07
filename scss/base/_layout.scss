@@ -29,3 +29,37 @@
         display: none;
     }
 }
+
+#header-portfolio {
+    background-color: $white;
+    padding: 0;
+    @media print {
+        display: none;
+    }
+}
+
+#logo-portfolio {
+    padding: $spacer 0 0 0;
+    img {
+        display: block;
+        height: 80px;
+        margin-right: ($spacer * .5);
+    }
+    h1 {
+        font-weight: 400;
+        line-height: 80px;
+    }
+    h1 a {
+        text-decoration: none;
+    }
+}
+
+#navbar-portfolio {
+    padding-top: 0;
+    .nav-link {
+        font-weight: 400;
+        font-size: 1rem;
+        color: $black;
+        text-transform: uppercase;
+    }
+}
