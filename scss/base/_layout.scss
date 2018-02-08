@@ -69,7 +69,7 @@
 #navbar-portfolio {
     padding-top: 0.5rem;
     .nav-link {
-        font-weight: 400;
+        font-weight: 500;
         font-size: $font-size-lg;
         color: $black;
         text-transform: uppercase;
@@ -82,8 +82,16 @@
 
 .entry-body {
     margin-top: $spacer;
+    section {
+        padding-left: 0.625rem;
+        padding-right: 0.625rem;
+    }
     @include media-breakpoint-up(md) {
         margin-top: -4.5rem;       
+        section {
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
     }
     @include media-breakpoint-up(lg) {
         margin-top: -5.875rem;       
@@ -127,3 +135,13 @@
     }
 }
 
+.project-info {
+    margin-top: ($spacer * 0.5);
+    dd {
+        margin-bottom: ($spacer * 1.125);
+    }
+}
+
+.overview {
+    margin-bottom: 2rem;
+}

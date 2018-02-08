@@ -1,0 +1,18 @@
+.field-label {
+    font-weight: 600;
+}
+
+.entry-toolbar {
+    a {
+        font-weight: 500;
+    }
+}
+
+.overview {
+    font-size: ($lead-font-size * 0.85);
+    font-weight: $lead-font-weight;
+    line-height: 1.4;
+    @include media-breakpoint-up(lg) {
+        font-size: $lead-font-size;
+    }
+}
