@@ -5,7 +5,7 @@
   "license": "GPL-2.0+",
   "scripts": {
     "test": "mocha",
-    "build-scss": "node-sass --output media/css scss/main.scss && postcss -u autoprefixer -r media/css/main.css",
+    "build-scss": "node-sass --output media/css scss/main.scss --output-style compressed && postcss -u autoprefixer -r media/css/main.css",
     "watch-scss": "nodemon -e scss -x 'npm run build-scss'"
   },
   "repository": {
