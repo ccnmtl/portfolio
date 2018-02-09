@@ -20,5 +20,9 @@
 .getintouch {
     h2 {
         font-size: ($font-size-base * 1.5);
+        font-weight: 400;
+        @include media-breakpoint-up(md) {
+            font-size: $h2-font-size;
+        }
     }
 }

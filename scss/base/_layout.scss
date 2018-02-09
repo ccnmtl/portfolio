@@ -76,15 +76,18 @@
     }
 }
 
-.entry-poster {
-    margin: 0;
+.entry-header {
+    margin: 0 -15px;
+    .entry-poster {
+        margin: 0;
+    }
 }
 
 .entry-body {
     margin-top: $spacer;
     section {
-        padding-left: 0.625rem;
-        padding-right: 0.625rem;
+        padding-left: 0;
+        padding-right: 0;
     }
     @include media-breakpoint-up(md) {
         margin-top: -4.5rem;       
@@ -148,7 +151,4 @@
 
 .getintouch {
     background-color: #ddd;
-    .container {
-        padding: 0;
-    }
 }
