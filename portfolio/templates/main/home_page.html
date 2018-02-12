@@ -8,7 +8,7 @@
 {% block content %}
 {% wagtailuserbar %}
         <section id="portfolio-feature">
-            <div id="featureCarouselIndicators" class="carousel slide mb-5" data-ride="carousel" role="presentation" aria-hidden="true">
+            <div id="featureCarouselIndicators" class="carousel slide" data-ride="carousel" role="presentation" aria-hidden="true">
                 <ol class="carousel-indicators">
                     <li data-target="#featureCarouselIndicators" data-slide-to="0" class="active"></li>
                     <li data-target="#featureCarouselIndicators" data-slide-to="1"></li>
@@ -46,14 +46,14 @@
         </section>
 
         {% if page.entries %}
-        <section class="container px-4 px-sm-3" id="portfolio-cards">
-            <h2 class="text-center">Our recent work</h2>
+        <section class="container px-4 px-sm-3 portfolio-cards">
+            <h2>Our recent work</h2>
             <div class="row">
                 {% for entry in page.entries %}
                 <div class="col-md-6 col-lg-4">
                     <div class="card mb-4 border-0">
-                        <a href="{% pageurl entry %}">{% image entry.thumbnail original class="border card-img-top d-block rounded-0 img-fluid" aria-hidden="true" alt="" %}</a>
-                        <div class="card-body px-0 px-sm-3">
+                        <a href="{% pageurl entry %}">{% image entry.thumbnail original class="entry-thumbnail card-img-top img-fluid" aria-hidden="true" alt="" %}</a>
+                        <div class="card-body px-0 py-3 px-sm-3">
                             <h5 class="card-title"><a href="{% pageurl entry %}">{{entry.title}}</a></h5>
                             <p class="card-text">Entry search description TBD</p>
                         </div>
@@ -61,16 +61,17 @@
                 </div>
                  {% endfor %}
             </div>
+            <div class="link-to-all"><a href="/our-work/">view all work</a></div>
         </section>
         {% endif %}
 
+{% block loginbox %}
+{% if request.user.is_anonymous %}
     <section class="container">
         <hr />
         <h3>Don't mind me...</h3>
         <div>
             <!-- Login modal -->
-{% block loginbox %}
-{% if request.user.is_anonymous %}
             <button type="button" class="btn btn-primary mt-4" data-toggle="modal" data-target="#loginmodal">
               Log in
             </button>
@@ -131,17 +132,10 @@
                 </div>
               </div>
             </div>
-{% endif %}
-{% endblock %}
 
         </div>
-
-
-
-<h2>Indexes</h2>
-    {% for post in page.get_children %}
-        <h2><a href="{% pageurl post %}">{{ post.title }}</a></h2>
-    {% endfor %}
     </section>
+{% endif %}
+{% endblock %}
 
 {% endblock %}

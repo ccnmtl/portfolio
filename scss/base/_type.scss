@@ -30,3 +30,21 @@
 .ctl-info {
     color: #ccc;
 }
+
+.portfolio-cards {
+    h2 {
+        font-size: ($font-size-base * 2.875);
+        font-weight: 400;
+        text-align: center;
+    }
+    .card-title {
+        font-size: ($font-size-base * 1);
+        font-weight: 500;
+        line-height: 1.4;
+    }
+    .link-to-all, .link-to-all a {
+        font-weight: 500;
+        color: #fff;
+        text-transform: uppercase;
+    }
+}
