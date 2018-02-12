@@ -7,32 +7,24 @@
 
 {% block content %}
 {% wagtailuserbar %}
+        {% if page.featured_entries %}
         <section id="portfolio-feature">
             <div id="featureCarouselIndicators" class="carousel slide mb-5" data-ride="carousel" role="presentation" aria-hidden="true">
                 <ol class="carousel-indicators">
-                    <li data-target="#featureCarouselIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#featureCarouselIndicators" data-slide-to="1"></li>
-                    <li data-target="#featureCarouselIndicators" data-slide-to="2"></li>
+                {% for featured_entry in page.featured_entries %}
+                    <li data-target="#featureCarouselIndicators" data-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif%}"></li>
+                {% endfor %}
                 </ol>
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img class="d-block img-fluid" src="{{STATIC_URL}}img/poster.png" alt="First slide">
+                {% for featured_entry in page.featured_entries %}
+                    <div class="carousel-item{% if forloop.first %} active{% endif%}">
+                        {% image featured_entry.poster original class="d-block img-fluid" alt="" %}
                         <div class="carousel-caption d-none d-md-block">
-                            <h4 class="display-4">First feature</h4>
+                            <p>{{featured_entry.title}}</p>
+                            <h4 class="display-4">{{featured_entry.feature_blurb}}</h4>
                         </div>
                     </div>
-                    <div class="carousel-item">
-                        <img class="d-block img-fluid" src="{{STATIC_URL}}img/poster.png" alt="Second slide">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h4 class="display-4">Second feature</h4>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block img-fluid" src="{{STATIC_URL}}img/poster.png" alt="Third slide">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h4 class="display-4">Third feature</h4>
-                        </div>
-                    </div>
+                {% endfor %}
                 </div>
                 <a class="carousel-control-prev" href="#featureCarouselIndicators" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -44,6 +36,19 @@
                 </a>
             </div>
         </section>
+
+
+        <section id="portfolio-feature-sr">
+        <h2>Featured collaborations</h2>
+        <ul>
+        {% for featured_entry in page.featured_entries %}
+            <li>
+            <a href="{% pageurl featured_entry %}">{{featured_entry.title}}</a>, {{featured_entry.feature_blurb}}
+            </li>
+        {% endfor %}
+        </ul>
+        </section>
+        {% endif %}
 
         {% if page.entries %}
         <section class="container px-4 px-sm-3" id="portfolio-cards">
