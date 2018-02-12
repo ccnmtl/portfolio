@@ -46,6 +46,15 @@ class HomePage(Page):
 
         return entries
 
+    def featured_entries(self):
+        # Get list of featured project Entries
+        featured_entries = Entry.objects.live().public().filter(
+            feature_on_homepage=True)
+        # sort here, return only 3 cards
+        featured_entries = featured_entries.order_by('-last_published_at')[:3]
+
+        return featured_entries
+
 
 class VisualIndex(Page):
     intro = RichTextField(blank=True)
