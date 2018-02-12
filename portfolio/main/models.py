@@ -31,6 +31,19 @@ class Partner(Orderable):
     ]
 
 
+@register_snippet
+class Discipline(Orderable):
+
+    name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+
+    panels = [
+        FieldPanel('name'),
+    ]
+
+
 class HomePage(Page):
     body = RichTextField(blank=True)
 
@@ -76,9 +89,10 @@ class TextualIndex(Page):
 
 class Entry(Page, TimeStampedModel):
 
-    affiliation = models.CharField(
-        help_text='Which department is this project for?',
-        max_length=255, blank=True)
+    discipline = ParentalManyToManyField(
+        Discipline,
+        help_text='Which discipline is this project for?',
+        blank=True)
     overview = models.CharField(
         help_text='A blurb highlighting the project\'s purpose and effort. '
         'Think of it as an elevator pitch',
@@ -126,7 +140,7 @@ class Entry(Page, TimeStampedModel):
         FieldPanel('overview'),
         FieldPanel('description', classname="full"),
         FieldPanel('release_date'),
-        FieldPanel('affiliation'),
+        FieldPanel('discipline', widget=forms.SelectMultiple),
         FieldPanel('partners', widget=forms.SelectMultiple),
         FieldPanel('project_url'),
         MultiFieldPanel(
