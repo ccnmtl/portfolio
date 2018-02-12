@@ -156,3 +156,34 @@
 .ctl-info {
     background-color: #222;
 }
+
+.portfolio-cards {
+    margin-top: ($spacer * 2.75);
+    h2 {
+        margin: 0 0 2rem 0;
+        padding: 0;
+    }
+    .entry-thumbnail {
+        border: 1px solid #ccc;
+        border-radius: 0;
+        display: block;
+    }
+    .card-title {
+        margin-bottom: ($spacer * 0.3);
+    }
+    .link-to-all {
+        display: block;
+        margin: ($spacer * 2.5) auto ($spacer * 6) auto;
+        text-align: center;
+        width: 12rem;
+        background-color: $softblue;
+    }
+    .link-to-all:hover {
+        background-color: $link-hover-color;
+    }
+    .link-to-all a {
+        display: block;
+        padding: $spacer;
+        text-align: center;
+    }
+}
