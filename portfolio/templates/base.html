@@ -121,7 +121,7 @@
 {% if request.user.is_anonymous %}
 {% else %}
 <!-- Background for Wagtail Editor widget -->
-<div id="wagtail-editor">
+<div id="wagtail-editor" role="presentation" aria-hidden="true">
     <a href="/accounts/logout/" class="btn btn-sm btn-warning mt-3 mx-4 d-inline-block align-middle float-left">Logout</a>
     <div class="d-inline-block mt-2 float-left">Wagtail editor<br />
     <span class="small">(<a href="https://wiki.ctl.columbia.edu/index.php/CTL_Portfolio_User_Guide" target="_blank" class="text-white">Editor's guide</a>)</span>

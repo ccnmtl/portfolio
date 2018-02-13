@@ -7,21 +7,25 @@
 
 {% block content %}
 {% wagtailuserbar %}
-        {% if page.featured_entries %}
+    {% with featured_entries=page.featured_entries %}
+        {% if featured_entries %}
         <section id="portfolio-feature">
-            <div id="featureCarouselIndicators" class="carousel slide" data-ride="carousel" role="presentation" aria-hidden="true">
+            <div id="featureCarouselIndicators" class="carousel slide" data-ride="carousel" data-interval="7000" role="presentation" aria-hidden="true">
                 <ol class="carousel-indicators">
-                {% for featured_entry in page.featured_entries %}
+                {% for featured_entry in featured_entries %}
                     <li data-target="#featureCarouselIndicators" data-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif%}"></li>
                 {% endfor %}
                 </ol>
                 <div class="carousel-inner">
-                {% for featured_entry in page.featured_entries %}
+                {% for featured_entry in featured_entries %}
                     <div class="carousel-item{% if forloop.first %} active{% endif%}">
-                        {% image featured_entry.poster original class="d-block img-fluid" alt="" %}
-                        <div class="carousel-caption d-none d-md-block">
-                            <p>{{featured_entry.title}}</p>
-                            <h4 class="display-4">{{featured_entry.feature_blurb}}</h4>
+                        {% image featured_entry.poster original as featured_entry_photo %}
+                        <div class="featured_poster" style="background-image: url('{{featured_entry_photo.url}}')"></div>
+                       <div class="carousel-caption-overlay h-100 w-100"></div>
+                        <div class="carousel-caption">
+                            <div class="entry-title">{{featured_entry.title}}</div>
+                            <p>{{featured_entry.feature_blurb}}</p>
+                            <a href="{% pageurl featured_entry %}" class="btn btn-light btn-sm rounded-0 mb-2">Learn more</a>
                         </div>
                     </div>
                 {% endfor %}
@@ -38,10 +42,10 @@
         </section>
 
 
-        <section id="portfolio-feature-sr">
+        <section id="portfolio-feature-sr" class="sr-only sr-only-focusable">
         <h2>Featured collaborations</h2>
         <ul>
-        {% for featured_entry in page.featured_entries %}
+        {% for featured_entry in featured_entries %}
             <li>
             <a href="{% pageurl featured_entry %}">{{featured_entry.title}}</a>, {{featured_entry.feature_blurb}}
             </li>
@@ -49,6 +53,7 @@
         </ul>
         </section>
         {% endif %}
+    {% endwith %}
 
         {% if page.entries %}
         <section class="container px-4 px-sm-3 portfolio-cards">

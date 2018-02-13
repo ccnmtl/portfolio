@@ -76,6 +76,73 @@
     }
 }
 
+#portfolio-feature {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+.featured_poster {
+    height: 350px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    @include media-breakpoint-up(sm) {
+        height: 400px;
+        width: 540px;
+    }
+    @include media-breakpoint-up(md) {
+        height: 555px;
+        width: 720px;
+        background-size: auto;
+    }
+    @include media-breakpoint-up(lg) {
+        width: 960px;
+    }
+    @include media-breakpoint-up(xl) {
+        width: 1140px;
+    }
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  width: $carousel-control-icon-width;
+  height: $carousel-control-icon-width;
+}
+
+.carousel-control-prev-icon {
+  background-image: $carousel-control-prev-icon-bg;
+}
+
+.carousel-control-next-icon {
+  background-image: $carousel-control-next-icon-bg;
+}
+
+.carousel-indicators {
+    li {
+        width: $carousel-indicator-width;
+        height: $carousel-indicator-height;
+        cursor: pointer;
+        margin-right: $carousel-indicator-spacer;
+        margin-left: $carousel-indicator-spacer;
+    }
+}
+
+.carousel-caption-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    background-image: linear-gradient(to top,rgba(0, 0, 0, 0.6) 0%,rgba(0, 0, 0, 0) 100%);
+    @include media-breakpoint-up(sm) {
+        background-image: linear-gradient(to top,rgba(0, 0, 0, 0.6) 0%,rgba(0, 0, 0, 0) 50%);
+    }
+}
+
+.carousel-caption {
+    padding-bottom: 40px;
+}
+
 .entry-header {
     margin: 0 -15px;
     .entry-poster {
