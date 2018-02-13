@@ -143,6 +143,17 @@
     padding-bottom: 40px;
 }
 
+.intro-blurb {
+    width: 100%;
+    margin: 2em auto;
+    @include media-breakpoint-up(md) {
+        width: 90%;
+    }
+    @include media-breakpoint-up(lg) {
+        width: 70%;
+    }
+}
+
 .entry-header {
     margin: 0 -15px;
     .entry-poster {

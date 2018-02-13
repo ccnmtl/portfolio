@@ -55,6 +55,10 @@
         {% endif %}
     {% endwith %}
 
+        <section class="intro-blurb">
+            {{ page.body|richtext }}
+        </section>
+
         {% if page.entries %}
         <section class="container px-4 px-sm-3 portfolio-cards">
             <h2>Our recent work</h2>
