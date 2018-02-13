@@ -68,21 +68,21 @@
                 {% with partners=page.partners.all %}
                     {% if partners %}
                     <dt class="field-label">Partners</dt>
-                    <dd class="">
+                    <dd>
                         {% for partner in partners %}
                             {{ partner.name }},
                             {{ partner.short_title }},
-                            {{ partner.affiliation }}<br />
+                            {{ partner.affiliation }}{% if not forloop.last %}<br />{% endif %}
                         {% endfor %}
                     </dd>
                     {% endif %}
                 {% endwith %}
                 {% with disciplines=page.discipline.all %}
                     <dt class="field-label">Discipline</dt>
-                    <dd class="">
-                        {% for discipline in disciplines %}
-                            {{ discipline.name }}{% if forloop.last %}{% else %},{% endif %}
-                        {% endfor %}
+                    <dd>
+                    {% for discipline in disciplines %}
+                        {{ discipline.name }}{% if not forloop.last %},{% endif %}
+                    {% endfor %}
                     </dd>
                 {% endwith %}
                 </dl>
