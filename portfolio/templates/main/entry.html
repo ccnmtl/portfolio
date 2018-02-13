@@ -76,9 +76,15 @@
                         {% endfor %}
                     </dd>
                     {% endif %}
-                {% endwith %}    
+                {% endwith %}
+                {% with disciplines=page.discipline.all %}
                     <dt class="field-label">Discipline</dt>
-                    <dd class="">{{ page.affiliation }}</dd>
+                    <dd class="">
+                        {% for discipline in disciplines %}
+                            {{ discipline.name }}{% if forloop.last %}{% else %},{% endif %}
+                        {% endfor %}
+                    </dd>
+                {% endwith %}
                 </dl>
             </section>
 
