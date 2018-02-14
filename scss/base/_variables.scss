@@ -26,3 +26,14 @@ $link-hover-color:          #2c6bac;
 
 $lead-font-size:            ($font-size-base * 1.5);
 $lead-font-weight:          400;
+
+// Carousel
+
+$carousel-indicator-width:          15px;
+$carousel-indicator-height:         15px;
+$carousel-indicator-spacer:         5px;
+
+$carousel-control-icon-width:       40px;
+
+$carousel-control-prev-icon-bg: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='#{$carousel-control-color}' viewBox='0 0 432.45 432.45'%3E%3Cpath d='M216.22,0C96.81,0,0,96.82,0,216.23S96.81,432.45,216.22,432.45s216.23-96.8,216.23-216.22S335.66,0,216.22,0Zm32.14,107.39,21.86,21.87c7.83,7.8,8.34,19.85,0,28.2l-49.77,49.78a12.74,12.74,0,0,0,0,18l49.63,49.64a19.88,19.88,0,0,1,.18,28.29l-21.92,21.9a12.74,12.74,0,0,1-18,0l-99.84-99.83a12.79,12.79,0,0,1,0-18l99.86-99.85A12.76,12.76,0,0,1,248.36,107.39Z'/%3E%3C/svg%3E"), "#", "%23");
+$carousel-control-next-icon-bg: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='#{$carousel-control-color}' viewBox='0 0 432.45 432.45'%3E%3Cpath d='M0,216.23C0,335.65,96.79,432.45,216.22,432.45s216.23-96.8,216.23-216.22S335.63,0,216.22,0,0,96.82,0,216.23ZM202.07,107.39l99.86,99.85a12.79,12.79,0,0,1,0,18l-99.84,99.83a12.74,12.74,0,0,1-18,0l-21.93-21.9a19.89,19.89,0,0,1,.19-28.29L212,225.23a12.74,12.74,0,0,0,0-18l-49.77-49.78c-8.36-8.35-7.85-20.4,0-28.2l21.87-21.87A12.76,12.76,0,0,1,202.07,107.39Z'/%3E%3C/svg%3E"), "#", "%23");
