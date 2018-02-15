@@ -35,7 +35,13 @@
                     {% with post=post.specific %}
                 <div class="col-md-6 col-lg-4">
                     <div class="card mb-4 border-0">
-                        <a href="{% pageurl post %}">{% image post.thumbnail original class="entry-thumbnail card-img-top img-fluid" aria-hidden="true" alt="" %}</a>
+                        <a href="{% pageurl post %}">
+                        {% if post.thumbnail %}
+                        {% image post.thumbnail original class="entry-thumbnail card-img-top img-fluid" aria-hidden="true" alt="" %}
+                        {% else %}
+                        <img src="{{STATIC_URL}}img/og_ctlportfolio.png" class="entry-thumbnail card-img-top img-fluid" aria-hidden="true" alt="" />
+                        {% endif %}
+                        </a>
                         <div class="card-body px-0 py-3 px-sm-3">
                             <h5 class="card-title"><a href="{% pageurl post %}">{{post.title}}</a></h5>
                             <p class="card-text">Entry search description TBD</p>
