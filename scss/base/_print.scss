@@ -1,0 +1,28 @@
+@media print {
+    a {
+        color: #000;
+        text-decoration: none !important;
+    }
+    #logo-portfolio {
+        justify-content: center;
+    }
+	.entry-toolbar {
+	    .share-widget,
+	    .fa {
+	        display: none;
+	    }
+	    a::after {
+	        content:":\A " attr(href) " ";
+	        white-space: pre;
+	    }
+	}
+	footer {
+	    border-top: 1px solid #ccc;
+	}
+	.getintouch {
+	    a::after {
+	        content:":\A " attr(href) " ";
+	        white-space: pre;
+	    }
+	}
+}
