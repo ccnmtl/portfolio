@@ -44,9 +44,6 @@
 #header-portfolio {
     background-color: $white;
     padding: 0;
-    @media print {
-        display: none;
-    }
 }
 
 #logo-portfolio {
