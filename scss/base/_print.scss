@@ -1,7 +1,4 @@
 @media print {
-    .entry-body {
-        display: block;
-    }
     a {
         color: #000;
         text-decoration: none !important;
@@ -27,8 +24,9 @@
 	        content:":\A " attr(href) " ";
 	        white-space: pre;
 	    }
+	    page-break-inside: avoid !important;
 	}
 	.ctl-info {
-	    color: #000;
+	    page-break-inside: avoid !important;
 	}
 }
