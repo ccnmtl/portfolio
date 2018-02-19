@@ -44,3 +44,7 @@ THUMBNAIL_SUBDIR = "thumbs"
 LOGIN_REDIRECT_URL = "/"
 
 WAGTAIL_SITE_NAME = 'CTL Portfolio'
+
+WIND_AFFIL_HANDLERS = ['portfolio.main.auth.WagtailEditorMapper',
+                       'djangowind.auth.StaffMapper',
+                       'djangowind.auth.SuperuserMapper']
