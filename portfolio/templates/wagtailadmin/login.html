@@ -7,7 +7,7 @@
 {% block content %}
 
         {% if messages or form.errors %}
-            <div class="alert alert-success container" role="alert">
+            <div class="alert alert-success container d-none" role="alert">
                 <ul>
                     {% if form.errors %}
                         <li class="error">{% blocktrans %}Your {{ username_field }} and password didn't match. Please try again.{% endblocktrans %}</li>
