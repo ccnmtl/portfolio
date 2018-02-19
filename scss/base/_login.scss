@@ -1,10 +1,9 @@
-#logo-portfolio {
+#login-logo-portfolio {
     margin: 5rem 0 0 0;
     padding: 2rem 0;
     img {
-        display: block;
         height: 70px;
-        margin: 0 0 .5rem 0;
+        margin: 0 auto .5rem auto;
         padding: 0 0 1rem 0;
         border-right: 0;
         border-bottom: 1px solid $softblue;
@@ -26,7 +25,7 @@
     }
 }
 
-#navbar-portfolio {
+#login-navbar-portfolio {
     padding-top: 0.5rem;
     .nav-link {
         font-weight: 500;
