@@ -81,7 +81,7 @@ class VisualIndex(Page):
 
     def get_context(self, request):
         context = super(VisualIndex, self).get_context(request)
-        
+
         sort_order = self.get_sort(request)
         entries = Entry.objects.live().public().order_by(sort_order)
         context['sort'] = request.GET.get('sort', 'releasedate')
