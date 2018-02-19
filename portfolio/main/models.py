@@ -79,6 +79,21 @@ class VisualIndex(Page):
     parent_page_types = ['HomePage']
     subpage_types = ['Entry']
 
+    def get_context(self, request):
+        context = super(VisualIndex, self).get_context(request)
+        
+        sort_order = self.get_sort(request)
+        entries = Entry.objects.live().public().order_by(sort_order)
+        context['sort'] = request.GET.get('sort', 'releasedate')
+        context['entries'] = entries
+        return context
+
+    def get_sort(self, request):
+        if request.GET.get('sort', 'releasedate') == 'releasedate':
+            return '-release_date'
+        else:
+            return 'title'
+
 
 class TextualIndex(Page):
     intro = RichTextField(blank=True)

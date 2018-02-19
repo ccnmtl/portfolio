@@ -15,10 +15,14 @@
             <div class="p-2">
                 <ul class="nav">
                     <li class="nav-item">
-                    <a class="nav-link active" href="#">Release date</a>
+                    <a class="nav-link 
+                    {% if sort == 'releasedate' %}
+                    text-danger
+                    {% endif %}
+                    " href="/{{ page.slug }}/?sort=releasedate">Release date </a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="#">Alphabetical</a>
+                    <a class="nav-link" href="/{{ page.slug }}/?sort=alphabetical">Alphabetical</a>
                     </li>
                 </ul>
             </div>
@@ -28,10 +32,10 @@
         </div>
 
 
-        {% if page.get_children %}
+        {% if entries %}
         <section class="container px-4 px-sm-3 portfolio-cards">
             <div class="row">
-                {% for post in page.get_children %}
+                {% for post in entries %}
                     {% with post=post.specific %}
                 <div class="col-md-6 col-lg-4">
                     <div class="card mb-4 border-0">
