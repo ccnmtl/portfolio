@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 from django import forms
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
 from django_extensions.db.models import TimeStampedModel
 
@@ -84,6 +85,18 @@ class VisualIndex(Page):
 
         sort_order = self.get_sort(request)
         entries = Entry.objects.live().public().order_by(sort_order)
+
+        # Pagination
+        per_page = 6
+        page = request.GET.get('page')
+        paginator = Paginator(entries, per_page)
+        try:
+            entries = paginator.page(page)
+        except PageNotAnInteger:
+            entries = paginator.page(1)
+        except EmptyPage:
+            entries = paginator.page(paginator.num_pages)
+
         context['sort'] = request.GET.get('sort', 'releasedate')
         context['entries'] = entries
         return context
