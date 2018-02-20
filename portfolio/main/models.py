@@ -119,7 +119,7 @@ class TextualIndex(Page):
 
     def entries(self):
         # Get list of project Entries
-        entries = Entry.objects.live().public()
+        entries = Entry.objects.live().public().order_by('title')
         # sort here if desired
         return entries
 
