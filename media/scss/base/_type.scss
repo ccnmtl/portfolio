@@ -72,3 +72,30 @@
         line-height: 1.2;
     }
 }
+
+.page-title {
+    font-size: ($font-size-base * 2.875);
+    font-weight: 400;
+}
+
+.sort-menu * {
+    font-size: ($font-size-base * 0.9);
+    line-height: 0.9;
+    @include media-breakpoint-up(md) {
+        font-size: ($font-size-base * 1.2);
+        line-height: 1.2;
+    }
+}
+
+.sort-menu {
+    h3 {
+        font-weight: 600;
+    }
+    li.active {
+        a {
+            color: #333;
+            background-color: #efefef;
+            cursor: text;
+        }
+    }
+}
