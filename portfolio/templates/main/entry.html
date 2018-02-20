@@ -129,6 +129,23 @@
         
             <section class="description mb-5">
             {{page.description|richtext}}
+            <br />
+            <h2>Don't mind me...</h2>
+            <dl>
+                <dt>page.get_site.root_url</dt>
+                <dd>{{ page.get_site.root_url }}</dd>
+                
+                <dt>pageurl page</dt>
+                <dd>{% pageurl page %}</dd>
+                
+                <dt>STATIC_URL</dt>
+                <dd>{{STATIC_URL}}</dd>
+
+                <dt>MEDIA_URL</dt>
+                <dd>{{MEDIA_URL}}</dd>
+
+            </dl>
+            
             </section>
 
         </div>
