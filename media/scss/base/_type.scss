@@ -99,3 +99,42 @@
         }
     }
 }
+
+.col-404-img {
+    text-align: center;
+    font-size: ($h1-font-size * 2.3);
+    //white-space: nowrap;
+    @include media-breakpoint-up(sm) {
+        font-size: ($h1-font-size * 3.2);
+    }
+    @include media-breakpoint-up(lg) {
+        font-size: ($h1-font-size * 4);
+    }
+}
+
+.col-404-img-txt {
+    text-align: center;
+    font-size: ($h3-font-size);
+    font-weight: 600;
+    @include media-breakpoint-up(sm) {
+        font-size: ($h2-font-size);
+    }
+    @include media-breakpoint-up(lg) {
+        font-size: ($h1-font-size);
+    }
+}
+
+.col-404-header {
+    font-size: ($font-size-base * 1.5);
+    font-weight: 500;
+    @include media-breakpoint-up(sm) {
+        font-weight: 400;
+        font-size: ($font-size-base * 2);
+    }
+    @include media-breakpoint-up(md) {
+        font-size: ($font-size-base * 2.5);
+    }
+    @include media-breakpoint-up(lg) {
+        font-size: ($font-size-base * 3.5);
+    }
+}

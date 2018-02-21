@@ -1,29 +1,19 @@
 {% extends "base.html" %}
-{% comment %}
-###### FOR BASE TEMPLATE--
-   base_three_col.html : layout is [ sidebar_left -- content -- sidebar_right ]
-   base_two_col_right.html : layout is [ content -- sidebar_right ]
-   base_two_col_left.html : layout is [ sidebar_left -- content ]
-   base_one_col.html : layout is [ content ]
-{% endcomment %}
 
 {% block title %}Page Not Found{% endblock %}
 
-{% block usernav %}
-<ul id="usernav">
-	<li><a href="#">Login</a></li>
-</ul><!-- id="usernav" -->
-{% endblock %}
-
-
-
-
-{% block pagetitle %}
-<h1 class="pageheader">404: Page Not Found</h1>
-{% endblock %}
-
 {% block content %}
-<p>
-We're sorry.  The page you're looking for doesn't exist at this address.
-</p>
+    <section class="my-5 error-http-message">
+        <div class="row">
+            <div class="col-md">
+            <p class="col-404-img text-info" aria-hidden="true">4<i class="fa fa-cogs"></i>4</p>
+            <p class="col-404-img-txt text-info">Page not found</p>
+            </div>
+            <div class="col-md text-center text-md-left">
+            <p class="col-404-header mt-5 mt-md-0">We're sorry!</p>
+            <p>The page you are looking for doesn’t seem to be here.</p>
+            <p>If you think this is an error, please contact us at <a href="mailto:ColumbiaCTL@columbia.edu">ColumbiaCTL@columbia.edu</a> to report the missing link.</p>
+            </div>
+        </div>
+    </section>
 {% endblock %}
