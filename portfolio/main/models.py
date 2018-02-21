@@ -124,6 +124,16 @@ class TextualIndex(Page):
         return entries
 
 
+class StaticPage(Page):
+    body = RichTextField(blank=True)
+
+    content_panels = Page.content_panels + [
+        FieldPanel('body', classname="full")
+    ]
+
+    subpage_types = []
+
+
 class Entry(Page, TimeStampedModel):
 
     discipline = ParentalManyToManyField(

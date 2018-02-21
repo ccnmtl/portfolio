@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+{% load wagtailuserbar %}
+{% block title %}{{ page.title }}{% endblock %}
+
+
+{% block content %}
+{% wagtailuserbar %}
+    <h1 class="page-title">{{ page.title }}</h1>
+
+    <section class="my-5">
+        {{ page.body|richtext }}
+    </section>
+
+{% endblock %}
