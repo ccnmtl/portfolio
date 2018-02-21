@@ -275,3 +275,21 @@
         text-align: center;
     }
 }
+
+.page-title {
+    margin-top: ($spacer * 2);
+}
+
+.sort-menu {
+    h3 {
+        padding: .5rem 1rem;
+        margin: 0;
+    }
+    @include media-breakpoint-down(xs) {
+        ul {
+                margin-left: $spacer;
+                margin-right: $spacer;
+                border-bottom: 1px solid $gray-200;
+            }
+    }
+}
