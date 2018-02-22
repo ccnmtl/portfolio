@@ -4,6 +4,7 @@ from django import forms
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
 from django_extensions.db.models import TimeStampedModel
+from django.utils.encoding import python_2_unicode_compatible
 
 from modelcluster.fields import ParentalManyToManyField
 
@@ -15,6 +16,7 @@ from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsnippets.models import register_snippet
 
 
+@python_2_unicode_compatible
 @register_snippet
 class Partner(Orderable):
 
@@ -32,6 +34,7 @@ class Partner(Orderable):
     ]
 
 
+@python_2_unicode_compatible
 @register_snippet
 class Discipline(Orderable):
 
