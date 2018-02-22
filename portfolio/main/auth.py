@@ -15,10 +15,5 @@ class WagtailEditorMapper(object):
     def map(self, user, affils):
         for affil in affils:
             if affil in self.groups:
-                try:
-                    grp = Group.objects.get(name='Editor')
-                    user.groups.add(grp)
-                except Group.DoesNotExist:
-                    pass  # likely a dev env
-                finally:
-                    return
+                (grp, create) = Group.objects.get_or_create(name='Editor')
+                user.groups.add(grp)
