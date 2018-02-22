@@ -1,5 +1,7 @@
 from django.contrib.auth.models import User, Group
+from datetime import datetime
 import factory
+from portfolio.main.models import Entry
 
 
 class UserFactory(factory.DjangoModelFactory):
@@ -13,3 +15,11 @@ class UserFactory(factory.DjangoModelFactory):
 class GroupFactory(factory.DjangoModelFactory):
     class Meta:
         model = Group
+
+
+class EntryFactory(factory.DjangoModelFactory):
+    class Meta:
+        model = Entry
+    title = factory.Sequence(lambda n: 'entry{}'.format(n))
+    depth = 1
+    release_date = factory.LazyFunction(datetime.now)
