@@ -1,6 +1,7 @@
 from django.test import TestCase
 from portfolio.main.tests.factories import EntryFactory
-from portfolio.main.models import HomePage
+from portfolio.main.models import HomePage, VisualIndex
+from django.test.client import RequestFactory
 
 
 class TestHomePage(TestCase):
@@ -21,3 +22,16 @@ class TestHomePage(TestCase):
 
         self.assertEquals(qs.count(), 1)
         self.assertEquals(qs.first(), e)
+
+
+class TestVisualIndex(TestCase):
+    def test_get_context(self):
+        EntryFactory(live=False, path='0002')
+        e = EntryFactory(path='0003')
+        v = VisualIndex()
+        r = RequestFactory().get('/')
+
+        ctx = v.get_context(r)
+
+        self.assertEquals(ctx['sort'], 'releasedate')
+        self.assertEquals(ctx['entries'].object_list.first(), e)
