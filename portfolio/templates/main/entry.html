@@ -68,11 +68,7 @@
                 {% with partners=page.partners.all %}
                     {% if partners %}
                     <dt class="field-label">
-                    {% if partners.count > 1 %}
-                    Partners
-                    {% else %}
-                    Partner
-                    {% endif %}
+                    Partner{{ partners|pluralize }}
                     </dt>
                     <dd>
                         {% for partner in partners %}
