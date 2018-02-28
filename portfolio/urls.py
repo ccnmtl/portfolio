@@ -5,6 +5,7 @@ from django.conf import settings
 from django.views.generic import TemplateView
 from django.views.static import serve
 import os.path
+from portfolio.main.views import S3DocumentServe
 from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
 from wagtail.wagtailcore import urls as wagtail_urls
@@ -36,6 +37,8 @@ urlpatterns = [
     url(r'^uploads/(?P<path>.*)$',
         serve, {'document_root': settings.MEDIA_ROOT}),
     url(r'^cms/', include(wagtailadmin_urls)),
+    url(r'^documents/(?P<document_id>\d+)/(.*)$', S3DocumentServe.as_view(),
+        name='wagtaildocs_serve'),
     url(r'^documents/', include(wagtaildocs_urls)),
     url(r'', include(wagtail_urls)),
 ]
