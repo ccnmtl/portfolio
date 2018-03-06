@@ -1,6 +1,6 @@
 language: python
 python:
-  - "2.7"
+  - "2.7.6"
 install:
   - pip install -U pip wheel
   - pip install -U setuptools
