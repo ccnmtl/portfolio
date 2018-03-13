@@ -13,7 +13,7 @@ PROJECT_APPS = [
 
 USE_TZ = True
 
-MIDDLEWARE = MIDDLEWARE_CLASSES
+MIDDLEWARE = MIDDLEWARE_CLASSES # noqa
 
 MIDDLEWARE += [  # noqa
     'wagtail.core.middleware.SiteMiddleware',
