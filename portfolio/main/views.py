@@ -1,7 +1,7 @@
 from django.views.generic.base import TemplateView
 from django.shortcuts import get_object_or_404
 from django.views.generic import RedirectView
-from wagtail.wagtaildocs.models import Document
+from wagtail.documents.models import Document
 
 
 class IndexView(TemplateView):

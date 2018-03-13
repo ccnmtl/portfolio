@@ -6,7 +6,7 @@ from __future__ import unicode_literals
 from django.db import migrations, models
 import django.db.models.deletion
 import django.utils.timezone
-import wagtail.wagtailcore.fields
+import wagtail.core.fields
 
 
 class Migration(migrations.Migration):
@@ -30,7 +30,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='entry',
             name='body',
-            field=wagtail.wagtailcore.fields.RichTextField(blank=True, help_text='The main content of this Portfolio entry page'),
+            field=wagtail.core.fields.RichTextField(blank=True, help_text='The main content of this Portfolio entry page'),
         ),
         migrations.AlterField(
             model_name='entry',
