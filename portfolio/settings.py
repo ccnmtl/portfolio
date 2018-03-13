@@ -2,6 +2,6 @@
 from portfolio.settings_shared import *
 
 try:
-    from local_settings import *
+    from portfolio.local_settings import *
 except ImportError:
     pass

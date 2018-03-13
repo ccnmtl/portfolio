@@ -19,3 +19,4 @@ reports
 node_modules
 uploads/
 .DS_Store
+local.mk
