@@ -85,7 +85,7 @@ django-treebeard==4.2.1
 django-modelcluster==4.1
 
 draftjs_exporter==2.0.0  # pyup: <2.1.0
-wagtail==2.0.1
+wagtail==2.1
 djangorestframework==3.8.2
 Willow==1.1
 django-modelcluster==4.1
