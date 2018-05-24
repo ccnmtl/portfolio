@@ -85,7 +85,7 @@ django-treebeard==4.2.1
 django-modelcluster==4.1
 
 draftjs_exporter==2.0.0  # pyup: <2.1.0
-wagtail==2.1
+wagtail==2.0.1  # pyup: <2.1
 djangorestframework==3.8.2
 Willow==1.1
 django-modelcluster==4.1
@@ -107,4 +107,3 @@ pbr==4.0.3
 PyYAML>=3.10.0 # MIT
 stevedore>=1.20.0 # Apache-2.0
 bandit==1.4.0
-l18n==2016.6.4
