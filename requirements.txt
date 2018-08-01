@@ -33,7 +33,7 @@ backports.shutil_get_terminal_size==1.0.0  # ipython
 wcwidth==0.1.7  # ipython
 prompt_toolkit==2.0.4  # ipython
 pygments==2.2.0  # ipython
-ipython==5.7.0  # pyup: <6.0.0
+ipython==5.8.0  # pyup: <6.0.0
 ipdb==0.11
 rdflib==4.2.2
 selenium==3.13.0
@@ -44,7 +44,7 @@ ndg-httpsclient==0.5.1
 requests==2.19.1
 logilab-common==1.4.2
 logilab-astng==0.24.3
-astroid==2.0.1
+astroid==2.0.2
 pylint==2.1.0
 six==1.11.0
 ipaddress==1.0.21  # faker
@@ -103,7 +103,7 @@ text_unidecode==1.2
 
 cryptography==2.3
 
-pbr==4.1.1
+pbr==4.2.0
 PyYAML>=3.10.0 # MIT
 stevedore>=1.20.0 # Apache-2.0
 bandit==1.4.0
