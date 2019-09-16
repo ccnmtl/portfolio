@@ -21,7 +21,6 @@ cssselect==1.1.0
 lxml==4.4.1
 fuzzywuzzy==0.17.0
 sure==1.4.11
-ipdb==0.12.2
 selenium==3.141.0
 coverage==4.5.4
 pyasn1==0.4.7
