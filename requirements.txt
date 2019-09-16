@@ -1,9 +1,9 @@
-Django==2.0.13 # pyup: <2.1
+Django==2.2.5
 
 pytz==2019.2
 httplib2==0.13.1
 feedparser==5.2.1
-Markdown==2.6.11 # pyup: < 3
+Markdown==3.1.1
 psycopg2==2.8.3
 Pillow==6.1.0
 versiontools==1.9.1
@@ -21,21 +21,6 @@ cssselect==1.1.0
 lxml==4.4.1
 fuzzywuzzy==0.17.0
 sure==1.4.11
-traitlets==4.3.2  # ipython
-ipython_genutils==0.2.0  # ipython
-decorator==4.4.0  # ipython
-ptyprocess==0.6.0  # ipython
-pexpect==4.7.0  # ipython
-pathlib2==2.3.4  # ipython
-pickleshare==0.7.5  # ipython
-simplegeneric==0.8.1  # ipython
-path.py==12.0.1  # ipython
-backports.shutil_get_terminal_size==1.0.0  # ipython
-wcwidth==0.1.7  # ipython
-prompt_toolkit==2.0.9  # ipython
-pygments==2.4.2  # ipython
-ipython==5.8.0  # pyup: <6.0.0
-ipdb==0.12.2
 selenium==3.141.0
 coverage==4.5.4
 pyasn1==0.4.7
@@ -87,8 +72,8 @@ django-storages==1.7.2
 django-treebeard==4.3
 django-modelcluster==5.0
 
-draftjs_exporter==2.0.0  # pyup: <2.1.0
-wagtail==2.0.2  # pyup: <2.1
+draftjs_exporter==2.1.6
+wagtail==2.6.1
 djangorestframework==3.10.3
 Willow==1.1
 django-modelcluster==5.0
