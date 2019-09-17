@@ -1,9 +1,9 @@
-Django==2.0.13 # pyup: <2.1
+Django==2.2.5
 
 pytz==2019.2
 httplib2==0.13.1
 feedparser==5.2.1
-Markdown==2.6.11 # pyup: < 3
+Markdown==3.1.1
 psycopg2==2.8.3
 Pillow==6.1.0
 versiontools==1.9.1
@@ -11,7 +11,7 @@ statsd==3.3.0
 pep8==1.7.1
 pyflakes==2.1.1
 mccabe==0.6.1
-configparser==3.8.1
+configparser==4.0.2
 pycodestyle==2.5.0
 entrypoints==0.3  # for flake8
 flake8==3.7.7
@@ -21,24 +21,9 @@ cssselect==1.1.0
 lxml==4.4.1
 fuzzywuzzy==0.17.0
 sure==1.4.11
-traitlets==4.3.2  # ipython
-ipython_genutils==0.2.0  # ipython
-decorator==4.4.0  # ipython
-ptyprocess==0.6.0  # ipython
-pexpect==4.7.0  # ipython
-pathlib2==2.3.4  # ipython
-pickleshare==0.7.5  # ipython
-simplegeneric==0.8.1  # ipython
-path.py==12.0.1  # ipython
-backports.shutil_get_terminal_size==1.0.0  # ipython
-wcwidth==0.1.7  # ipython
-prompt_toolkit==2.0.9  # ipython
-pygments==2.4.2  # ipython
-ipython==5.8.0  # pyup: <6.0.0
-ipdb==0.12.2
 selenium==3.141.0
 coverage==4.5.4
-pyasn1==0.4.6
+pyasn1==0.4.7
 pyOpenSSL==19.0.0
 ndg-httpsclient==0.5.1
 requests==2.22.0
@@ -50,7 +35,7 @@ six==1.12.0
 ipaddress==1.0.22  # faker
 faker==2.0.1  # factory_boy
 factory_boy==2.12.0
-ldap3==2.6
+ldap3==2.6.1
 sqlparse==0.3.0
 contextlib2==0.5.5
 s3transfer==0.2.1
@@ -63,7 +48,7 @@ djangowind==1.2.1
 django-indexer==0.3.0
 django-templatetag-sugar==1.0
 django-paging==0.2.5
-django-annoying==0.10.4
+django-annoying==0.10.5
 django-appconf==1.0.3
 rcssmin==1.0.6  # django-compressor
 rjsmin==1.0.12  # django-compressor
@@ -79,17 +64,17 @@ django-extensions==2.2.1
 django-stagingcontext==0.1.0
 django-ga-context==0.1.0
 django-impersonate==1.4.1
-django-markwhat==1.6.1
+django-markwhat==1.6.2
 gunicorn==19.9.0
 django-infranil==1.1.0
 django-flatblocks==0.9.4
-django-storages==1.7.1
+django-storages==1.7.2
 django-treebeard==4.3
 django-modelcluster==5.0
 
-draftjs_exporter==2.0.0  # pyup: <2.1.0
-wagtail==2.0.2  # pyup: <2.1
-djangorestframework==3.10.2
+draftjs_exporter==2.1.6
+wagtail==2.6.1
+djangorestframework==3.10.3
 Willow==1.1
 django-modelcluster==5.0
 django-taggit==1.1.0
@@ -103,11 +88,11 @@ urllib3==1.25.3 # wagtail elasticsearch backend
 django-s3sign==0.1.4
 django-cacheds3storage==0.2.1
 ccnmtlsettings==1.5.0
-text_unidecode==1.2
+text_unidecode==1.3
 
 cryptography==2.7
 
-pbr==5.4.2
+pbr==5.4.3
 PyYAML>=3.10.0 # MIT
 stevedore>=1.20.0 # Apache-2.0
 bandit==1.6.2
