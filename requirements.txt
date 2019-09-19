@@ -83,7 +83,7 @@ html5lib==1.0.1
 # needed for django-extensions
 typing==3.7.4.1; python_version < '3.5'
 webencodings==0.5.1 # needed for wagtail
-urllib3==1.25.3 # wagtail elasticsearch backend
+urllib3==1.25.4 # wagtail elasticsearch backend
 
 django-s3sign==0.1.4
 django-cacheds3storage==0.2.1
