@@ -75,7 +75,7 @@ django-treebeard==4.3
 django-modelcluster==5.0
 
 draftjs_exporter==2.1.7
-wagtail==2.6.3
+wagtail==2.7
 djangorestframework==3.10.3
 Willow==1.3
 django-modelcluster==5.0
