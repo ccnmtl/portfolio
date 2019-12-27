@@ -19,7 +19,7 @@
     "eslint-plugin-security": "~1.4.0",
     "mocha": "~6.2.0",
     "requirejs": "~2.3.2",
-    "sinon": "~7.5.0",
+    "sinon": "~8.0.0",
     "autoprefixer": "^9.0.0",
     "node-sass": "^4.9.0",
     "nodemon": "^2.0.0",
