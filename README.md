@@ -1,4 +1,4 @@
 # portfolio
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/ccnmtl/portfolio.svg)](https://greenkeeper.io/)
+[![Actions Status](https://github.com/ccnmtl/portfolio/workflows/build-and-test/badge.svg)](https://github.com/ccnmtl/portfolio/actions)
 CTL Portfolio
