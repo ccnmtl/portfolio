@@ -91,7 +91,7 @@ Unidecode==1.1.1
 html5lib==1.0.1
 # needed for django-extensions
 webencodings==0.5.1 # needed for wagtail
-urllib3==1.26.4 # wagtail elasticsearch backend
+urllib3==1.26.5 # wagtail elasticsearch backend
 
 django-s3sign==0.1.4
 django-cacheds3storage==0.2.1
