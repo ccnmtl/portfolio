@@ -33,4 +33,7 @@ eslint: $(JS_SENTINAL)
 jstest: $(JS_SENTINAL)
 	npm test
 
+scss: $(JS_SENTINAL)
+	npm run scss
+
 .PHONY: eslint jstest

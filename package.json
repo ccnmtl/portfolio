@@ -5,8 +5,9 @@
   "license": "GPL-2.0+",
   "scripts": {
     "test": "mocha",
-    "build-scss": "node-sass --output media/css media/scss/main.scss --output-style compressed --source-map true",
-    "watch-scss": "nodemon --watch media/scss --verbose -e scss -x 'npm run build-scss'"
+    "build-scss": "sass media/scss/main.scss media/css/main.css --source-map --style=compressed",
+    "prefix-scss": "postcss media/css/main.css --use=autoprefixer --replace --map",
+    "scss": "nodemon --watch media/scss --verbose -e scss -x 'npm run build-scss && npm run prefix-scss'"
   },
   "repository": {
     "type": "git",
@@ -19,9 +20,9 @@
     "eslint-plugin-security": "~1.4.0",
     "mocha": "~7.1.0",
     "requirejs": "~2.3.2",
+    "sass": "^1.35.2",
     "sinon": "~9.0.0",
     "autoprefixer": "^9.0.0",
-    "node-sass": "^4.13.1",
     "nodemon": "^2.0.0",
     "postcss-cli": "^7.0.0"
   }
