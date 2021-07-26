@@ -4,7 +4,7 @@ import factory
 from portfolio.main.models import Entry
 
 
-class UserFactory(factory.DjangoModelFactory):
+class UserFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = User
     username = factory.Sequence(lambda n: 'user%d' % n)
@@ -12,12 +12,12 @@ class UserFactory(factory.DjangoModelFactory):
     email = factory.LazyAttribute(lambda u: '%s@example.com' % u.username)
 
 
-class GroupFactory(factory.DjangoModelFactory):
+class GroupFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Group
 
 
-class EntryFactory(factory.DjangoModelFactory):
+class EntryFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Entry
     title = factory.Sequence(lambda n: 'entry{}'.format(n))
