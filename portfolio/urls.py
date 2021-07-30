@@ -8,16 +8,18 @@ from portfolio.main.views import S3DocumentServe
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.documents import urls as wagtaildocs_urls
 from wagtail.core import urls as wagtail_urls
+from django_cas_ng import views as cas_views
+
 
 admin.autodiscover()
 
-auth_urls = url(r'^accounts/', include('django.contrib.auth.urls'))
-if hasattr(settings, 'CAS_BASE'):
-    auth_urls = url(r'^accounts/', include('djangowind.urls'))
-
 
 urlpatterns = [
-    auth_urls,
+    url(r'^accounts/', include('django.contrib.auth.urls')),
+    path('cas/login', cas_views.LoginView.as_view(),
+         name='cas_ng_login'),
+    path('cas/logout', cas_views.LogoutView.as_view(),
+         name='cas_ng_logout'),
     path('admin/', admin.site.urls),
     path('stats/', TemplateView.as_view(template_name="stats.html")),
     path('smoketest/', include('smoketest.urls')),
