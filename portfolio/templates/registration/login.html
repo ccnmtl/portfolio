@@ -33,6 +33,7 @@
             </p>
         {% endif %}
 
+        {% if debug %}
             <p>If you have a guest account...</p>
             <form id="login-local" name="login_local" method="post" action=".">
                 {% csrf_token %}
@@ -41,7 +42,7 @@
                         <label for="id_username">Username:</label>
                         {{ form.username }}
                     </div><!-- fieldwrapper -->
-                
+
                     <div class="fieldwrapper">
                         <label for="id_password">Password:</label>
                         {{ form.password }}
@@ -52,7 +53,7 @@
                 <input class="regbutton login-local-form" type="submit" value="Log In" {% if not form.errors %}style="display: none;"{% endif %} />                        
                 <input type="hidden" name="next" value="{{ next|urlencode }}" />
             </form>
-            <p class="smalltxt"><a href="/registration/register/" title="Create your new project account">Need a new account?</a></p>
+        {% endif %}
         </div>
     </div>
 </div>
