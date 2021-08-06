@@ -19,7 +19,7 @@
     "eslint-plugin-scanjs-rules": "~0.2.1",
     "eslint-plugin-security": "~1.4.0",
     "mocha": "~7.1.0",
-    "requirejs": "~2.3.2",
+    "requirejs": "~2.3.6",
     "sass": "^1.35.2",
     "sinon": "~9.0.0",
     "autoprefixer": "^9.0.0",
