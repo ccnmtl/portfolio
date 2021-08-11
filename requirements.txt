@@ -107,7 +107,7 @@ bandit==1.7.0
 l18n==2020.6.1
 xlsxwriter==3.0.1
 tablib[xls,xlsx]>=0.14.0
-anyascii==0.1.7
+anyascii==0.2.0
 
 idna==3.2  # requests
 chardet==4.0.0  # requests
