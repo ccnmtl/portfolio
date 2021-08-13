@@ -13,3 +13,7 @@ updates:
     directory: "/"
     schedule:
       interval: daily
+    ignore:
+    - dependency-name: psycopg2
+      versions:
+      - <=2.9.1
