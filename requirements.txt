@@ -31,8 +31,8 @@ coverage==5.5
 pyasn1==0.4.8
 pyOpenSSL==20.0.1
 ndg-httpsclient==0.5.1
-requests==2.23.0
-logilab-common==1.6.3
+requests==2.26.0
+logilab-common==1.8.1
 astroid==2.6.5
 pylint==2.9.6
 six==1.16.0
