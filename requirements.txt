@@ -15,7 +15,7 @@ configparser==5.0.2
 pycodestyle==2.7.0
 entrypoints==0.3  # for flake8
 flake8==3.9.2
-importlib-metadata==4.6.3  # for flake8
+importlib-metadata==4.6.4  # for flake8
 typing_extensions==3.10.0.0
 zipp==3.5.0  # for flake8
 tornado==6.1
@@ -32,7 +32,7 @@ pyasn1==0.4.8
 pyOpenSSL==20.0.1
 ndg-httpsclient==0.5.1
 requests==2.26.0
-logilab-common==1.6.3
+logilab-common==1.8.1
 astroid==2.6.5
 pylint==2.9.6
 six==1.16.0
@@ -49,7 +49,7 @@ jmespath==0.10.0
 botocore>=1.15.0,<1.22.0
 boto3>=1.12.0,<1.19.0
 
-python-dateutil==2.8.1
+python-dateutil==2.8.2
 
 djangowind==1.2.3
 django-indexer==0.3.0
@@ -93,7 +93,7 @@ html5lib==1.1
 webencodings==0.5.1 # needed for wagtail
 urllib3==1.26.6 # wagtail elasticsearch backend
 
-django-s3sign==0.1.4
+django-s3sign==0.1.5
 django-cacheds3storage==0.2.2
 ccnmtlsettings==1.9.0
 text_unidecode==1.3
