@@ -23,3 +23,4 @@ class EntryFactory(factory.django.DjangoModelFactory):
     title = factory.Sequence(lambda n: 'entry{}'.format(n))
     depth = 1
     release_date = factory.LazyFunction(datetime.now)
+    revision_date = factory.LazyFunction(datetime.now)
