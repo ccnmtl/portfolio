@@ -4,7 +4,6 @@ from django import forms
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
 from django_extensions.db.models import TimeStampedModel
-from django.utils.encoding import python_2_unicode_compatible
 
 from modelcluster.fields import ParentalManyToManyField
 
@@ -16,13 +15,26 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.models import register_snippet
 
 
-@python_2_unicode_compatible
 @register_snippet
 class Partner(Orderable):
 
     name = models.CharField(max_length=255)
-    short_title = models.CharField(max_length=255)
     affiliation = models.CharField(max_length=255)
+    short_title = models.CharField(
+        max_length=255, help_text='e.g. Professor, Librarian, Lecturer')
+    full_title = models.TextField(
+        blank=True,
+        help_text='e.g. Dewitt Clinton Professor Emeritus of History')
+    headshot = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True, blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        help_text='Dimension 300px by 300px. Format: PNG or JPG.'
+    )
+
+    class Meta:
+        ordering = ['name']
 
     def __str__(self):
         return self.name
@@ -30,15 +42,51 @@ class Partner(Orderable):
     panels = [
         FieldPanel('name'),
         FieldPanel('short_title'),
+        FieldPanel('full_title'),
         FieldPanel('affiliation'),
+        ImageChooserPanel('headshot')
     ]
 
 
-@python_2_unicode_compatible
 @register_snippet
 class Discipline(Orderable):
 
     name = models.CharField(max_length=255)
+
+    class Meta:
+        ordering = ['name']
+
+    def __str__(self):
+        return self.name
+
+    panels = [
+        FieldPanel('name'),
+    ]
+
+
+@register_snippet
+class ProjectType(Orderable):
+
+    name = models.CharField(max_length=255)
+
+    class Meta:
+        ordering = ['name']
+
+    def __str__(self):
+        return self.name
+
+    panels = [
+        FieldPanel('name'),
+    ]
+
+
+@register_snippet
+class AwardType(Orderable):
+
+    name = models.CharField(max_length=255)
+
+    class Meta:
+        ordering = ['name']
 
     def __str__(self):
         return self.name
@@ -145,18 +193,23 @@ class Entry(Page, TimeStampedModel):
         blank=True)
     overview = models.CharField(
         help_text='A blurb highlighting the project\'s purpose and effort. '
-        'Think of it as an elevator pitch',
+        'Think of it as an elevator pitch.',
         max_length=255, blank=True)
     description = RichTextField(
-        help_text='The main content of this Portfolio entry page', blank=True)
+        help_text='The main content of this Portfolio entry page.', blank=True)
     project_url = models.URLField(
-        help_text='URL of this project, if available.', blank=True)
-    release_date = models.DateField(
-        help_text='Format YYYY-MM-DD')
+        help_text='URL of this project\'s home page.', blank=True)
+    release_date = models.DateField(help_text='Format YYYY-MM-DD')
+    revision_date = models.DateField(
+        help_text='Format YYYY-MM-DD. '
+        'This applies only to a project revision, a MOOC relaunch, '
+        'or an institute rerun.')
     partners = ParentalManyToManyField(Partner, blank=True)
+    project_type = ParentalManyToManyField(ProjectType)
+    award_type = ParentalManyToManyField(AwardType)
     feature_on_homepage = models.BooleanField(default=False)
     feature_blurb = models.CharField(
-        help_text='A very short blurb on this entry for the feature carousel',
+        help_text='A very short blurb on this entry for the feature carousel.',
         max_length=255, blank=True)
     poster = models.ForeignKey(
         'wagtailimages.Image',
@@ -180,7 +233,36 @@ class Entry(Page, TimeStampedModel):
         blank=True,
         on_delete=models.SET_NULL,
         related_name='+',
-        help_text='PDF information sheet for printing, if available.'
+        help_text='PDF information sheet for printing.'
+    )
+
+    video_url = models.URLField(
+        help_text='URL of the promotional video.', blank=True)
+    video_title = models.CharField(max_length=255, blank=True)
+
+    gallery_image_one = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        help_text='Dimension 300px by 300px. Format: PNG or JPG.'
+    )
+    gallery_image_two = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        help_text='Dimension 300px by 300px. Format: PNG or JPG.'
+    )
+    gallery_image_three = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        help_text='Dimension 300px by 300px. Format: PNG or JPG.'
     )
 
     parent_page_types = ['VisualIndex']
@@ -190,8 +272,11 @@ class Entry(Page, TimeStampedModel):
         FieldPanel('overview'),
         FieldPanel('description', classname="full"),
         FieldPanel('release_date'),
-        FieldPanel('discipline', widget=forms.SelectMultiple),
+        FieldPanel('revision_date'),
         FieldPanel('partners', widget=forms.SelectMultiple),
+        FieldPanel('project_type'),
+        FieldPanel('award_type'),
+        FieldPanel('discipline', widget=forms.SelectMultiple),
         FieldPanel('project_url'),
         MultiFieldPanel(
             [
@@ -208,6 +293,21 @@ class Entry(Page, TimeStampedModel):
             ],
             heading="Homepage Feature Carousel"
         ),
+        MultiFieldPanel(
+            [
+                FieldPanel('video_title'),
+                FieldPanel('video_url')
+            ],
+            heading='Promotional Video'
+        ),
+        MultiFieldPanel(
+            [
+                ImageChooserPanel('gallery_image_one'),
+                ImageChooserPanel('gallery_image_two'),
+                ImageChooserPanel('gallery_image_three'),
+            ],
+            heading='Image Gallery'
+        )
     ]
 
     promote_panels = [
