@@ -25,6 +25,7 @@ class TestHomePage(TestCase):
 
 
 class TestVisualIndex(TestCase):
+
     def test_get_context(self):
         EntryFactory(live=False, path='0002')
         e = EntryFactory(path='0003')
@@ -35,3 +36,18 @@ class TestVisualIndex(TestCase):
 
         self.assertEquals(ctx['sort'], 'releasedate')
         self.assertEquals(ctx['entries'].object_list.first(), e)
+
+    def test_get_context_search(self):
+        EntryFactory(live=False, path='0002')
+        EntryFactory(path='0003')
+        e3 = EntryFactory(title='foo', path='0004')
+
+        v = VisualIndex()
+        r = RequestFactory().get('/?q=foo')
+
+        ctx = v.get_context(r)
+
+        self.assertEquals(ctx['sort'], 'releasedate')
+        self.assertEqual(ctx['q'], 'foo')
+        self.assertEquals(ctx['entries'].object_list.count(), 1)
+        self.assertEquals(ctx['entries'].object_list.first(), e3)
