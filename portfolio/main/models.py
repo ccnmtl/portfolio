@@ -135,7 +135,13 @@ class VisualIndex(Page):
         context = super(VisualIndex, self).get_context(request)
 
         sort_order = self.get_sort(request)
-        entries = Entry.objects.live().public().order_by(sort_order)
+        entries = Entry.objects.live().public()
+
+        q = request.GET.get('q', '')
+        if q:
+            entries = entries.filter(title__icontains=q)
+
+        entries = entries.order_by(sort_order)
 
         # Pagination
         per_page = 6
@@ -149,6 +155,7 @@ class VisualIndex(Page):
             entries = paginator.page(paginator.num_pages)
 
         context['sort'] = request.GET.get('sort', 'releasedate')
+        context['q'] = q
         context['entries'] = entries
         return context
 
