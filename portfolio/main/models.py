@@ -212,8 +212,8 @@ class Entry(Page, TimeStampedModel):
         'This applies only to a project revision, a MOOC relaunch, '
         'or an institute rerun.')
     partners = ParentalManyToManyField(Partner, blank=True)
-    project_type = ParentalManyToManyField(ProjectType)
-    award_type = ParentalManyToManyField(AwardType)
+    project_type = ParentalManyToManyField(ProjectType, blank=True)
+    award_type = ParentalManyToManyField(AwardType, blank=True)
     feature_on_homepage = models.BooleanField(default=False)
     feature_blurb = models.CharField(
         help_text='A very short blurb on this entry for the feature carousel.',
