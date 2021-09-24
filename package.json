@@ -23,7 +23,7 @@
     "sass": "^1.42.1",
     "sinon": "~11.1.2",
     "autoprefixer": "^9.8.6",
-    "nodemon": "^2.0.12",
+    "nodemon": "^2.0.13",
     "postcss-cli": "^7.1.2"
   }
 }
