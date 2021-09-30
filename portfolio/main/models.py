@@ -4,9 +4,7 @@ from django import forms
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
 from django_extensions.db.models import TimeStampedModel
-
 from modelcluster.fields import ParentalManyToManyField
-
 from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
 from wagtail.core.fields import RichTextField
 from wagtail.core.models import Page, Orderable
@@ -208,6 +206,7 @@ class Entry(Page, TimeStampedModel):
         help_text='URL of this project\'s home page.', blank=True)
     release_date = models.DateField(help_text='Format YYYY-MM-DD')
     revision_date = models.DateField(
+        blank=True, null=True,
         help_text='Format YYYY-MM-DD. '
         'This applies only to a project revision, a MOOC relaunch, '
         'or an institute rerun.')
@@ -320,3 +319,8 @@ class Entry(Page, TimeStampedModel):
     promote_panels = [
         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
     ]
+
+    def full_clean(self, *args, **kwargs):
+        if not self.revision_date:
+            self.revision_date = self.release_date
+        super().full_clean(*args, **kwargs)
