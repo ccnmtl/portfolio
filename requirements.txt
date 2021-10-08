@@ -9,7 +9,7 @@ Pillow==8.3.2
 versiontools==1.9.1
 statsd==3.3.0
 pep8==1.7.1
-pyflakes==2.3.1
+pyflakes==2.4.0
 mccabe==0.6.1
 configparser==5.0.2
 pycodestyle==2.7.0
@@ -37,7 +37,7 @@ astroid==2.8.0
 pylint==2.11.1
 six==1.16.0
 ipaddress==1.0.23  # faker
-faker==9.0.0  # factory_boy
+faker==9.2.0  # factory_boy
 factory_boy==3.2.0
 
 ldap3==2.9.1
