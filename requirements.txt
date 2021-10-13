@@ -109,7 +109,7 @@ xlsxwriter==3.0.1
 tablib[xls,xlsx]>=0.14.0
 anyascii==0.3.0
 
-idna==3.2  # requests
+idna==3.3  # requests
 chardet==4.0.0  # requests
 python-cas==1.6.0
 requirements/src/django_cas_ng-4.1.3ctl-py2.py3-none-any.whl
