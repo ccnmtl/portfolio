@@ -12,7 +12,7 @@ pep8==1.7.1
 pyflakes==2.4.0
 mccabe==0.6.1
 configparser==5.0.2
-pycodestyle==2.7.0
+pycodestyle==2.8.0
 entrypoints==0.3  # for flake8
 flake8==3.9.2
 importlib-metadata==4.8.1  # for flake8
@@ -33,7 +33,7 @@ pyOpenSSL==21.0.0
 ndg-httpsclient==0.5.1
 requests==2.26.0
 logilab-common==1.8.1
-astroid==2.8.0
+astroid==2.8.2
 pylint==2.11.1
 six==1.16.0
 ipaddress==1.0.23  # faker
@@ -109,7 +109,7 @@ xlsxwriter==3.0.1
 tablib[xls,xlsx]>=0.14.0
 anyascii==0.3.0
 
-idna==3.2  # requests
+idna==3.3  # requests
 chardet==4.0.0  # requests
 python-cas==1.6.0
 requirements/src/django_cas_ng-4.1.3ctl-py2.py3-none-any.whl
