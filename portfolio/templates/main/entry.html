@@ -54,7 +54,8 @@
 <article class="entry">
     <header class="header-entry">
         <figure class="header-entry--poster">
-            {% image page.poster original class="img-fluid" alt="Poster image for ..." %}
+            {% image page.poster fill-1140x526-c100 as project_poster %}
+            <img src="{{project_poster.url}}" class="img-fluid" alt="Poster image for {{page.title}}">
         </figure>
         <div class="header-entry--text">
             <h1>{{page.title}}</h1>
@@ -98,12 +99,28 @@
                         <span class="field-label">Released:</span> {{page.release_date|date:"F Y"}}<br/>
                         <span class="field-label">Updated:</span> {{page.revision_date|date:"F Y"}}
                     </div>
-                    <div class="col-4 text-nowrap py-2">
-                        <span class="field-label">Project type:</span> {{page.project_type.name}}<br/>
-                        <span class="field-label">Award:</span> {{page.award_type}}
+                    <div class="col-5 text-nowrap py-2">
+                    {% with project_types=page.project_type.all %}
+                        {% if project_types %}
+                            <span class="field-label">Project type{{ project_types|pluralize }}:</span>
+                            {% for project_type in project_types %}
+                                {{ project_type.name }}{% if not forloop.last %},{% endif %}
+                            {% endfor %}
+                        {% endif %}
+                        <br />
+                    {% endwith %}
+
+                     {% with award_types=page.award_type.all %}
+                        {% if award_types %}
+                            <span class="field-label">Award type{{ award_types|pluralize }}:</span>
+                            {% for award_type in award_types %}
+                                {{ award_type.name }}{% if not forloop.last %},{% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
                    
                     </div>
-                    <div class="col-4 text-nowrap py-2">
+                    <div class="col-3 text-nowrap py-2">
                     {% if page.project_url %}
                         <a href="{{ page.project_url }}" target="_blank">
                         Visit the site
@@ -118,14 +135,13 @@
                     {% endif %}
                     <div class="share-widget">
                         <span class="field-label">Share:</span>
-                        <a rel="nofollow" class="share-window" href="http://www.facebook.com/share.php?u={{ page.full_url }}&title={{ page.title }}" aria-label="Share on Facebook"><i class="fa fa-facebook px-1" aria-hidden="true"></i></a>
-                        <a rel="nofollow" class="share-window" href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ page.full_url }}&via=ColumbiaCTL" aria-label="Share on Twitter"><i class="fa fa-twitter px-1" aria-hidden="true"></i></a>
-                        <a rel="nofollow" class="share-window" href="https://plus.google.com/share?url={{ page.full_url }}" aria-label="Share on Google+"><i class="fa fa-google-plus px-1" aria-hidden="true"></i></a>
+                        <a rel="nofollow noopener noreferrer" class="share-window" href="http://www.facebook.com/share.php?u={{ page.full_url }}&title={{ page.title }}" aria-label="Share on Facebook"><i class="fa fa-facebook px-1" aria-hidden="true"></i></a>
+                        <a rel="nofollow noopener noreferrer" class="share-window" href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ page.full_url }}&via=ColumbiaCTL" aria-label="Share on Twitter"><i class="fa fa-twitter px-1" aria-hidden="true"></i></a>
+                        <a rel="nofollow noopener noreferrer" class="share-window" href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.full_url }}&title={{ page.title }}&summary={{page.search_description}}"><i class="fa fa-google-plus px-1" aria-label="Share on LinkedIn"></i></a>
                     </div>
                     </div>
                 </div>
             </section>
-
 
             {% if page.overview %}
             <section class="overview">
@@ -138,6 +154,7 @@
             </section>
 
             <section class="promotional-video mb-5 mx-5">
+            
             <div class="video-player embed-responsive embed-responsive-16by9 d-print-none">
             <iframe src='{{page.video_url}}' 
                 title='{{page.video_title}}'
@@ -147,6 +164,8 @@
             </iframe>
             </div>
         <p class="video-attr d-print-none"> Source: Columbia University</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/2qJPxzgPlzQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <div class="d-none d-print-block print-alert">
 <p>This segment of the page contains a video, “{{page.video_title}}”.
@@ -159,9 +178,6 @@ The link to this video  is:<br />
             
             </section>
             
-            {% comment %}
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/w8Xb00w9VDI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-{% endcomment %}
             <section class="partners mb-5">
                 {% with partners=page.partners.all %}
                     {% if partners %}
@@ -170,7 +186,7 @@ The link to this video  is:<br />
                     </dt>
                     <dd>
                         {% for partner in partners %}
-                            {% image partner.headshot fill-100x100-c100 %}
+                            {% image partner.headshot fill-200x200-c50 %}
                             {{ partner.name }},
                             {{ partner.full_title }},
                             {{ partner.affiliation }}{% if not forloop.last %}<br />{% endif %}
