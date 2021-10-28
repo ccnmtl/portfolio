@@ -9,62 +9,28 @@
 {% wagtailuserbar %}
     {% with featured_entries=page.featured_entries %}
         {% if featured_entries %}
-        <section id="portfolio-feature container">
-            <div class="row border border-primary">
+        <section class="portfolio-feature container">
+            <h2 class="sr-only">Featured projects</h2>
+            <div class="row">
                 {% for featured_entry in featured_entries %}
-                <div class="col-4 border border-secondary" style="height: 30rem;">
-                {{featured_entry.title}}<br />{{featured_entry.feature_blurb}}<br />
-                <a href="{% pageurl featured_entry %}" class="btn btn-light btn-sm rounded-0 mb-2">Learn more</a>
-                </div>
-                {% endfor %}
-            </div>
-        {% comment %}
-            <div id="featureCarouselIndicators" class="carousel slide" data-ride="carousel" data-interval="7000" role="presentation" aria-hidden="true">
-                <ol class="carousel-indicators">
-                {% for featured_entry in featured_entries %}
-                    <li data-target="#featureCarouselIndicators" data-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif%}"></li>
-                {% endfor %}
-                </ol>
-                <div class="carousel-inner">
-                {% for featured_entry in featured_entries %}
-                    <div class="carousel-item{% if forloop.first %} active{% endif%}">
-                        {% image featured_entry.poster original as featured_entry_photo %}
-                        <div class="featured_poster" style="background-image: url('{{featured_entry_photo.url}}')"></div>
-                       <div class="carousel-caption-overlay h-100 w-100"></div>
-                        <div class="carousel-caption">
-                            <div class="entry-title">{{featured_entry.title}}</div>
-                            <p>{{featured_entry.feature_blurb}}</p>
-                            <a href="{% pageurl featured_entry %}" class="btn btn-light btn-sm rounded-0 mb-2">Learn more</a>
+                    {% image featured_entry.poster original as featured_entry_photo %}
+                    <div class="col portfolio-feature__slot" style="background-image: url('{{featured_entry_photo.url}}')">
+                        <div class="portfolio-feature__info">
+                            <div class="portfolio-feature__text">
+                                <h3 class="portfolio-feature__title">{{featured_entry.title}}</h3>
+                                <p class="portfolio-feature__blurb">{{featured_entry.feature_blurb}}</p>
+                            </div>
+                            <div class="portfolio-feature__link">
+                                <a href="{% pageurl featured_entry %}" class="btn btn-outline-light">Learn more</a>
+                            </div>
                         </div>
                     </div>
                 {% endfor %}
-                </div>
-                <a class="carousel-control-prev" href="#featureCarouselIndicators" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#featureCarouselIndicators" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
             </div>
-        {% endcomment %}
-        </section>
-
-
-        <section id="portfolio-feature-sr" class="sr-only sr-only-focusable">
-        <h2>Featured collaborations</h2>
-        <ul>
-        {% for featured_entry in featured_entries %}
-            <li>
-            <a href="{% pageurl featured_entry %}">{{featured_entry.title}}</a>, {{featured_entry.feature_blurb}}
-            </li>
-        {% endfor %}
-        </ul>
         </section>
         {% endif %}
     {% endwith %}
-
+        
         <section class="intro-blurb">
             {{ page.body|richtext }}
         </section>
