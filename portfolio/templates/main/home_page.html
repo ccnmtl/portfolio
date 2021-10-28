@@ -9,7 +9,16 @@
 {% wagtailuserbar %}
     {% with featured_entries=page.featured_entries %}
         {% if featured_entries %}
-        <section id="portfolio-feature">
+        <section id="portfolio-feature container">
+            <div class="row border border-primary">
+                {% for featured_entry in featured_entries %}
+                <div class="col-4 border border-secondary" style="height: 30rem;">
+                {{featured_entry.title}}<br />{{featured_entry.feature_blurb}}<br />
+                <a href="{% pageurl featured_entry %}" class="btn btn-light btn-sm rounded-0 mb-2">Learn more</a>
+                </div>
+                {% endfor %}
+            </div>
+        {% comment %}
             <div id="featureCarouselIndicators" class="carousel slide" data-ride="carousel" data-interval="7000" role="presentation" aria-hidden="true">
                 <ol class="carousel-indicators">
                 {% for featured_entry in featured_entries %}
@@ -39,6 +48,7 @@
                     <span class="sr-only">Next</span>
                 </a>
             </div>
+        {% endcomment %}
         </section>
 
 
