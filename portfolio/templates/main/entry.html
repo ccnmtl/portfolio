@@ -145,10 +145,7 @@
 
             {% if page.overview %}
             <section class="overview">
-            <p>{{page.overview}}</p>
-
-            {% image page.poster original %}
-            
+            <p>{{page.overview}}</p>            
 
             </section>
             {% endif %}
@@ -157,8 +154,8 @@
             {{page.description|richtext}}
             </section>
 
+        {% if page.video_url %}
             <section class="promotional-video mb-5 mx-5">
-            
             <div class="video-player embed-responsive embed-responsive-16by9 d-print-none">
             <iframe src='{{page.video_url}}' 
                 title='{{page.video_title}}'
@@ -169,18 +166,14 @@
             </div>
         <p class="video-attr d-print-none"> Source: Columbia University</p>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/2qJPxzgPlzQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<div class="d-none d-print-block print-alert">
-<p>This segment of the page contains a video, “{{page.video_title}}”.
-The link to this video  is:<br />
-{{page.video_url}}</p>
-<p class="video-attr"> Source: Columbia University</p>
-</div>
-
-            
-            
+        <div class="d-none d-print-block print-alert">
+        <p>This segment of the page contains a video, “{{page.video_title}}”.
+        The link to this video  is:<br />
+        {{page.video_url}}</p>
+        <p class="video-attr"> Source: Columbia University</p>
+        </div>
             </section>
+            {% endif %}
             
             <section class="partners mb-5">
                 {% with partners=page.partners.all %}
