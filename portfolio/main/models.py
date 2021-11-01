@@ -332,19 +332,18 @@ class Entry(Page, TimeStampedModel):
         A utility function to ease confusion around the youtube embed url.
 
         If the video_url is ...
-        : not the youtube flavor, None is returned.
+        : in the youtube embed format, return as is
         : in the youtube watch format, the youtube embed format is returned
-        : otherwise the video_url is returned as is.
+        : otherwise, return None
 
         More tests may be needed in the future.
         """
 
-        if 'youtube' not in self.video_url:
-            return None
+        if re.search(r'www.youtube.com\/embed', self.video_url):
+            return self.video_url
 
-        vid = re.search(r'https:\/\/www.youtube.com\/watch\?v=(.*)',
-                        self.video_url, re.IGNORECASE)
+        vid = re.search(r'www.youtube.com\/watch\?v=(.*)', self.video_url)
         if vid:
             return 'https://www.youtube.com/embed/{}'.format(vid.group(1))
 
-        return self.video_url
+        return None
