@@ -333,7 +333,7 @@ class Entry(Page, TimeStampedModel):
 
         If the video_url is ...
         : in the youtube embed format, return as is
-        : in the youtube watch format, the youtube embed format is returned
+        : in the youtube watch format, return the youtube embed format
         : otherwise, return None
 
         More tests may be needed in the future.
