@@ -339,10 +339,10 @@ class Entry(Page, TimeStampedModel):
         More tests may be needed in the future.
         """
 
-        if re.search(r'www.youtube.com\/embed', self.video_url):
+        if re.search(r'www\.youtube\.com\/embed', self.video_url):
             return self.video_url
 
-        vid = re.search(r'www.youtube.com\/watch\?v=(.*)', self.video_url)
+        vid = re.search(r'www\.youtube\.com\/watch\?v=(.*)', self.video_url)
         if vid:
             return 'https://www.youtube.com/embed/{}'.format(vid.group(1))
 
