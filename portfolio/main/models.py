@@ -11,6 +11,8 @@ from wagtail.core.models import Page, Orderable
 from wagtail.documents.edit_handlers import DocumentChooserPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.models import register_snippet
+from portfolio.main.utils import (
+    published_entries_by_date, featured_entries_by_slot)
 
 
 @register_snippet
@@ -102,21 +104,10 @@ class HomePage(Page):
     ]
 
     def entries(self):
-        # Get list of project Entries
-        entries = Entry.objects.live().public()
-        # sort here, return only six cards
-        entries = entries.order_by('-release_date')[:6]
-
-        return entries
+        return published_entries_by_date()
 
     def featured_entries(self):
-        # Get list of featured project Entries
-        featured_entries = Entry.objects.live().public().filter(
-            feature_on_homepage=True)
-        # sort here, return only 3 cards
-        featured_entries = featured_entries.order_by('-last_published_at')[:3]
-
-        return featured_entries
+        return featured_entries_by_slot()
 
 
 class VisualIndex(Page):
@@ -216,7 +207,8 @@ class Entry(Page, TimeStampedModel):
     feature_on_homepage = models.BooleanField(default=False)
     feature_blurb = models.CharField(
         help_text='A very short blurb on this entry for the feature carousel.',
-        max_length=255, blank=True)
+        max_length=255, null=True, blank=True)
+    feature_slot = models.PositiveIntegerField(null=True, blank=True)
     poster = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -292,13 +284,6 @@ class Entry(Page, TimeStampedModel):
             heading="Representational images"
         ),
         DocumentChooserPanel('infosheet'),
-        MultiFieldPanel(
-            [
-                FieldPanel('feature_on_homepage'),
-                FieldPanel('feature_blurb'),
-            ],
-            heading="Homepage Feature Carousel"
-        ),
         MultiFieldPanel(
             [
                 FieldPanel('video_title'),

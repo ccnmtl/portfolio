@@ -1,0 +1,93 @@
+{% extends "wagtailadmin/base.html" %}
+{% load wagtailadmin_tags i18n %}
+{% block titletag %}Featured Entries{% endblock %}
+
+{% block extra_css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% versioned_static 'wagtailadmin/css/layouts/page-editor.css' %}" />
+    <style>
+    </style>
+{% endblock %}
+
+{% block content %}
+{% include "wagtailadmin/shared/header_with_locale_selector.html" with title="Featured" icon="pick" tabbed=1 merged=1 %}
+
+    <form action="." method="POST">
+        {% csrf_token %}
+
+        <ul class="objects">
+            {% for featured in slots %}
+                <li class="object multi-field">
+                    <div class="title-wrapper">
+                        Featured {{forloop.counter}}
+                    </div>
+                    <div class="object-layout">
+                        <div class="object-layout_small-part">
+                            <div class="object-help help">
+                                <svg class="icon icon-help default" aria-hidden="true" focusable="false"><use href="#icon-help"></use></svg>
+                                Select an entry to feature on the home page. Add a very short blurb to display under the entry title.
+                            </div>
+                        </div>
+                        <div class="object-layout_big-part">
+                            <div data-contentpath="discipline">
+                                <fieldset class="">
+                                    <legend>Entry</legend>
+                                    <ul class="fields">
+                                        <li class="">
+                                            <div class="field model_multiple_choice_field select_single">
+                                                <label for="id_feature_{{forloop_counter}}">Entry:</label>
+                                                <div class="field-content">
+                                                    <div class="input">
+                                                        <select name="feature-entry-{{forloop.counter}}"
+                                                            id="id_feature_{{forloop.counter}}">
+                                                            <option value="">Choose an entry</option>
+                                                            {% for entry in entries %}
+                                                                <option value="{{entry.id}}"
+                                                                    {% if entry.id == featured.id %}selected="selected"{% endif %}>
+                                                                    {{entry.title}}
+                                                                </option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="char_field">
+                                            <div class="field char_field text_input">
+                                                <label for="id_feature_blurb_{{forloop.counter}}">Blurb:</label>
+                                                <div class="field-content">
+                                                    <div class="input">
+                                                        <input type="text" name="feature-blurb-{{forloop.counter}}" maxlength="255"
+                                                            id="id_feature_blurb_{{forloop.counter}}"
+                                                            value="{{featured.feature_blurb}}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <footer class="footer">
+            <nav aria-label="{% trans 'Actions' %}">
+                <ul>
+                    <li class="actions actions--primary footer__container">
+                        <div class="dropdown dropup dropdown-button match-width">
+                            <button type="submit" class="button action-save button-longrunning" data-clicked-text="Saving…">
+                                <svg class="icon icon-download-alt button-longrunning__icon" aria-hidden="true" focusable="false"><use href="#icon-download-alt"></use></svg>
+                                <svg class="icon icon-spinner icon" aria-hidden="true" focusable="false"><use href="#icon-spinner"></use></svg><em>Save</em>
+                            </button>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </footer>
+    </form>
+
+
+{% endblock %}

@@ -40,6 +40,7 @@ INSTALLED_APPS += [  # noqa
     'taggit',
 
     'portfolio.main',
+    'portfolio.featured'
 ]
 
 INSTALLED_APPS.remove('djangowind') # noqa

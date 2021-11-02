@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='entry',
             name='feature_slot',
-            field=models.PositiveIntegerField(default=False),
+            field=models.PositiveIntegerField(blank=True, null=True),
         ),
     ]

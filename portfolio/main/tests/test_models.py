@@ -5,6 +5,7 @@ from django.test.client import RequestFactory
 
 
 class TestHomePage(TestCase):
+
     def test_entries(self):
         EntryFactory(live=False, path='0002')
         e = EntryFactory(path='0003')
