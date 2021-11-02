@@ -1,5 +1,7 @@
 from __future__ import unicode_literals
 
+import re
+
 from django import forms
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
@@ -324,3 +326,24 @@ class Entry(Page, TimeStampedModel):
         if not self.revision_date:
             self.revision_date = self.release_date
         super().full_clean(*args, **kwargs)
+
+    def youtube_video_url(self):
+        """
+        A utility function to ease confusion around the youtube embed url.
+
+        If the video_url is ...
+        : in the youtube embed format, return as is
+        : in the youtube watch format, return the youtube embed format
+        : otherwise, return None
+
+        More tests may be needed in the future.
+        """
+
+        if re.search(r'www\.youtube\.com\/embed', self.video_url):
+            return self.video_url
+
+        vid = re.search(r'www\.youtube\.com\/watch\?v=(.*)', self.video_url)
+        if vid:
+            return 'https://www.youtube.com/embed/{}'.format(vid.group(1))
+
+        return None
