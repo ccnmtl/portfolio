@@ -4,8 +4,7 @@ from portfolio.main.models import HomePage, VisualIndex
 from django.test.client import RequestFactory
 
 
-class TestHomePage(TestCase):
-
+class HomePageTest(TestCase):
     def test_entries(self):
         EntryFactory(live=False, path='0002')
         e = EntryFactory(path='0003')
@@ -25,7 +24,7 @@ class TestHomePage(TestCase):
         self.assertEquals(qs.first(), e)
 
 
-class TestVisualIndex(TestCase):
+class VisualIndexTest(TestCase):
 
     def test_get_context(self):
         EntryFactory(live=False, path='0002')
@@ -52,3 +51,19 @@ class TestVisualIndex(TestCase):
         self.assertEqual(ctx['q'], 'foo')
         self.assertEquals(ctx['entries'].object_list.count(), 1)
         self.assertEquals(ctx['entries'].object_list.first(), e3)
+
+
+class EntryPageTest(TestCase):
+
+    def test_youtube_video_url(self):
+        entry = EntryFactory(
+            live=False, path='0002', video_url='https://vimeo.com')
+        self.assertIsNone(entry.youtube_video_url())
+
+        entry.video_url = 'https://www.youtube.com/watch?v=2qJPxzgPlzQ'
+        self.assertEqual(entry.youtube_video_url(),
+                         'https://www.youtube.com/embed/2qJPxzgPlzQ')
+
+        entry.video_url = 'https://www.youtube.com/embed/2qJPxzgPlzQ'
+        self.assertEqual(entry.youtube_video_url(),
+                         'https://www.youtube.com/embed/2qJPxzgPlzQ')
