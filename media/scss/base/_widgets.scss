@@ -8,6 +8,7 @@
     width: 320px;
     color: $white;
     border-radius: 35px;
+    z-index: 200;
     @media print {
         display: none;
     }
