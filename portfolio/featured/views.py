@@ -13,7 +13,8 @@ class FeaturedView(TemplateView):
     def initialize_slots(self):
         slots = [None] * 3
         for entry in featured_entries_by_slot():
-            slots[entry.feature_slot] = entry
+            if entry.feature_slot is not None:
+                slots[entry.feature_slot] = entry
         return slots
 
     def get_context_data(self, **kwargs):
