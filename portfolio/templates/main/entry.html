@@ -185,25 +185,34 @@
             </section>
         {% endif %}{% endif %}
 
-            <section class="partners mb-5">
-                {% with partners=page.partners.all %}
-                    {% if partners %}
-                    <dt class="field-label">
-                    Partner{{ partners|pluralize }}
-                    </dt>
-                    <dd>
-                        {% for partner in partners %}
-                            {% image partner.headshot fill-200x200-c50 %}
-                            {{ partner.name }},
-                            {{ partner.full_title }},
-                            {{ partner.affiliation }}{% if not forloop.last %}<br />{% endif %}
-                        {% endfor %}
-                    </dd>
-                    {% endif %}
-                {% endwith %}
-            
+        {% with partners=page.partners.all %}
+            {% if partners %}
+            <section class="entry-section">
+                <h2>Partner{{ partners|pluralize }}</h2>
+                {% for partner in partners %}
+                    <div class="d-flex mb-4">
+                        <div class="img-avatar">
+                        {% if partner.headshot %}
+                            {% image partner.headshot fill-200x200-c50 as partner_avatar %}
+                            <img src="{{partner_avatar.url}}" class="img-avatar__image" alt="Poster image for {{partner.name}}">
+                        {% else %}
+                            <img src="{{STATIC_URL}}img/headshot-none.png" class="img-avatar__image" alt="">
+                        {% endif %}
+                        </div>
+                        <div class="partner-info">
+                            <div class="partner_name">{{ partner.name }}</div>
+                            {% if partner.full_title %}
+                                {{ partner.full_title }}<br />
+                            {% else %}
+                                {{ partner.short_title }}<br />
+                            {% endif %}
+                        {{ partner.affiliation }}
+                        </div>
+                    </div>
+                {% endfor %}
             </section>
-
+            {% endif %}
+        {% endwith %}
         </div>
     </div>
 </article>
