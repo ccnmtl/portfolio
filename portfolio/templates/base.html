@@ -86,31 +86,26 @@
         </div>
     </a>
 
-    {% include "main/includes/top_institution.html" %}
+    {% include "main/includes/header_institution.html" %}
 
-    <header class="container" id="header-portfolio">
-        <div class="d-flex flex-row" id="logo-portfolio">
-            <h1 class="order-2"><a href="/" title="Go to Portfolio home"><span class="sr-only">Go to</span> PORTFOLIO <span class="sr-only">home</span></a></h1>
-            <a href="https://ctl.columbia.edu" title="Go to CTL Website"><img class="order-1" src="{{STATIC_URL}}img/logo-ctl-color.svg" alt="Logo: Go to CTL Website" /></a>
-        </div>
-        <nav class="navbar navbar-expand navbar-light bg-white" id="navbar-portfolio">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarPortfolioGlobal" aria-controls="navbarPortfolioGlobal" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarPortfolioGlobal">
-                <ul class="navbar-nav m-auto">
-                    <li class="nav-item px-3">
-                        <a class="nav-link" href="/our-work/">Our Work</a>
-                    </li>
-                    <li class="nav-item px-3">
-                        <a class="nav-link" href="/about/">About</a>
-                    </li>
-                </ul>
-            </div>
+    <header class="container p-0">
+        <nav class="my-2 navbar navbar-light bg-white px-0">
+            <a class="navbar-brand bg-light p-2" href="/" title="Go to Portfolio home">CTL PORTFOLIO LOGO</a>
+            <ul class="nav ml-auto mr-3">
+                <li class="nav-item mr-3">
+                    <a class="nav-link" href="/our-work/">Our Work</a>
+                </li>
+                <li class="nav-item mr-3">
+                    <a class="nav-link" href="/about/">About</a>
+                </li>
+            </ul>
+            <form class="form-inline">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            </form>
         </nav>
     </header>
 
-    <main class="container bg-white">
+    <main class="container bg-white p-0" id="maincontent">
 
     {% block content %}{% endblock %}
 
@@ -118,17 +113,46 @@
 
     {% include "main/includes/footer.html" %}
 
-{% if request.user.is_anonymous %}
-{% else %}
-<!-- Background for Wagtail Editor widget -->
-<div id="wagtail-editor" role="presentation" aria-hidden="true">
-    <a href="/accounts/logout/?next=/cms/" class="btn btn-sm btn-warning mt-3 mx-4 d-inline-block align-middle float-left">Logout</a>
-    <div class="d-inline-block mt-2 float-left">Wagtail editor<br />
-    <span class="small">(<a href="https://wiki.ctl.columbia.edu/index.php/CTL_Portfolio_Editor_Guide" target="_blank" class="text-white">Editor's guide</a>)</span>
-    </div>
-    <div id="preview" class="d-inline-block bg-light text-dark float-right"><i class="fa fa-eye fa-2x d-block w-100 text-center" style="line-height: 54px;"></i></div>
-</div>
+{% if request.user.is_authenticated %}
+    {% if not request.is_preview %}
+        <!-- Background for Wagtail Editor widget -->
+        <div class="wagtail-widget wagtail-widget__editor row" role="presentation" aria-hidden="true">
+            <div class="col-4 px-3">
+                <a href="/accounts/logout/?next=/cms/" class="btn btn-warning wagtail-widget__logout">Log out</a>
+            </div>
+            <div class="col-4 pl-0 pr-3">
+                <a href="https://wiki.ctl.columbia.edu/index.php/CTL_Portfolio_Editor_Guide" rel="nofollow noopener noreferrer" target="_blank" class="btn btn-info wagtail-widget__guide">Guide</a>
+            </div>
+            <div class="col-4 pl-0">
+                <div class="wagtail-widget__label">
+                CMS
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <!-- Background for Wagtail Preview widget -->
+        <div class="wagtail-widget wagtail-widget__preview row" role="presentation" aria-hidden="true">
+            <div class="col-8 pr-0">
+                <div class="wagtail-widget__preview-label">This is a preview</div>
+            </div>
+            <div class="col-4 pr-0">
+                <div class="wagtail-widget__preview-icon"></div>
+            </div>
+        </div>
+    {% endif %}
 {% endif %}
+
+
+{% comment %}
+    
+    <div class="d-inline-block mt-2 float-left">Edit
+    
+    
+    </div>
+    <br />
+    <span class="small">(<a href="" target="_blank" class="text-white">Editor's guide</a>)</span>
+
+{% endcomment %}
 
 
 <script src="{{STATIC_URL}}js/lib/jquery-3.2.1.min.js"></script>

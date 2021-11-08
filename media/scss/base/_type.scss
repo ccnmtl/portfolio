@@ -1,3 +1,35 @@
+h1 {
+    font-size: ($font-size-base * 1.5);
+    font-weight: $font-weight-medium;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    @include media-breakpoint-up(md) {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+    @include media-breakpoint-up(lg) {
+        font-size: 1.75rem;       
+    }
+    @include media-breakpoint-up(xl) {
+        font-size: 2rem;       
+    }
+}
+
+
+.partner_name {
+    font-weight: $font-weight-medium;
+    font-size: ($font-size-base * 1);
+}
+
+
+
+
+
+
+
+
+
 .intro-blurb {
     font-size: ($lead-font-size * 0.75);
     text-align: center;

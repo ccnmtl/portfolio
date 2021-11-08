@@ -1,31 +1,34 @@
 //
-// Top header with Columbia and Provost links
+// Top header with Columbia, Provost, CTL links
 //
 
-#top-institution {
-    background-color: $darkblue;
-    font-family: $cardo;
-    font-size: 0.75rem;
+#header-institution {
+    background-color: #f5f5f5;
+    font-size: ($font-size-base * 0.825);
+    font-weight: $font-weight-regular;
     padding: 0;
-    #navbar-univ {
+    height: 2rem;
+    -webkit-box-shadow: 0 2px 5px 0 rgb(102 102 102 / 14%), 0 1px 5px 0 rgb(102 102 102 / 12%), 0 2px 4px -1px rgb(102 102 102 / 20%);
+    box-shadow: 0 2px 5px 0 rgb(102 102 102 / 14%), 0 1px 5px 0 rgb(102 102 102 / 12%), 0 2px 4px -1px rgb(102 102 102 / 20%);
+    .navbar-nav {
         margin-left: -$spacer;
-    }
-    #navbar-ctl {
         margin-right: -$spacer;
     }
     .dropdown-menu {
-        font-size: 0.9rem;
+        font-size: inherit;
         margin-top: 0;
-        background-color: $darkblue;
-        border-color: $darkblue;
+        background-color: #f5f5f5;
+        border-color: #f5f5f5;
         @include border-top-radius(0);
+        -webkit-box-shadow: 0 3px 4px 0 rgb(102 102 102 / 14%), 0 3px 4px 0 rgb(102 102 102 / 12%), 0 3px 4px -1px rgb(102 102 102 / 20%);
+        box-shadow: 0 3px 4px 0 rgb(102 102 102 / 14%), 0 3px 4px 0 rgb(102 102 102 / 12%), 0 3px 4px -1px rgb(102 102 102 / 20%);
     }
     .nav-link {
         padding-left: $spacer;
         padding-right: $spacer;
     }
     .nav-link, .dropdown-item {
-        color:  rgba($white, 1);
+        color:  rgba($black, 1);
         padding-bottom: 0.3rem;
         padding-top: 0.3rem;
     }
@@ -34,7 +37,8 @@
     }
     .dropdown-item:hover,
     .dropdown-item:focus {
-        background-color: #0046A6;
+        background-color: #efefef;
+        outline: 0;
     }
     @media print {
         display: none;
@@ -83,11 +87,6 @@
         color: $black;
         text-transform: uppercase;
     }
-}
-
-#portfolio-feature {
-    margin-left: -15px;
-    margin-right: -15px;
 }
 
 .featured_poster {
@@ -171,7 +170,7 @@
     }
 }
 
-.entry-body {
+/* .entry-body {
     margin-top: $spacer;
     section {
         padding-left: 0;
@@ -190,7 +189,7 @@
     @include media-breakpoint-up(xl) {
         margin-top: -6.875rem;       
     }
-}
+}*/
 
 .headline {
     height: auto;
@@ -199,24 +198,6 @@
     padding-left: 0;
     padding-right: 0;
     margin-bottom: $spacer;
-    h1 {
-        font-size: 1.5rem;
-        font-weight: 500;
-        margin: 0;
-        padding: 0;
-        text-align: center;
-        @include media-breakpoint-up(md) {
-            font-size: 1.5rem;       
-            padding-left: 2rem;
-            padding-right: 2rem;
-        }
-        @include media-breakpoint-up(lg) {
-            font-size: 1.75rem;       
-        }
-        @include media-breakpoint-up(xl) {
-            font-size: 2rem;       
-        }
-    }
     @include media-breakpoint-up(md) {
         height: 5.875rem;       
         margin-bottom: 0;

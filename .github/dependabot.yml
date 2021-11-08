@@ -14,6 +14,8 @@ updates:
     schedule:
       interval: daily
     ignore:
+    - dependency-name: "*"
+      update-types: ["version-update:semver-patch"]
     - dependency-name: psycopg2
       versions:
       - <=2.9.1

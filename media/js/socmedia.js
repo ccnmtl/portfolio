@@ -3,7 +3,7 @@
         /* Social-media sharing */
         jQuery('.share-window').click(function(event) {
             var width  = 575,
-                height = 400,
+                height = 600,
                 left   = (jQuery(window).width()  - width)  / 2,
                 top    = (jQuery(window).height() - height) / 2,
                 url    = this.href,
