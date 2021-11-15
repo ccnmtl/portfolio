@@ -248,6 +248,8 @@ class Entry(Page, TimeStampedModel):
         related_name='+',
         help_text='Dimension 300px by 300px. Format: PNG or JPG.'
     )
+    gallery_caption_one = models.TextField(blank=True, null=True)
+
     gallery_image_two = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -256,6 +258,8 @@ class Entry(Page, TimeStampedModel):
         related_name='+',
         help_text='Dimension 300px by 300px. Format: PNG or JPG.'
     )
+    gallery_caption_two = models.TextField(blank=True, null=True)
+
     gallery_image_three = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -264,6 +268,7 @@ class Entry(Page, TimeStampedModel):
         related_name='+',
         help_text='Dimension 300px by 300px. Format: PNG or JPG.'
     )
+    gallery_caption_three = models.TextField(blank=True, null=True)
 
     parent_page_types = ['VisualIndex']
     subpage_types = []
@@ -296,11 +301,24 @@ class Entry(Page, TimeStampedModel):
         MultiFieldPanel(
             [
                 ImageChooserPanel('gallery_image_one'),
-                ImageChooserPanel('gallery_image_two'),
-                ImageChooserPanel('gallery_image_three'),
+                FieldPanel('gallery_caption_one')
             ],
-            heading='Image Gallery'
-        )
+            heading='First Gallery Image'
+        ),
+        MultiFieldPanel(
+            [
+                ImageChooserPanel('gallery_image_two'),
+                FieldPanel('gallery_caption_two')
+            ],
+            heading='Second Gallery Image'
+        ),
+        MultiFieldPanel(
+            [
+                ImageChooserPanel('gallery_image_three'),
+                FieldPanel('gallery_caption_three')
+            ],
+            heading='Third Gallery Image'
+        ),
     ]
 
     promote_panels = [
