@@ -1,4 +1,4 @@
-.header-entry {
+.entry-header {
     position: relative;
     height: 32.875rem;
     overflow: hidden;
@@ -22,6 +22,18 @@
         margin-top: $spacer;
     }
 }
+
+.entry-section {
+    margin: 0 7rem 3rem 7rem;
+    &__metadata {
+        margin-top: 0.5rem;
+        margin-bottom: 4rem;
+        padding: 0 0 0.5rem 0;
+        border-bottom: 1px solid #ddd;
+        font-size: ($font-size-base * 0.875);
+    }
+}
+
 
 .body-entry {
     &--info {
