@@ -147,8 +147,9 @@
     {{page.description|richtext}}
     </section>
 
+    {% comment %}  #### PROMOTIONAL VIDEO ####  {% endcomment %}
     {% if page.youtube_video_url %}
-        <section class="entry-section promotional-video">
+        <section class="entry-section entry-section__video">
             <div class="video-player embed-responsive embed-responsive-16by9 d-print-none">
                 <iframe src='{{page.youtube_video_url}}' 
                     title='{{page.video_title}}'
@@ -157,14 +158,14 @@
                     class="embed-responsive-item">
                 </iframe>
             </div>
-            <p class="video-attr d-print-none"> Source: Columbia University</p>
+            <p class="video-attribution d-print-none"> Source: Columbia University</p>
             <div class="d-none d-print-block print-alert">
                 <p>
                     This segment of the page contains a video, “{{page.video_title}}”.
                     The link to this video  is:<br />
                     {{page.video_url}}
                 </p>
-                <p class="video-attr"> Source: Columbia University</p>
+                <p class="video-attribution"> Source: Columbia University</p>
             </div>
         </section>
     {% else %}{% if page.video_url %}
@@ -177,6 +178,43 @@
             </dd>
         </section>
     {% endif %}{% endif %}
+
+    {% comment %}  #### Gallery image one ####  {% endcomment %}
+    {% if page.gallery_image_one %}
+    <figure class="entry-section__gallery">
+        {% image page.gallery_image_one max-920x900 as gallery_one %}
+        <img src="{{gallery_one.url}}" class="img-fluid" alt="">
+        {% if page.gallery_caption_one %}
+        <figcaption>{{ page.gallery_caption_one }}</figcaption>
+        {% endif %}
+    </figure>
+    {% endif %}
+    
+    {% comment %}  #### Gallery image two ####  {% endcomment %}
+    {% if page.gallery_image_two %}
+    <figure class="entry-section__gallery">
+        {% image page.gallery_image_two max-920x900 as gallery_two %}
+        <img src="{{gallery_two.url}}" class="img-fluid" alt="">
+        {% if page.gallery_caption_two %}
+        <figcaption>{{ page.gallery_caption_two }}</figcaption>
+        {% endif %}
+    </figure>
+    {% endif %}
+    
+    {% comment %}  #### Gallery image three ####  {% endcomment %}
+    {% if page.gallery_image_three %}
+    <figure class="entry-section__gallery">
+        {% image page.gallery_image_three max-920x900 as gallery_three %}
+        <img src="{{gallery_three.url}}" class="img-fluid" alt="">
+        {% if page.gallery_caption_three %}
+        <figcaption>{{ page.gallery_caption_three }}</figcaption>
+        {% endif %}
+    </figure>
+    {% endif %}
+    
+
+
+
 
         {% with partners=page.partners.all %}
             {% if partners %}
