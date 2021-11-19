@@ -1,4 +1,4 @@
-.header-entry {
+.entry-header {
     position: relative;
     height: 32.875rem;
     overflow: hidden;
@@ -22,6 +22,37 @@
         margin-top: $spacer;
     }
 }
+
+.entry-section {
+    margin: 0 9rem 3rem 9rem;
+    padding: 0;
+    &__metadata {
+        margin: 0.5rem 0 4rem 0;
+        padding: 0 0 0.5rem 0;
+        border-bottom: 1px solid #ddd;
+        font-size: ($font-size-base * 0.875);
+    }
+    &__gallery {
+        max-width: 900px;
+        margin: 0 auto 3rem auto;
+        display: table;       
+        figcaption {
+            font-size: ($font-size-base * 0.875);
+            color: #333;
+            margin-top: 0.5rem;
+        }
+    }
+    &__video {
+        max-width: 900px;
+        margin: 0 auto 3rem auto;
+        .video-attribution {
+            font-size: ($font-size-base * 0.875);
+            color: #333;
+            margin-top: 0.5rem;
+            }
+    }
+}
+
 
 .body-entry {
     &--info {
