@@ -1,0 +1,22 @@
+.skippy {
+    a:active, a:focus {
+        background-color: #cccccc;
+        outline: 0;
+        border-color: $focus-border-color;
+        box-shadow: $focus-shadow;
+    }
+}
+
+#header-institution {
+    .nav-link:hover, .dropdown-item:hover,
+    .nav-link:focus, .dropdown-item:focus {
+        text-decoration: underline;
+        background-color: #e5e5e5;
+    }
+    .nav-link:focus, .dropdown-item:focus {
+        background-color: #e5e5e5;
+        outline: 0;
+        border-color: $focus-border-color;
+        box-shadow: $focus-shadow;
+    }
+}
