@@ -1,25 +1,68 @@
 .entry-header {
     position: relative;
-    height: 32.875rem;
     overflow: hidden;
     background-color: #ccc;
-    &--poster {
+    height: auto;
+    padding: 0;
+    &__poster {
         margin: 0;
         padding: 0;
         overflow: hidden;
     }
-    &--text {
-        position: absolute;
+    &__poster .img--sm {
+        display: inline;
+        @include media-breakpoint-up(md) {
+            display: none;
+        }
+    }    
+    &__poster .img--md {
+        display: none;
+        @include media-breakpoint-up(md) {
+            display: inline;
+        }
+        @include media-breakpoint-up(lg) {
+            display: none;
+        }
+    }    
+    &__poster .img--lg {
+        display: none;
+        @include media-breakpoint-up(lg) {
+            display: inline;
+        }
+        @include media-breakpoint-up(xl) {
+            display: none;
+        }
+    }
+    &__poster .img--xl {
+        display: none;
+        @include media-breakpoint-up(xl) {
+            display: inline;
+        }
+    }
+    &__text {
+        position: relative;
         width: 100%;
         z-index: 100;
         bottom: 0;
         background-color: rgba(0,0,0,.6);
         color: #fff;
-        padding: 1rem;
-        text-align: center;
+        padding: 0.5rem;
+        text-align: left;
+        @include media-breakpoint-up(md) {
+            position: absolute;
+            text-align: center;
+            padding: 1rem;
+        }
     }
-    &--partners {
+    &__partners {
         margin-top: $spacer;
+    }
+    @include media-breakpoint-up(md) {
+        height: 32.875rem;
+    }
+    @include media-breakpoint-up(lg) {
+    }
+    @include media-breakpoint-up(xl) {
     }
 }
 
@@ -30,7 +73,7 @@
         margin: 0.5rem 0 4rem 0;
         padding: 0 0 0.5rem 0;
         border-bottom: 1px solid #ddd;
-        font-size: ($font-size-base * 0.875);
+        font-size: $font-size-base;
     }
     &__gallery {
         max-width: 900px;

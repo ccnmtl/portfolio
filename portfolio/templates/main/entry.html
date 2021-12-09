@@ -53,18 +53,24 @@
 
 <article class="entry">
     <header class="entry-header">
-        <figure class="entry-header--poster">
-            {% image page.poster fill-1140x526-c100 as project_poster %}
-            <img src="{{project_poster.url}}" class="img-fluid" alt="Poster image for {{page.title}}">
+         <figure class="entry-header__poster">
+            {% image page.poster fill-1140x526-c100 as project_poster_xl %}
+            {% image page.poster fill-960x526-c100 as project_poster_lg %}
+            {% image page.poster fill-720x526-c100 as project_poster_md %}
+            {% image page.poster max-900x526 as project_poster_sm %}
+            <img src="{{project_poster_xl.url}}" class="img--xl" alt="Poster image for {{page.title}}">
+            <img src="{{project_poster_lg.url}}" class="img--lg" alt="Poster image for {{page.title}}">
+            <img src="{{project_poster_md.url}}" class="img--md" alt="Poster image for {{page.title}}">
+            <img src="{{project_poster_sm.url}}" class="img--sm img-fluid" alt="Poster image for {{page.title}}">
         </figure>
-        <div class="entry-header--text">
+        <div class="entry-header__text">
             <h1>{{page.title}}</h1>
-            <section class="entry-header--partners">
+            <section class="entry-header__partners">
                 {% with partners=page.partners.all %}
                     {% if partners %}
-                    <dl class="text-center m-0">
+                    <dl class="m-0">
                         <dt class="field-label">
-                        Partner{{ partners|pluralize }}
+                        Partner{{ partners|pluralize }}:
                         </dt>
                         <dd>
                             {% for partner in partners %}
@@ -142,6 +148,11 @@
 
     </section>
     {% endif %}
+<div class="d-inline-block d-sm-none bg-primary text-white">X-Small, None, <576px </div>
+<div class="d-none d-sm-inline-block d-md-none bg-secondary text-white">Small, sm, ≥576px </div>
+<div class="d-none d-md-inline-block d-lg-none bg-success text-white">Medium, md, ≥768px </div>
+<div class="d-none d-lg-inline-block d-xl-none bg-danger text-white">Large, lg, ≥992px </div>
+<div class="d-none d-xl-inline-block d-xxl-none bg-warning text-dark">Extra large, xl, ≥1200px </div>
 
     <section class="entry-section">
     {{page.description|richtext}}
