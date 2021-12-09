@@ -67,13 +67,25 @@
 }
 
 .entry-section {
-    margin: 0 9rem 3rem 9rem;
+    margin: 0 1rem 3rem 1rem;
     padding: 0;
+    @include media-breakpoint-up(md) {
+        margin: 0 4rem 3rem 4rem;
+    }
+    @include media-breakpoint-up(lg) {
+        margin: 0 7rem 3rem 7rem;
+    }
+    @include media-breakpoint-up(xl) {
+        margin: 0 9rem 3rem 9rem;
+    }
     &__metadata {
-        margin: 0.5rem 0 4rem 0;
+        margin: 0.5rem 0.5rem 4rem 0.5rem;
         padding: 0 0 0.5rem 0;
         border-bottom: 1px solid #ddd;
         font-size: $font-size-base;
+        @include media-breakpoint-up(md) {
+            margin: 0.5rem 0 4rem 0;
+        }
     }
     &__gallery {
         max-width: 900px;

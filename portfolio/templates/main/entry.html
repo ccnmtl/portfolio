@@ -87,7 +87,7 @@
     </header>
 
     <section class="entry-section entry-section__metadata row">
-        <div class="col-5 py-2 px-0">
+        <div class="col-12 col-md-5 py-2 px-0">
             {% with disciplines=page.discipline.all %}
             {% if disciplines %}
             <dl class="d-flex flex-row m-0">
@@ -110,7 +110,7 @@
             {% endif %}
             {% endwith %}
         </div>
-        <div class="col-4 py-2 px-0">
+        <div class="col-12 col-md-4 py-2 px-0">
              <dl class="d-flex flex-row m-0">
                 <dt class="pr-2 my-0">Released:</dt>
                 <dd class="pr-1 my-0">{{page.release_date|date:"F Y"}}</dd>
@@ -120,7 +120,7 @@
                 <dd class="pr-1 my-0">{{page.revision_date|date:"F Y"}}</dd>
             </dl>
         </div>
-        <div class="col-3 text-nowrap py-2 px-0">
+        <div class="col-12 col-md-3 text-nowrap py-2 px-0">
             {% if page.project_url %}
                 <a rel="nofollow noopener noreferrer" href="{{ page.project_url }}" target="_blank">
                 Visit the site
@@ -145,14 +145,8 @@
     {% if page.overview %}
     <section class="entry-section overview">
     <p>{{page.overview}}</p>            
-
     </section>
     {% endif %}
-<div class="d-inline-block d-sm-none bg-primary text-white">X-Small, None, <576px </div>
-<div class="d-none d-sm-inline-block d-md-none bg-secondary text-white">Small, sm, ≥576px </div>
-<div class="d-none d-md-inline-block d-lg-none bg-success text-white">Medium, md, ≥768px </div>
-<div class="d-none d-lg-inline-block d-xl-none bg-danger text-white">Large, lg, ≥992px </div>
-<div class="d-none d-xl-inline-block d-xxl-none bg-warning text-dark">Extra large, xl, ≥1200px </div>
 
     <section class="entry-section">
     {{page.description|richtext}}
