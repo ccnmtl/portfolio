@@ -53,18 +53,24 @@
 
 <article class="entry">
     <header class="entry-header">
-        <figure class="entry-header--poster">
-            {% image page.poster fill-1140x526-c100 as project_poster %}
-            <img src="{{project_poster.url}}" class="img-fluid" alt="Poster image for {{page.title}}">
+         <figure class="entry-header__poster">
+            {% image page.poster fill-1140x526-c100 as project_poster_xl %}
+            {% image page.poster fill-960x526-c100 as project_poster_lg %}
+            {% image page.poster fill-720x526-c100 as project_poster_md %}
+            {% image page.poster max-900x526 as project_poster_sm %}
+            <img src="{{project_poster_xl.url}}" class="img--xl" alt="Poster image for {{page.title}}">
+            <img src="{{project_poster_lg.url}}" class="img--lg" alt="Poster image for {{page.title}}">
+            <img src="{{project_poster_md.url}}" class="img--md" alt="Poster image for {{page.title}}">
+            <img src="{{project_poster_sm.url}}" class="img--sm img-fluid" alt="Poster image for {{page.title}}">
         </figure>
-        <div class="entry-header--text">
+        <div class="entry-header__text">
             <h1>{{page.title}}</h1>
-            <section class="entry-header--partners">
+            <section class="entry-header__partners">
                 {% with partners=page.partners.all %}
                     {% if partners %}
-                    <dl class="text-center m-0">
+                    <dl class="m-0">
                         <dt class="field-label">
-                        Partner{{ partners|pluralize }}
+                        Partner{{ partners|pluralize }}:
                         </dt>
                         <dd>
                             {% for partner in partners %}
@@ -81,7 +87,7 @@
     </header>
 
     <section class="entry-section entry-section__metadata row">
-        <div class="col-5 py-2 px-0">
+        <div class="col-12 col-md-5 py-2 px-0">
             {% with disciplines=page.discipline.all %}
             {% if disciplines %}
             <dl class="d-flex flex-row m-0">
@@ -104,7 +110,7 @@
             {% endif %}
             {% endwith %}
         </div>
-        <div class="col-4 py-2 px-0">
+        <div class="col-12 col-md-4 py-2 px-0">
              <dl class="d-flex flex-row m-0">
                 <dt class="pr-2 my-0">Released:</dt>
                 <dd class="pr-1 my-0">{{page.release_date|date:"F Y"}}</dd>
@@ -114,7 +120,7 @@
                 <dd class="pr-1 my-0">{{page.revision_date|date:"F Y"}}</dd>
             </dl>
         </div>
-        <div class="col-3 text-nowrap py-2 px-0">
+        <div class="col-12 col-md-3 text-nowrap py-2 px-0">
             {% if page.project_url %}
                 <a rel="nofollow noopener noreferrer" href="{{ page.project_url }}" target="_blank">
                 Visit the site
@@ -139,7 +145,6 @@
     {% if page.overview %}
     <section class="entry-section overview">
     <p>{{page.overview}}</p>            
-
     </section>
     {% endif %}
 

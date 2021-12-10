@@ -41,8 +41,12 @@ $line-height-body: ($line-height-base * 1.084) !default;
 $link-color:                #008ee0;
 $link-hover-color:          #2c6bac;
 
+$focus-border-color:        #80bdff;
+$focus-shadow:              0 0 0 0.2rem rgb(0 123 255 / 25%);
+
 $lead-font-size:            ($font-size-base * 1.5);
 $lead-font-weight:          400;
+
 
 // Carousel
 
