@@ -20,19 +20,21 @@ from portfolio.main.utils import (
 @register_snippet
 class Partner(Orderable):
 
-    name = models.CharField(max_length=255)
-    affiliation = models.CharField(max_length=255)
+    name = models.CharField(
+        max_length=255, help_text='Full name. Example: Eric Foner')
+    affiliation = models.CharField(
+        max_length=255, help_text='Faculty partner\'s department')
     short_title = models.CharField(
-        max_length=255, help_text='e.g. Professor, Librarian, Lecturer')
+        max_length=255, help_text='Example: Professor, Librarian, Lecturer')
     full_title = models.TextField(
         blank=True,
-        help_text='e.g. Dewitt Clinton Professor Emeritus of History')
+        help_text='Example: Dewitt Clinton Professor Emeritus of History')
     headshot = models.ForeignKey(
         'wagtailimages.Image',
         null=True, blank=True,
         on_delete=models.SET_NULL,
         related_name='+',
-        help_text='Dimension 300px by 300px. Format: PNG or JPG.'
+        help_text='Minimum 300px by 300px. Format: PNG or JPG.'
     )
 
     class Meta:
@@ -53,7 +55,8 @@ class Partner(Orderable):
 @register_snippet
 class Discipline(Orderable):
 
-    name = models.CharField(max_length=255)
+    name = models.CharField(
+        max_length=255, help_text='Example: Literature')
 
     class Meta:
         ordering = ['name']
@@ -187,25 +190,35 @@ class Entry(Page, TimeStampedModel):
 
     discipline = ParentalManyToManyField(
         Discipline,
-        help_text='Which discipline is this project for?',
+        help_text='Which academic discipline is this project for?',
         blank=True)
     overview = models.CharField(
-        help_text='A blurb highlighting the project\'s purpose and effort. '
-        'Think of it as an elevator pitch.',
+        help_text='A highlight of the entry\'s purpose and effort, '
+        'a tagline, or the main takeaway from the project. '
+        'Maximum 255 characters.',
         max_length=255, blank=True)
     description = RichTextField(
-        help_text='The main content of this Portfolio entry page.', blank=True)
+        help_text='The main descriptive text of this Portfolio entry page.',
+        blank=True)
     project_url = models.URLField(
-        help_text='URL of this project\'s home page.', blank=True)
-    release_date = models.DateField(help_text='Format YYYY-MM-DD')
+        help_text='URL for the project or program, at the CTL or elsewhere. '
+        'Example: https://mediathread.ctl.columbia.edu', blank=True)
+    release_date = models.DateField(
+        help_text='Format YYYY-MM-DD. '
+        'Date of project first release.')
     revision_date = models.DateField(
         blank=True, null=True,
         help_text='Format YYYY-MM-DD. '
         'This applies only to a project revision, a MOOC relaunch, '
         'or an institute rerun.')
     partners = ParentalManyToManyField(Partner, blank=True)
-    project_type = ParentalManyToManyField(ProjectType, blank=True)
-    award_type = ParentalManyToManyField(AwardType, blank=True)
+    project_type = ParentalManyToManyField(
+        ProjectType, blank=True,
+        help_text='SKIP THIS!')
+    award_type = ParentalManyToManyField(
+        AwardType, blank=True,
+        help_text='For project or program that received grants '
+        'from the Provost office.')
     feature_on_homepage = models.BooleanField(default=False)
     feature_blurb = models.CharField(
         help_text='A very short blurb on this entry for the feature carousel.',
@@ -217,7 +230,8 @@ class Entry(Page, TimeStampedModel):
         blank=True,
         on_delete=models.SET_NULL,
         related_name='+',
-        help_text='Dimension 1140px by 555px. Format: PNG or JPG.'
+        help_text='Minimum 1140px-width by 530px-height. '
+        'Format: PNG or JPG.'
     )
     thumbnail = models.ForeignKey(
         'wagtailimages.Image',
@@ -225,7 +239,9 @@ class Entry(Page, TimeStampedModel):
         blank=True,
         on_delete=models.SET_NULL,
         related_name='+',
-        help_text='Dimension 600px by 315px. Format: PNG or JPG.'
+        help_text='1200px-width by 630px-height. '
+        'Acceptable:  600px width by 315px height. '
+        'Format: PNG or JPG.'
     )
     infosheet = models.ForeignKey(
         'wagtaildocs.Document',
@@ -246,7 +262,7 @@ class Entry(Page, TimeStampedModel):
         blank=True,
         on_delete=models.SET_NULL,
         related_name='+',
-        help_text='Dimension 300px by 300px. Format: PNG or JPG.'
+        help_text='Minimum width 800px. Format: PNG or JPG.'
     )
     gallery_caption_one = models.TextField(blank=True, null=True)
 
@@ -256,7 +272,7 @@ class Entry(Page, TimeStampedModel):
         blank=True,
         on_delete=models.SET_NULL,
         related_name='+',
-        help_text='Dimension 300px by 300px. Format: PNG or JPG.'
+        help_text='Minimum width 800px. Format: PNG or JPG.'
     )
     gallery_caption_two = models.TextField(blank=True, null=True)
 
@@ -266,7 +282,7 @@ class Entry(Page, TimeStampedModel):
         blank=True,
         on_delete=models.SET_NULL,
         related_name='+',
-        help_text='Dimension 300px by 300px. Format: PNG or JPG.'
+        help_text='Minimum width 800px. Format: PNG or JPG.'
     )
     gallery_caption_three = models.TextField(blank=True, null=True)
 
