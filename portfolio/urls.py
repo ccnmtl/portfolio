@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('stats/', TemplateView.as_view(template_name="stats.html")),
     path('smoketest/', include('smoketest.urls')),
+    url(r'^_impersonate/', include('impersonate.urls')),
     path('infranil/', include('infranil.urls')),
     re_path(r'^uploads/(?P<path>.*)$',
             serve, {'document_root': settings.MEDIA_ROOT}),

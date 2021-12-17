@@ -4,6 +4,7 @@ from ccnmtlsettings.production import common
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 
+BASE_URL = 'https://portfolio.ctl.columbia.edu'
 
 locals().update(
     common(
