@@ -19,7 +19,7 @@
     "mocha": "~9.2.0",
     "requirejs": "~2.3.6",
     "sass": "^1.49.0",
-    "sinon": "~12.0.1",
+    "sinon": "~13.0.0",
     "autoprefixer": "^9.8.8",
     "nodemon": "^2.0.15",
     "postcss-cli": "^7.1.2"
