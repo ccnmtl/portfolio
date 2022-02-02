@@ -3,8 +3,7 @@ from django.urls.base import reverse
 from django.views.generic.base import TemplateView
 
 from portfolio.main.models import Entry
-from portfolio.main.utils import (
-    featured_entries_by_slot, published_entries_by_date)
+from portfolio.main.utils import featured_entries_by_slot
 
 
 class FeaturedView(TemplateView):
@@ -20,7 +19,7 @@ class FeaturedView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(FeaturedView, self).get_context_data(**kwargs)
         context['slots'] = self.initialize_slots()
-        context['entries'] = published_entries_by_date()
+        context['entries'] = Entry.objects.live().public().order_by('title')
         return context
 
     def set_featured(self, key):
