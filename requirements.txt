@@ -80,7 +80,7 @@ django-treebeard!=4.5,<5.0,>=4.2.0
 django-modelcluster<6.0,>=5.1
 
 draftjs_exporter>=2.1.5,<5.0
-wagtail<2.14
+wagtail<2.17
 djangorestframework<4.0,>=3.11.1
 django-filter>=2.2,<22.0
 Willow==1.4
