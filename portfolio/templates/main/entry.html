@@ -72,13 +72,13 @@
                         <dt class="field-label">
                         Partner{{ partners|pluralize }}:
                         </dt>
-                        <dd>
                             {% for partner in partners %}
+                            <dd class="mb-md-0">
                                 {{ partner.name }},
                                 {{ partner.short_title }},
-                                {{ partner.affiliation }}{% if not forloop.last %}<br />{% endif %}
+                                {{ partner.affiliation }}
+                            </dd>
                             {% endfor %}
-                        </dd>
                     </dl>
                     {% endif %}
                 {% endwith %}
@@ -87,10 +87,10 @@
     </header>
 
     <section class="entry-section entry-section__metadata row">
-        <div class="col-12 col-md-5 py-2 px-0">
+        <div class="col-12 col-md-5 p-0 py-md-2">
             {% with disciplines=page.discipline.all %}
             {% if disciplines %}
-            <dl class="d-flex flex-row m-0">
+            <dl class="d-flex flex-row m-0 mb-2">
                 <dt class="pr-2 my-0">Discipline{{ disciplines|pluralize }}:</dt>
                 {% for discipline in disciplines %}
                 <dd class="pr-1 my-0">{{ discipline.name }}{% if not forloop.last %},{% endif %}</dd>
@@ -101,7 +101,7 @@
 
             {% with award_types=page.award_type.all %}
             {% if award_types %}
-            <dl class="d-flex flex-row m-0">
+            <dl class="d-flex flex-row m-0 mb-2">
                 <dt class="pr-2 my-0">Provost Grant:</dt>
                 {% for award_type in award_types %}
                 <dd class="pr-1 my-0">{{ award_type.name }}{% if not forloop.last %}, {% endif %}</dd>
@@ -110,17 +110,18 @@
             {% endif %}
             {% endwith %}
         </div>
-        <div class="col-12 col-md-4 py-2 px-0">
-             <dl class="d-flex flex-row m-0">
+        <div class="col-12 col-md-4 p-0 py-md-2">
+             <dl class="d-flex flex-row m-0 mb-2">
                 <dt class="pr-2 my-0">Released:</dt>
                 <dd class="pr-1 my-0">{{page.release_date|date:"F Y"}}</dd>
             </dl>
-             <dl class="d-flex flex-row m-0">
+             <dl class="d-flex flex-row m-0 mb-2">
                 <dt class="pr-2 my-0">Updated:</dt>
                 <dd class="pr-1 my-0">{{page.revision_date|date:"F Y"}}</dd>
             </dl>
         </div>
-        <div class="col-12 col-md-3 text-nowrap py-2 px-0">
+        <div class="col-12 col-md-3 text-nowrap py-3 py-md-2 px-0">
+            <div class="py-2 py-md-0">
             {% if page.project_url %}
                 <a rel="nofollow noopener noreferrer" href="{{ page.project_url }}" target="_blank">
                 Visit the site
@@ -133,7 +134,8 @@
                 <i class="fa fa-download" aria-hidden="true"></i>
                 </a>
             {% endif %}
-            <div class="share-widget">
+            </div>
+            <div class="share-widget mt-2">
                 <span class="field-label">Share:</span>
                 <a rel="nofollow noopener noreferrer" class="share-window" href="http://www.facebook.com/share.php?u={{ page.full_url }}&title={{ page.title }}" aria-label="Share on Facebook"><i class="fa fa-facebook px-1" aria-hidden="true"></i></a>
                 <a rel="nofollow noopener noreferrer" class="share-window" href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ page.full_url }}&via=ColumbiaCTL" aria-label="Share on Twitter"><i class="fa fa-twitter px-1" aria-hidden="true"></i></a>
@@ -155,6 +157,7 @@
     {% comment %}  #### PROMOTIONAL VIDEO ####  {% endcomment %}
     {% if page.youtube_video_url %}
         <section class="entry-section entry-section__video">
+            <h2>Video: {{page.video_title}}</h2>
             <div class="video-player embed-responsive embed-responsive-16by9 d-print-none">
                 <iframe src='{{page.youtube_video_url}}' 
                     title='{{page.video_title}}'
@@ -185,45 +188,51 @@
     {% endif %}{% endif %}
 
     {% comment %}  #### Gallery image one ####  {% endcomment %}
-    {% if page.gallery_image_one %}
-    <figure class="entry-section__gallery">
-        {% image page.gallery_image_one max-920x900 as gallery_one %}
-        <img src="{{gallery_one.url}}" class="img-fluid" alt="">
-        {% if page.gallery_caption_one %}
-        <figcaption>{{ page.gallery_caption_one }}</figcaption>
-        {% endif %}
-    </figure>
-    {% endif %}
     
-    {% comment %}  #### Gallery image two ####  {% endcomment %}
-    {% if page.gallery_image_two %}
-    <figure class="entry-section__gallery">
-        {% image page.gallery_image_two max-920x900 as gallery_two %}
-        <img src="{{gallery_two.url}}" class="img-fluid" alt="">
-        {% if page.gallery_caption_two %}
-        <figcaption>{{ page.gallery_caption_two }}</figcaption>
+    <section class="entry-section entry-section__gallery">
+        {% if page.gallery_image_one or page.gallery_image_two or page.gallery_image_three %}
+        <h2>Gallery</h2>
         {% endif %}
-    </figure>
-    {% endif %}
-    
-    {% comment %}  #### Gallery image three ####  {% endcomment %}
-    {% if page.gallery_image_three %}
-    <figure class="entry-section__gallery">
-        {% image page.gallery_image_three max-920x900 as gallery_three %}
-        <img src="{{gallery_three.url}}" class="img-fluid" alt="">
-        {% if page.gallery_caption_three %}
-        <figcaption>{{ page.gallery_caption_three }}</figcaption>
+
+        {% if page.gallery_image_one %}
+        <figure>
+            {% image page.gallery_image_one max-920x900 as gallery_one %}
+            <img src="{{gallery_one.url}}" class="img-fluid" alt="">
+            {% if page.gallery_caption_one %}
+            <figcaption>{{ page.gallery_caption_one }}</figcaption>
+            {% endif %}
+        </figure>
         {% endif %}
-    </figure>
-    {% endif %}
     
+        {% comment %}  #### Gallery image two ####  {% endcomment %}
+        {% if page.gallery_image_two %}
+        <figure>
+            {% image page.gallery_image_two max-920x900 as gallery_two %}
+            <img src="{{gallery_two.url}}" class="img-fluid" alt="">
+            {% if page.gallery_caption_two %}
+            <figcaption>{{ page.gallery_caption_two }}</figcaption>
+            {% endif %}
+        </figure>
+        {% endif %}
+    
+        {% comment %}  #### Gallery image three ####  {% endcomment %}
+        {% if page.gallery_image_three %}
+        <figure>
+            {% image page.gallery_image_three max-920x900 as gallery_three %}
+            <img src="{{gallery_three.url}}" class="img-fluid" alt="">
+            {% if page.gallery_caption_three %}
+            <figcaption>{{ page.gallery_caption_three }}</figcaption>
+            {% endif %}
+        </figure>
+        {% endif %}
+    </section>
 
 
 
 
         {% with partners=page.partners.all %}
             {% if partners %}
-            <section class="entry-section">
+            <section class="entry-section mt-5">
                 <h2>Partner{{ partners|pluralize }}</h2>
                 {% for partner in partners %}
                     <div class="d-flex mb-4">
