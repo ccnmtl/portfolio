@@ -1,8 +1,8 @@
 body {
     font-family: $font-family-base;
     font-weight: $font-weight-base;
-    line-height: $line-height-body;
-    font-size: ($font-size-base * 1.125);
+    line-height: $line-height-base;
+    font-size: ($font-size-base * 1.1875);
 }
 
 a {
@@ -11,4 +11,9 @@ a {
 
 a:hover {
     color: $link-hover-color;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1.25rem;
 }
