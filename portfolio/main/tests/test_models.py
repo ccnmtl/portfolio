@@ -1,7 +1,7 @@
 from django.test import TestCase
-from portfolio.main.tests.factories import EntryFactory
-from portfolio.main.models import HomePage, VisualIndex
 from django.test.client import RequestFactory
+from portfolio.main.models import HomePage, VisualIndex
+from portfolio.main.tests.factories import EntryFactory, PartnerFactory
 
 
 class HomePageTest(TestCase):
@@ -49,6 +49,38 @@ class VisualIndexTest(TestCase):
 
         self.assertEquals(ctx['sort'], 'releasedate')
         self.assertEqual(ctx['q'], 'foo')
+        self.assertEquals(ctx['entries'].object_list.count(), 1)
+        self.assertEquals(ctx['entries'].object_list.first(), e3)
+
+    def test_get_context_search_partner(self):
+        EntryFactory(live=False, path='0002')
+        EntryFactory(path='0003')
+        e3 = EntryFactory(title='foo', path='0004')
+        e3.partners.get_original_manager().add(PartnerFactory())
+        self.assertEqual(e3.partners.first().name, 'James Moriarty')
+
+        v = VisualIndex()
+        r = RequestFactory().get('/?q=moriarty')
+
+        ctx = v.get_context(r)
+
+        self.assertEquals(ctx['sort'], 'releasedate')
+        self.assertEqual(ctx['q'], 'moriarty')
+        self.assertEquals(ctx['entries'].object_list.count(), 1)
+        self.assertEquals(ctx['entries'].object_list.first(), e3)
+
+    def test_get_context_search_description(self):
+        EntryFactory(live=False, path='0002')
+        EntryFactory(path='0003')
+        e3 = EntryFactory(title='foo', path='0004', description='baz')
+
+        v = VisualIndex()
+        r = RequestFactory().get('/?q=baz')
+
+        ctx = v.get_context(r)
+
+        self.assertEquals(ctx['sort'], 'releasedate')
+        self.assertEqual(ctx['q'], 'baz')
         self.assertEquals(ctx['entries'].object_list.count(), 1)
         self.assertEquals(ctx['entries'].object_list.first(), e3)
 
