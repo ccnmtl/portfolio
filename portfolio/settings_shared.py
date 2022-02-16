@@ -49,6 +49,7 @@ THUMBNAIL_SUBDIR = "thumbs"
 LOGIN_REDIRECT_URL = "/"
 
 WAGTAIL_SITE_NAME = 'CTL Portfolio'
+WAGTAILIMAGES_MAX_UPLOAD_SIZE = 2 * 1024 * 1024   # 2mb
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
