@@ -5,16 +5,17 @@ import re
 from django import forms
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
+from django.db.models.query_utils import Q
 from django_extensions.db.models import TimeStampedModel
 from modelcluster.fields import ParentalManyToManyField
+from portfolio.main.utils import (
+    published_entries_by_date, featured_entries_by_slot)
 from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
 from wagtail.core.fields import RichTextField
 from wagtail.core.models import Page, Orderable
 from wagtail.documents.edit_handlers import DocumentChooserPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.models import register_snippet
-from portfolio.main.utils import (
-    published_entries_by_date, featured_entries_by_slot)
 
 
 @register_snippet
@@ -133,7 +134,9 @@ class VisualIndex(Page):
 
         q = request.GET.get('q', '')
         if q:
-            entries = entries.filter(title__icontains=q)
+            entries = entries.filter(
+                Q(title__icontains=q) | Q(description__icontains=q) |
+                Q(partners__name__icontains=q)).distinct()
 
         entries = entries.order_by(sort_order)
 
