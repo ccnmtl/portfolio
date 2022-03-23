@@ -90,21 +90,23 @@
     {% include "main/includes/header_institution.html" %}
 
 
-    <header class="container p-0">
-        <nav class="navbar navbar-global">
-            <a class="navbar-brand bg-light text-dark p-2" href="/" title="Go to Portfolio home">CTL PORTFOLIO LOGO</a>
-            <ul class="nav ml-auto mr-3">
-                <li class="nav-item mr-3">
-                    <a class="nav-link" href="/our-work/">Our Work</a>
-                </li>
-                <li class="nav-item mr-3">
-                    <a class="nav-link" href="/about/">About</a>
-                </li>
-            </ul>
-            <form class="form-inline" action="/our-work/">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q" />
-                <input type="submit" style="display: none" />
-            </form>
+    <header class="container p-0 py-3 px-0">
+        <nav class="navbar-global">
+            <a class="navbar-brand bg-light text-dark" href="/" title="Go to Portfolio home">CTL PORTFOLIO LOGO</a>
+            <div class="nav-menu d-flex">
+                <ul class="nav mr-3">
+                    <li class="nav-item mr-3">
+                        <a class="nav-link" href="/our-work/">Our Work</a>
+                    </li>
+                    <li class="nav-item mr-3">
+                        <a class="nav-link" href="/about/">About</a>
+                    </li>
+                </ul>
+                <form class="form-inline" action="/our-work/">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search Portfolio" aria-label="Search" name="q" />
+                    <input type="submit" style="display: none" />
+                </form>
+            </div>
         </nav>
     </header>
 
