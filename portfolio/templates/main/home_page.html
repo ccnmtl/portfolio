@@ -14,7 +14,7 @@
             <div class="row">
                 {% for featured_entry in featured_entries %}
                     {% image featured_entry.poster original as featured_entry_photo %}
-                    <div class="col portfolio-feature__slot" style="background-image: url('{{featured_entry_photo.url}}')">
+                    <div class="col-12 col-lg portfolio-feature__slot" style="background-image: url('{{featured_entry_photo.url}}')">
                         <div class="portfolio-feature__info">
                             <div class="portfolio-feature__text">
                                 <h3 class="portfolio-feature__title">{{featured_entry.title}}</h3>
@@ -32,6 +32,13 @@
     {% endwith %}
         
         <section class="intro-blurb">
+
+    <p class="h3 d-block d-sm-none">XS, kitten cat, <576px </p>
+    <p class="h3 d-none d-sm-block d-md-none">SM, smol cat, ≥576px </p>
+    <p class="h3 d-none d-md-block d-lg-none">MD, medium cat, ≥768px </p>
+    <p class="h3 d-none d-lg-block d-xl-none">LG, chonky cat, ≥992px </p>
+    <p class="h3 d-none d-xl-block">XL, hefty chonky cat, ≥1200px </p>
+
             {{ page.body|richtext }}
         </section>
 
