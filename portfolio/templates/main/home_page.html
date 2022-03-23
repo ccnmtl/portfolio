@@ -5,6 +5,8 @@
 
 {% block title %}{{ page.title }}{% endblock %}
 
+{% block page_class %}homepage{% endblock %}
+
 {% block content %}
 {% wagtailuserbar %}
     {% with featured_entries=page.featured_entries %}
@@ -32,13 +34,6 @@
     {% endwith %}
         
         <section class="intro-blurb">
-
-    <p class="h3 d-block d-sm-none">XS, kitten cat, <576px </p>
-    <p class="h3 d-none d-sm-block d-md-none">SM, smol cat, ≥576px </p>
-    <p class="h3 d-none d-md-block d-lg-none">MD, medium cat, ≥768px </p>
-    <p class="h3 d-none d-lg-block d-xl-none">LG, chonky cat, ≥992px </p>
-    <p class="h3 d-none d-xl-block">XL, hefty chonky cat, ≥1200px </p>
-
             {{ page.body|richtext }}
         </section>
 
@@ -48,7 +43,7 @@
             <div class="row">
                 {% for entry in page.entries %}
                 <div class="col-md-6 col-lg-4">
-                    <div class="card mb-4 border-0">
+                    <div class="card mb-4 border-0 px-2">
                         <a href="{% pageurl entry %}">
                         {% if entry.thumbnail %}
                         {% image entry.thumbnail original class="entry-thumbnail card-img-top img-fluid" aria-hidden="true" alt="" %}
@@ -58,7 +53,9 @@
                         </a>
                         <div class="card-body px-0 py-3 px-sm-3">
                             <h5 class="card-title"><a href="{% pageurl entry %}">{{entry.title}}</a></h5>
-                            <p class="card-text">Entry search description TBD</p>
+                            {% if entry.search_description %}
+                                <p class="card-text">{{entry.search_description}}</p>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

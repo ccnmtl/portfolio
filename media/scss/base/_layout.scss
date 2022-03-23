@@ -33,9 +33,17 @@
         border: 1px solid transparent;
         border-radius: 0.25rem;
     }
+    .ctl-nav {
+        margin-left: auto;
+        margin-right: auto;
+    }
     @include media-breakpoint-up(md) {
         .navbar-nav {
             margin-left: -$spacer;
+            margin-right: -$spacer;
+        }
+        .ctl-nav {
+            margin-left: auto;
             margin-right: -$spacer;
         }
     }
@@ -142,10 +150,10 @@
 }
 
 .intro-blurb {
-    width: 100%;
-    margin: 2em auto;
+    margin: 3em 1rem;
     @include media-breakpoint-up(md) {
         width: 90%;
+        margin: 3em auto;
     }
     @include media-breakpoint-up(lg) {
         width: 70%;
@@ -207,6 +215,10 @@
 
 .ctl-info {
     background-color: #222;
+    padding: 2rem 0.5rem;
+    @include media-breakpoint-up(lg) {
+        padding: 3rem 0.5rem;
+    }
 }
 
 .portfolio-cards {

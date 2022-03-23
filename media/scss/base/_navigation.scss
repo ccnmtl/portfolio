@@ -28,7 +28,7 @@
     }
     .nav-menu {
         margin: 0.5rem 0;
-        padding: 0.375rem 0.5rem;
+        padding: 0.5rem 0.5rem;
         border-top: 1px solid #ccc;
         @include media-breakpoint-up(md) {
             margin: 0 0 0 auto;
@@ -48,13 +48,21 @@
 
 .navbar-brand {
     display: block;
-    width: 13.5rem;
     height: 3.125rem;
-    padding: 1rem;
-    border: 1px solid #ccc;
+    padding: 0;
     font-size: 1rem;
-    margin: 0 auto;
+    margin: 0 auto 0.5rem auto;
+    img {
+        height: 100%;
+    }
     @include media-breakpoint-up(md) {
         margin: 0 1rem 0 0;
+    }    
+}
+
+.homepage .navbar-brand {
+    height: 3.125rem;
+    @include media-breakpoint-up(md) {
+        height: 5.125rem;
     }    
 }

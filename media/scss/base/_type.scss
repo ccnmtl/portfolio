@@ -121,14 +121,20 @@ h1 {
 
 .portfolio-cards {
     h2 {
-        font-size: ($font-size-base * 2.875);
+        font-size: ($font-size-base * 2.275);
         font-weight: 400;
         text-align: center;
+        @include media-breakpoint-up(md) {
+            font-size: ($font-size-base * 2.875);
+        }
     }
     .card-title {
-        font-size: ($font-size-base * 1);
+        font-size: ($font-size-base * 1.1875);
         font-weight: 500;
         line-height: 1.4;
+    }
+    .card-text {
+        font-size: ($font-size-base * 1.0625);
     }
     .link-to-all, .link-to-all a {
         font-weight: 500;
