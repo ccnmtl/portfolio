@@ -4,30 +4,31 @@
 {% load wagtailuserbar %}
 {% block title %}{{ page.title }}{% endblock %}
 
+{% block page_class %}visualindex{% endblock %}
+
 
 {% block content %}
 {% wagtailuserbar %}
 
     <h1 class="page-title">{{ page.title }}</h1>
 
-        <div class="d-flex flex-column flex-sm-row sort-menu">
+        <div class="d-flex flex-column flex-md-row sort-menu">
             <div class="d-flex flex-column flex-sm-row">
-            <h3>Search:</h3>
                 <form action='.?/sort={{sort}}'>
                     <div class="input-group mb-3">
-                      <input name="q" type="text" class="form-control" aria-label="Search entries by title"
+                      <input name="q" type="text" class="form-control search-box" aria-label="Search CTL Portfolio" placeholder="Search Portfolio"
                         aria-describedby="search-entries" {% if q %}value="{{q}}"{% endif %}>
                       <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="submit" id="search-entries">
+                        <button class="btn btn-primary btn-search-box" type="submit" id="search-entries">
                             Go
                         </button>
                       </div>
                     </div>
                 </form>
             </div>
-            <div class="d-flex flex-column flex-sm-row">
+            <div class="d-flex flex-row">
             <h3>Sort by:</h3>
-                <ul class="nav d-flex flex-column flex-sm-row">
+                <ul class="nav d-flex flex-row">
                     <li class="nav-item
                     {% if sort == 'releasedate' %}
                     active
@@ -45,7 +46,7 @@
                 </ul>
             </div>
             <div class="ml-auto p-2 pt-3 pt-sm-2">
-                <a href="/index-listing/" class="align-middle"><i class="fa fa-list" aria-hidden="true"></i> Textual index</a>
+                <a href="/index-listing/" class="align-middle"><i class="fa fa-list mr-2" aria-hidden="true"></i> View textual index</a>
             </div>
         </div>
 
@@ -55,8 +56,8 @@
             <div class="row">
                 {% for post in entries %}
                     {% with post=post.specific %}
-                <div class="col-md-6 col-lg-4">
-                    <div class="card mb-4 border-0">
+                <div class="col-md-6 col-lg-4 mb-3">
+                    <div class="card mb-4 border-0 px-2">
                         <a href="{% pageurl post %}">
                         {% if post.thumbnail %}
                         {% image post.thumbnail original class="entry-thumbnail card-img-top img-fluid" aria-hidden="true" alt="" %}
@@ -66,7 +67,9 @@
                         </a>
                         <div class="card-body px-0 py-3 px-sm-3">
                             <h5 class="card-title"><a href="{% pageurl post %}">{{post.title}}</a></h5>
-                            <p class="card-text">Entry search description TBD</p>
+                            {% if post.search_description %}
+                                <p class="card-text">{{post.search_description}}</p>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

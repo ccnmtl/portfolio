@@ -4,12 +4,11 @@ h1 {
     line-height: 1.4;
     margin: 0;
     padding: 0;
-    text-align: left;
+    text-align: center;
     @include media-breakpoint-up(md) {
         padding-left: 1rem;
         padding-right: 1rem;
         font-size: 1.75rem;
-        text-align: center;
     }
     @include media-breakpoint-up(lg) {
     }
