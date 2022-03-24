@@ -7,12 +7,12 @@
     padding: 0;
     align-items: center;
     justify-content: space-between;
-    @include media-breakpoint-up(md) {
+    @include media-breakpoint-up(lg) {
         flex-direction: row;
     }
     .nav {
         flex-wrap: nowrap;
-        @include media-breakpoint-up(md) {
+        @include media-breakpoint-up(lg) {
             flex-wrap: wrap;
         }
     }
@@ -30,12 +30,18 @@
         margin: 0.5rem 0;
         padding: 0.5rem 0.5rem;
         border-top: 1px solid #ccc;
+        width: 100%;
+        justify-content: center;
         @include media-breakpoint-up(md) {
+            justify-content: space-between;
+        }
+        @include media-breakpoint-up(lg) {
             margin: 0 0 0 auto;
             padding: 0;
             border: 0;
+            width: auto;
+            justify-content: end;
         }
-
     }
     .form-control {
         font-size: ($font-size-base);
@@ -46,23 +52,31 @@
     }
 }
 
+.visualindex .nav-menu {
+    justify-content: center;
+    @include media-breakpoint-up(lg) {
+        justify-content: end;
+    }
+}
+
+
 .navbar-brand {
     display: block;
-    height: 3.125rem;
+    height: 3.5rem;
     padding: 0;
     font-size: 1rem;
     margin: 0 auto 0.5rem auto;
     img {
         height: 100%;
     }
-    @include media-breakpoint-up(md) {
+    @include media-breakpoint-up(lg) {
         margin: 0 1rem 0 0;
     }    
 }
 
 .homepage .navbar-brand {
-    height: 3.125rem;
+    height: 4rem;
     @include media-breakpoint-up(md) {
-        height: 5.125rem;
+        height: 6rem;
     }    
 }

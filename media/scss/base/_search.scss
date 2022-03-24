@@ -1,0 +1,19 @@
+.search-box {
+    border: none;
+    padding-left: 1.75rem;
+    border-bottom: 1px solid #008ee0;
+    border-radius: 0;
+    background: #fff url(/media/img/icon-search.svg) left center no-repeat;
+    background-size: 1.25rem;
+}
+
+.btn-search-box {
+    height: 3.125rem;
+    width: 3.125rem;
+    border-radius: 50% !important;
+    background-color: #008ee0;
+}
+
+.visualindex .portfolio-search {
+    display: none;
+}

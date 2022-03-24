@@ -4,38 +4,40 @@
 {% load wagtailuserbar %}
 {% block title %}{{ page.title }}{% endblock %}
 
+{% block page_class %}visualindex{% endblock %}
+
 
 {% block content %}
 {% wagtailuserbar %}
 
     <h1 class="page-title">{{ page.title }}</h1>
 
-        <div class="d-flex flex-column flex-sm-row sort-menu">
-            <div class="d-flex flex-column flex-sm-row">
-            <h3>Search:</h3>
+    <div class="sort-menu d-flex flex-column flex-lg-row justify-content-between">
+        <div class="d-flex flex-column flex-md-row">
+            <div class="mr-0 mr-md-5">
                 <form action='.?/sort={{sort}}'>
-                    <div class="input-group mb-3">
-                      <input name="q" type="text" class="form-control" aria-label="Search entries by title"
+                    <div class="input-group">
+                      <input name="q" type="text" class="form-control search-box" aria-label="Search CTL Portfolio" placeholder="Search Portfolio"
                         aria-describedby="search-entries" {% if q %}value="{{q}}"{% endif %}>
                       <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="submit" id="search-entries">
+                        <button class="btn btn-primary btn-search-box" type="submit" id="search-entries">
                             Go
                         </button>
                       </div>
                     </div>
                 </form>
             </div>
-            <div class="d-flex flex-column flex-sm-row">
-            <h3>Sort by:</h3>
-                <ul class="nav d-flex flex-column flex-sm-row">
-                    <li class="nav-item
+            <div class="d-flex flex-row mt-2 mt-md-0">
+                <div class="sort-by-label">Sort by:</div>
+                <ul class="nav d-flex flex-row">
+                    <li class="nav-item align-self-center
                     {% if sort == 'releasedate' %}
                     active
                     {% endif %}
                     ">
                     <a class="nav-link" href="/{{ page.slug }}/?sort=releasedate&q={{q}}">Release date </a>
                     </li>
-                    <li class="nav-item
+                    <li class="nav-item align-self-center
                     {% if sort != 'releasedate' %}
                     active
                     {% endif %}
@@ -44,10 +46,12 @@
                     </li>
                 </ul>
             </div>
-            <div class="ml-auto p-2 pt-3 pt-sm-2">
-                <a href="/index-listing/" class="align-middle"><i class="fa fa-list" aria-hidden="true"></i> Textual index</a>
-            </div>
         </div>
+        <div class="align-self-start align-self-lg-center mt-5 mt-lg-0">
+            <a href="/index-listing/" class="align-middle"><i class="fa fa-list mr-2" aria-hidden="true"></i> View textual index</a>
+        </div>
+        
+    </div>
 
 
         {% if entries %}
@@ -55,8 +59,8 @@
             <div class="row">
                 {% for post in entries %}
                     {% with post=post.specific %}
-                <div class="col-md-6 col-lg-4">
-                    <div class="card mb-4 border-0">
+                <div class="col-md-6 col-lg-4 mb-3">
+                    <div class="card mb-4 border-0 px-2">
                         <a href="{% pageurl post %}">
                         {% if post.thumbnail %}
                         {% image post.thumbnail original class="entry-thumbnail card-img-top img-fluid" aria-hidden="true" alt="" %}
@@ -66,7 +70,9 @@
                         </a>
                         <div class="card-body px-0 py-3 px-sm-3">
                             <h5 class="card-title"><a href="{% pageurl post %}">{{post.title}}</a></h5>
-                            <p class="card-text">Entry search description TBD</p>
+                            {% if post.search_description %}
+                                <p class="card-text">{{post.search_description}}</p>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
