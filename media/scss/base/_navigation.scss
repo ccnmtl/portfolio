@@ -42,7 +42,6 @@
             width: auto;
             justify-content: end;
         }
-
     }
     .form-control {
         font-size: ($font-size-base);
@@ -52,6 +51,14 @@
         }
     }
 }
+
+.visualindex .nav-menu {
+    justify-content: center;
+    @include media-breakpoint-up(lg) {
+        justify-content: end;
+    }
+}
+
 
 .navbar-brand {
     display: block;

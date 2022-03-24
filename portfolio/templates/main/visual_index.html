@@ -12,10 +12,11 @@
 
     <h1 class="page-title">{{ page.title }}</h1>
 
-        <div class="d-flex flex-column flex-md-row sort-menu">
-            <div class="d-flex flex-column flex-sm-row">
+    <div class="sort-menu d-flex flex-column flex-lg-row justify-content-between">
+        <div class="d-flex flex-column flex-md-row">
+            <div class="mr-0 mr-md-5">
                 <form action='.?/sort={{sort}}'>
-                    <div class="input-group mb-3">
+                    <div class="input-group">
                       <input name="q" type="text" class="form-control search-box" aria-label="Search CTL Portfolio" placeholder="Search Portfolio"
                         aria-describedby="search-entries" {% if q %}value="{{q}}"{% endif %}>
                       <div class="input-group-append">
@@ -26,17 +27,17 @@
                     </div>
                 </form>
             </div>
-            <div class="d-flex flex-row">
-            <h3>Sort by:</h3>
+            <div class="d-flex flex-row mt-2 mt-md-0">
+                <div class="sort-by-label">Sort by:</div>
                 <ul class="nav d-flex flex-row">
-                    <li class="nav-item
+                    <li class="nav-item align-self-center
                     {% if sort == 'releasedate' %}
                     active
                     {% endif %}
                     ">
                     <a class="nav-link" href="/{{ page.slug }}/?sort=releasedate&q={{q}}">Release date </a>
                     </li>
-                    <li class="nav-item
+                    <li class="nav-item align-self-center
                     {% if sort != 'releasedate' %}
                     active
                     {% endif %}
@@ -45,10 +46,12 @@
                     </li>
                 </ul>
             </div>
-            <div class="ml-auto p-2 pt-3 pt-sm-2">
-                <a href="/index-listing/" class="align-middle"><i class="fa fa-list mr-2" aria-hidden="true"></i> View textual index</a>
-            </div>
         </div>
+        <div class="align-self-start align-self-lg-center mt-5 mt-lg-0">
+            <a href="/index-listing/" class="align-middle"><i class="fa fa-list mr-2" aria-hidden="true"></i> View textual index</a>
+        </div>
+        
+    </div>
 
 
         {% if entries %}
