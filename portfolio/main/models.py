@@ -141,7 +141,7 @@ class VisualIndex(Page):
         entries = entries.order_by(sort_order)
 
         # Pagination
-        per_page = 9
+        per_page = 10
         page = request.GET.get('page')
         paginator = Paginator(entries, per_page)
         try:
