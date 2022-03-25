@@ -8,6 +8,9 @@
         padding: 0;
         overflow: hidden;
     }
+    &__poster img {
+        border: 1px solid #ccc;
+    }
     &__poster .img--sm {
         display: inline;
         @include media-breakpoint-up(md) {
@@ -89,17 +92,26 @@
             margin: 0.5rem 0 4rem 0;
         }
     }
+    &__description {
+        p {
+            font-size: 1.2rem;
+            line-height: 1.525;
+        }
+    }
     &__gallery {
         max-width: 900px;
-        margin: 0 auto 3rem auto;
+        margin: 4rem auto 3rem auto;
         @include media-breakpoint-up(md) {
-            margin-top: 5rem;
+            margin-top: 6rem;
         }
         figure {
             display: table;
-            margin: 0 auto 3rem auto;
+            margin: 0 auto 4rem auto;
+            img {
+                border: 1px solid #ccc;
+            }
             figcaption {
-                font-size: ($font-size-base * 0.875);
+                font-size: ($font-size-base * 1.1);
                 color: #333;
                 margin: 0.5rem;
                     @include media-breakpoint-up(md) {
@@ -110,9 +122,15 @@
     }
     &__video {
         max-width: 900px;
-        margin: 0 auto 3rem auto;
+        margin: 4rem auto 3rem auto;
         @include media-breakpoint-up(md) {
-            margin-top: 5rem;
+            margin-top: 6rem;
+        }
+    }
+    &__partners {
+        margin-top: 4rem;
+        @include media-breakpoint-up(md) {
+            margin-top: 6rem;
         }
     }
 }
@@ -126,6 +144,13 @@
         }
     }
 
+.video-title {
+    color: #333;
+    margin: 0.5rem;
+        @include media-breakpoint-up(md) {
+            margin: 0.5rem 0;
+        }
+    }
 
 
 .body-entry {
