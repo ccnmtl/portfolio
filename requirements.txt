@@ -31,7 +31,7 @@ pyasn1==0.4.8
 pyOpenSSL==22.0.0
 ndg-httpsclient==0.5.1
 requests==2.27.0
-logilab-common==1.8.1
+logilab-common==1.9.2
 astroid==2.11.0
 pylint==2.13.0
 six==1.16.0
