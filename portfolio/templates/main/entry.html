@@ -150,14 +150,14 @@
     </section>
     {% endif %}
 
-    <section class="entry-section">
+    <section class="entry-section entry-section__description">
     {{page.description|richtext}}
     </section>
 
     {% comment %}  #### PROMOTIONAL VIDEO ####  {% endcomment %}
     {% if page.youtube_video_url %}
         <section class="entry-section entry-section__video">
-            <h2>Video: {{page.video_title}}</h2>
+            <h2>Video</h2>
             <div class="video-player embed-responsive embed-responsive-16by9 d-print-none">
                 <iframe src='{{page.youtube_video_url}}' 
                     title='{{page.video_title}}'
@@ -166,6 +166,7 @@
                     class="embed-responsive-item">
                 </iframe>
             </div>
+            <p class="video-title">{{page.video_title}}</p>
             <p class="video-attribution d-print-none"> Source: Columbia University</p>
             <div class="d-none d-print-block print-alert">
                 <p>
@@ -232,10 +233,10 @@
 
         {% with partners=page.partners.all %}
             {% if partners %}
-            <section class="entry-section mt-5">
+            <section class="entry-section entry-section__partners">
                 <h2>Partner{{ partners|pluralize }}</h2>
                 {% for partner in partners %}
-                    <div class="d-flex mb-4">
+                    <div class="d-flex mb-5">
                         <div class="img-avatar">
                         {% if partner.headshot %}
                             {% image partner.headshot fill-200x200-c50 as partner_avatar %}

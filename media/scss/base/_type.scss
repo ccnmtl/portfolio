@@ -44,14 +44,17 @@ h1 {
 
 .entry-section {
     h2 {
-        font-size: ($font-size-base * 1.25);
-        font-weight: $font-weight-medium;
+        font-size: ($font-size-base * 1.75);
+        font-weight: $font-weight-regular;
         text-transform: uppercase;
         line-height: 1.3;
         margin: 1rem 0 2rem 0;
         padding: 0 0 0.5rem 0;
         text-align: center;
-        border-bottom: 1px solid #ddd;
+        border-bottom: 1px solid #008ee0;
+        @include media-breakpoint-up(md) {
+            font-size: ($font-size-base * 2);
+        }
     }
 }
 
@@ -65,7 +68,6 @@ h1 {
 
 .partner_name {
     font-weight: $font-weight-medium;
-    font-size: ($font-size-base * 1);
 }
 
 
