@@ -41,7 +41,12 @@
 	.ctl-info {
 	    page-break-inside: avoid !important;
 	}
-	img {
+	.entry-section__partner,
+	img,
+	.entry-section__gallery figure img,
+	.img-avatar__image {
+        page-break-before: auto !important;
+        page-break-after: auto !important;
 	    page-break-inside: avoid !important;
 	}
 }

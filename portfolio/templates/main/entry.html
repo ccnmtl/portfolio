@@ -236,7 +236,7 @@
             <section class="entry-section entry-section__partners">
                 <h2>Partner{{ partners|pluralize }}</h2>
                 {% for partner in partners %}
-                    <div class="d-flex mb-5">
+                    <div class="d-flex mb-5 entry-section__partner">
                         <div class="img-avatar">
                         {% if partner.headshot %}
                             {% image partner.headshot fill-200x200-c50 as partner_avatar %}
