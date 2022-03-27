@@ -1,10 +1,26 @@
 @media print {
+    #header-institution {
+        display: none;
+        visibility: hidden;
+    }
+    #cu-privacy-notice {
+        display: none !important;
+        visibility: hidden !important;
+    }
     a {
-        color: #000;
+        color: #000 !important;
         text-decoration: none !important;
+    }
+    .navbar-global {
+        justify-content: center;
+        border-bottom: 1px solid #e0e0e0;
     }
     #logo-portfolio {
         justify-content: center;
+    }
+    .nav-menu {
+        display: none !important;
+        visibility: hidden !important;
     }
 	.entry-toolbar {
 	    .share-widget,
@@ -18,15 +34,14 @@
 	}
 	footer {
 	    border-top: 1px solid #ccc;
-	}
-	.getintouch {
-	    a::after {
-	        content:":\A " attr(href) " ";
-	        white-space: pre;
+	    * {
+	        color: #000 !important;
 	    }
-	    page-break-inside: avoid !important;
 	}
 	.ctl-info {
+	    page-break-inside: avoid !important;
+	}
+	img {
 	    page-break-inside: avoid !important;
 	}
 }
