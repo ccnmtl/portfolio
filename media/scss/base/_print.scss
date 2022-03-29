@@ -49,4 +49,27 @@
         page-break-after: auto !important;
 	    page-break-inside: avoid !important;
 	}
+    .entry-header {
+        height: 32.875rem;
+        &__poster .img--sm,
+        &__poster .img--md,
+        &__poster .img--lg {
+            display: none;
+            visibility: hidden;
+        }
+        &__poster .img--xl {
+            display: inline !important;
+            max-width: 100% !important;
+            height: auto !important;
+        }
+        &__text {
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+                position: absolute;
+                text-align: center;
+                padding: 1rem;
+                color: #fff;
+                background-color: rgba(0,0,0,.6);
+        }
+    }
 }
