@@ -7,19 +7,21 @@ from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
 from django.db.models.query_utils import Q
 from django_extensions.db.models import TimeStampedModel
-from modelcluster.fields import ParentalManyToManyField
+from modelcluster.fields import ParentalManyToManyField, ParentalKey
 from portfolio.main.utils import (
     published_entries_by_date, featured_entries_by_slot)
 from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
+from wagtail.admin.edit_handlers import InlinePanel
 from wagtail.core.fields import RichTextField
 from wagtail.core.models import Page, Orderable
 from wagtail.documents.edit_handlers import DocumentChooserPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.snippets.models import register_snippet
 
 
 @register_snippet
-class Partner(Orderable):
+class Partner(models.Model):
 
     name = models.CharField(
         max_length=255, help_text='Full name. Example: Eric Foner')
@@ -51,6 +53,20 @@ class Partner(Orderable):
         FieldPanel('affiliation'),
         ImageChooserPanel('headshot')
     ]
+
+
+class OrderedPartnerSnippet(Orderable):
+    page = ParentalKey('Entry', on_delete=models.CASCADE,
+                       related_name='ordered_partners')
+    partner = models.ForeignKey(
+        'Partner', on_delete=models.CASCADE, related_name='partner')
+
+    panels = [
+        SnippetChooserPanel('partner'),
+    ]
+
+    class Meta:
+        unique_together = ('page', 'partner')
 
 
 @register_snippet
@@ -298,6 +314,12 @@ class Entry(Page, TimeStampedModel):
         FieldPanel('release_date'),
         FieldPanel('revision_date'),
         FieldPanel('partners', widget=forms.SelectMultiple),
+        MultiFieldPanel(
+            [
+                InlinePanel("ordered_partners", label="Partners")
+            ],
+            heading="Partners"
+        ),
         FieldPanel('project_type'),
         FieldPanel('award_type'),
         FieldPanel('discipline', widget=forms.SelectMultiple),
@@ -337,7 +359,7 @@ class Entry(Page, TimeStampedModel):
                 FieldPanel('gallery_caption_three')
             ],
             heading='Third Gallery Image'
-        ),
+        )
     ]
 
     promote_panels = [
