@@ -66,18 +66,20 @@
         <div class="entry-header__text">
             <h1>{{page.title}}</h1>
             <section class="entry-header__partners">
-                {% with partners=page.partners.all %}
+                {% with partners=page.ordered_partners.all %}
                     {% if partners %}
                     <dl class="m-0">
                         <dt class="field-label">
                         Partner{{ partners|pluralize }}:
                         </dt>
-                            {% for partner in partners %}
-                            <dd class="mb-md-0">
-                                {{ partner.name }},
-                                {{ partner.short_title }},
-                                {{ partner.affiliation }}
-                            </dd>
+                            {% for x in partners %}
+                                {% with partner=x.partner %}
+                                <dd class="mb-md-0">
+                                    {{ partner.name }},
+                                    {{ partner.short_title }},
+                                    {{ partner.affiliation }}
+                                </dd>
+                                {% endwith %}
                             {% endfor %}
                     </dl>
                     {% endif %}
@@ -228,37 +230,36 @@
         {% endif %}
     </section>
 
-
-
-
-        {% with partners=page.partners.all %}
-            {% if partners %}
-            <section class="entry-section entry-section__partners">
-                <h2>Partner{{ partners|pluralize }}</h2>
-                {% for partner in partners %}
-                    <div class="d-flex mb-5">
-                        <div class="img-avatar">
-                        {% if partner.headshot %}
-                            {% image partner.headshot fill-200x200-c50 as partner_avatar %}
-                            <img src="{{partner_avatar.url}}" class="img-avatar__image" alt="Poster image for {{partner.name}}">
-                        {% else %}
-                            <img src="{{STATIC_URL}}img/headshot-none.png" class="img-avatar__image" alt="">
-                        {% endif %}
-                        </div>
-                        <div class="partner-info">
-                            <div class="partner_name">{{ partner.name }}</div>
-                            {% if partner.full_title %}
-                                {{ partner.full_title }}<br />
-                            {% else %}
-                                {{ partner.short_title }}<br />
-                            {% endif %}
-                        {{ partner.affiliation }}
-                        </div>
+    {% with partners=page.ordered_partners.all %}
+        {% if partners %}
+        <section class="entry-section entry-section__partners">
+            <h2>Partner{{ partners|pluralize }}</h2>
+            {% for obj in partners %}
+                {% with partner=obj.partner %}
+                <div class="d-flex mb-5">
+                    <div class="img-avatar">
+                    {% if partner.headshot %}
+                        {% image partner.headshot fill-200x200-c50 as partner_avatar %}
+                        <img src="{{partner_avatar.url}}" class="img-avatar__image" alt="Poster image for {{partner.name}}">
+                    {% else %}
+                        <img src="{{STATIC_URL}}img/headshot-none.png" class="img-avatar__image" alt="">
+                    {% endif %}
                     </div>
-                {% endfor %}
-            </section>
-            {% endif %}
-        {% endwith %}
+                    <div class="partner-info">
+                        <div class="partner_name">{{ partner.name }}</div>
+                        {% if partner.full_title %}
+                            {{ partner.full_title }}<br />
+                        {% else %}
+                            {{ partner.short_title }}<br />
+                        {% endif %}
+                    {{ partner.affiliation }}
+                    </div>
+                </div>
+                {% endwith %}
+            {% endfor %}
+        </section>
+        {% endif %}
+    {% endwith %}
 </article>
 
 {% endblock %}

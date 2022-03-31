@@ -66,7 +66,9 @@ class OrderedPartnerSnippet(Orderable):
     ]
 
     class Meta:
-        unique_together = ('page', 'partner')
+        # unique_together = ('page', 'partner')
+        # ordering is not automatically inherited from Orderable
+        ordering = ['sort_order']
 
 
 @register_snippet
@@ -152,7 +154,7 @@ class VisualIndex(Page):
         if q:
             entries = entries.filter(
                 Q(title__icontains=q) | Q(description__icontains=q) |
-                Q(partners__name__icontains=q)).distinct()
+                Q(ordered_partners__partner__name__icontains=q)).distinct()
 
         entries = entries.order_by(sort_order)
 
@@ -230,7 +232,6 @@ class Entry(Page, TimeStampedModel):
         help_text='Format YYYY-MM-DD. '
         'This applies only to a project revision, a MOOC relaunch, '
         'or an institute rerun.')
-    partners = ParentalManyToManyField(Partner, blank=True)
     project_type = ParentalManyToManyField(
         ProjectType, blank=True,
         help_text='SKIP THIS!')
@@ -313,7 +314,6 @@ class Entry(Page, TimeStampedModel):
         FieldPanel('description', classname="full"),
         FieldPanel('release_date'),
         FieldPanel('revision_date'),
-        FieldPanel('partners', widget=forms.SelectMultiple),
         MultiFieldPanel(
             [
                 InlinePanel("ordered_partners", label="Partners")
