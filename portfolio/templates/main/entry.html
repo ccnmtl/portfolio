@@ -87,7 +87,7 @@
     </header>
 
     <section class="entry-section entry-section__metadata row">
-        <div class="col-12 col-md-5 p-0 py-md-2">
+        <div class="col-12 col-md-5 p-0 py-md-2 entry__type">
             {% with disciplines=page.discipline.all %}
             {% if disciplines %}
             <dl class="d-flex flex-row m-0 mb-2">
@@ -110,7 +110,7 @@
             {% endif %}
             {% endwith %}
         </div>
-        <div class="col-12 col-md-4 p-0 py-md-2">
+        <div class="col-12 col-md-4 p-0 py-md-2 entry__dates">
              <dl class="d-flex flex-row m-0 mb-2">
                 <dt class="pr-2 my-0">Released:</dt>
                 <dd class="pr-1 my-0">{{page.release_date|date:"F Y"}}</dd>
@@ -120,7 +120,7 @@
                 <dd class="pr-1 my-0">{{page.revision_date|date:"F Y"}}</dd>
             </dl>
         </div>
-        <div class="col-12 col-md-3 text-nowrap py-3 py-md-2 px-0">
+        <div class="col-12 col-md-3 text-nowrap py-3 py-md-2 px-0 entry__links">
             <div class="py-2 py-md-0">
             {% if page.project_url %}
                 <a rel="nofollow noopener noreferrer" href="{{ page.project_url }}" target="_blank">
@@ -129,10 +129,12 @@
                 </a>
             {% endif %}
             {% if page.infosheet %}
+                <span class="entry-infosheet">
                 | <a rel="nofollow noopener noreferrer" href="{{ page.infosheet.url }}" target="_blank">
                 Infosheet 
                 <i class="fa fa-download" aria-hidden="true"></i>
                 </a>
+                </span>
             {% endif %}
             </div>
             <div class="share-widget mt-2">
@@ -236,7 +238,7 @@
             <section class="entry-section entry-section__partners">
                 <h2>Partner{{ partners|pluralize }}</h2>
                 {% for partner in partners %}
-                    <div class="d-flex mb-5">
+                    <div class="d-flex mb-5 entry-section__partner">
                         <div class="img-avatar">
                         {% if partner.headshot %}
                             {% image partner.headshot fill-200x200-c50 as partner_avatar %}
