@@ -1,32 +1,106 @@
 @media print {
+    #header-institution {
+        display: none !important;
+        visibility: hidden !important;
+    }
+    #cu-privacy-notice {
+        display: none !important;
+        visibility: hidden !important;
+    }
     a {
-        color: #000;
+        color: #000 !important;
         text-decoration: none !important;
     }
-    #logo-portfolio {
-        justify-content: center;
+    .navbar-global {
+        justify-content: center !important;
+        border-bottom: 1px solid #e0e0e0 !important;
+        flex-direction: column !important;
+        padding-bottom: 1rem !important;
+        .nav-menu {
+            display: none !important;
+            visibility: hidden !important;
+        }
     }
-	.entry-toolbar {
-	    .share-widget,
-	    .fa {
-	        display: none;
-	    }
-	    a::after {
-	        content:":\A " attr(href) " ";
-	        white-space: pre;
-	    }
-	}
+    .share-widget,
+    .entry-infosheet,
+    .fa {
+        display: none !important;
+    }
 	footer {
-	    border-top: 1px solid #ccc;
-	}
-	.getintouch {
-	    a::after {
-	        content:":\A " attr(href) " ";
-	        white-space: pre;
+	    border-top: 1px solid #ccc !important;
+	    * {
+	        color: #000 !important;
 	    }
-	    page-break-inside: avoid !important;
 	}
 	.ctl-info {
 	    page-break-inside: avoid !important;
 	}
+	.entry-section__partner,
+	img,
+	.entry-section__gallery figure img,
+	.img-avatar__image {
+        page-break-before: auto !important;
+        page-break-after: auto !important;
+	    page-break-inside: avoid !important;
+	}
+    .entry-header {
+        height: 29rem !important;
+        &__poster .img--sm,
+        &__poster .img--md,
+        &__poster .img--lg {
+            display: none !important;
+            visibility: hidden !important;
+        }
+        &__poster .img--xl {
+            display: inline !important;
+            max-width: 100% !important;
+            height: auto !important;
+        }
+        &__text {
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+            position: absolute !important;
+            text-align: center !important;
+            padding: 1rem !important;
+            color: #fff !important;
+            background-color: rgba(0,0,0,.6) !important;
+        }
+        h1 {
+            font-weight: $font-weight-medium !important;
+            line-height: 1.4 !important;
+            padding-left: 1rem !important;
+            padding-right: 1rem !important;
+            font-size: 1.75rem !important;
+            text-align: center !important;
+        }
+    }
+    .entry-section {
+        margin: 0 4rem 3rem 4rem !important;
+        &__metadata {
+            margin: 0.5rem 0 4rem 0 !important;
+            border-bottom: 1px solid #ddd !important;
+            .entry__type,
+            .entry__dates,
+            .entry__links {
+                padding-top: 0.5rem !important;
+                padding-bottom: 0.5rem !important;
+            }
+            .entry__type {
+                flex: 0 0 50% !important;
+                max-width: 50% !important;
+            }
+            .entry__dates {
+                flex: 0 0 50% !important;
+                max-width: 50% !important;
+            }
+            .entry__links {
+                flex: 0 0 100% !important;
+                max-width: 100% !important;
+            }
+        }
+        a::after {
+            content:": " attr(href) " ";
+            white-space: pre;
+        }
+    }
 }

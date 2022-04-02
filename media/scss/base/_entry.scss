@@ -50,6 +50,8 @@
         color: #000;
         padding: 0.5rem 1rem;
         text-align: left;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
         @include media-breakpoint-up(md) {
             position: absolute;
             text-align: center;
