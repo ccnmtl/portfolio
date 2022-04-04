@@ -1,6 +1,7 @@
 from django.test import TestCase
 from django.test.client import RequestFactory
-from portfolio.main.models import HomePage, VisualIndex
+
+from portfolio.main.models import HomePage, VisualIndex, OrderedPartnerSnippet
 from portfolio.main.tests.factories import EntryFactory, PartnerFactory
 
 
@@ -56,8 +57,12 @@ class VisualIndexTest(TestCase):
         EntryFactory(live=False, path='0002')
         EntryFactory(path='0003')
         e3 = EntryFactory(title='foo', path='0004')
-        e3.partners.get_original_manager().add(PartnerFactory())
-        self.assertEqual(e3.partners.first().name, 'James Moriarty')
+
+        OrderedPartnerSnippet.objects.create(page=e3, partner=PartnerFactory())
+
+        self.assertEqual(e3.ordered_partners.count(), 1)
+        self.assertEqual(e3.ordered_partners.all().first().partner.name,
+                         'James Moriarty')
 
         v = VisualIndex()
         r = RequestFactory().get('/?q=moriarty')
