@@ -99,6 +99,17 @@
             font-size: 1.2rem;
             line-height: 1.525;
         }
+        a {
+            text-decoration: underline;
+            background-color: transparent;
+        }
+        a:hover {
+            background-color: #e4f1fd;
+        }
+        a:focus {
+            color: #fff !important;
+            background-color: #06c !important;
+        }
     }
     &__gallery {
         max-width: 900px;
