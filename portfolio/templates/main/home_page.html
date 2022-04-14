@@ -12,6 +12,7 @@
     {% with featured_entries=page.featured_entries %}
         {% if featured_entries %}
         <section class="portfolio-feature container">
+            <h1 class="sr-only">Welcome to CTL Portfolio</h1>
             <h2 class="sr-only">Featured projects</h2>
             <div class="row">
                 {% for featured_entry in featured_entries %}
@@ -47,13 +48,13 @@
                         <a href="{% pageurl entry %}">
                         {% if entry.thumbnail %}
                         {% image entry.thumbnail original as project_thumbnail %}
-                        <img src="{{project_thumbnail.url}}" class="entry-thumbnail card-img-top img-fluid" alt="Thumbnail poster for {{entry.title}}" />
+                        <img src="{{project_thumbnail.url}}" class="entry-thumbnail card-img-top img-fluid" alt="Thumbnail image for {{entry.title}}">
                         {% else %}
-                        <img src="{{STATIC_URL}}img/og_ctlportfolio.png" class="entry-thumbnail card-img-top img-fluid" alt="Thumbnail poster for {{entry.title}}" />
+                        <img src="{{STATIC_URL}}img/og_ctlportfolio.png" class="entry-thumbnail card-img-top img-fluid" aria-hidden="true" alt="Thumbnail image for {{entry.title}}" />
                         {% endif %}
                         </a>
                         <div class="card-body px-0 py-3 px-sm-3">
-                            <h5 class="card-title"><a href="{% pageurl entry %}">{{entry.title}}</a></h5>
+                            <h3 class="card-title"><a href="{% pageurl entry %}">{{entry.title}}</a></h3>
                             {% if entry.search_description %}
                                 <p class="card-text">{{entry.search_description}}</p>
                             {% endif %}
