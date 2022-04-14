@@ -46,9 +46,10 @@
                     <div class="card mb-4 border-0 px-4">
                         <a href="{% pageurl entry %}">
                         {% if entry.thumbnail %}
-                        {% image entry.thumbnail original class="entry-thumbnail card-img-top img-fluid" aria-hidden="true" alt="" %}
+                        {% image entry.thumbnail original as project_thumbnail %}
+                        <img src="{{project_thumbnail.url}}" class="entry-thumbnail card-img-top img-fluid" alt="Thumbnail poster for {{entry.title}}" />
                         {% else %}
-                        <img src="{{STATIC_URL}}img/og_ctlportfolio.png" class="entry-thumbnail card-img-top img-fluid" aria-hidden="true" alt="" />
+                        <img src="{{STATIC_URL}}img/og_ctlportfolio.png" class="entry-thumbnail card-img-top img-fluid" alt="Thumbnail poster for {{entry.title}}" />
                         {% endif %}
                         </a>
                         <div class="card-body px-0 py-3 px-sm-3">
