@@ -24,7 +24,9 @@
                                 <p class="portfolio-feature__blurb">{{featured_entry.feature_blurb}}</p>
                             </div>
                             <div class="portfolio-feature__link">
-                                <a href="{% pageurl featured_entry %}" class="btn btn-outline-light">Learn more</a>
+                                <a href="{% pageurl featured_entry %}" class="btn btn-outline-light">
+                                Learn more<span class="sr-only"> about {{featured_entry.title}}</span>
+                                </a>
                             </div>
                         </div>
                     </div>
