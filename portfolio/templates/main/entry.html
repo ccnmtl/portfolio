@@ -227,9 +227,9 @@
         {% if page.gallery_image_one %}
         <figure>
             {% image page.gallery_image_one max-920x900 as gallery_one %}
-            <img src="{{gallery_one.url}}" class="img-fluid" alt="">
+            <img src="{{gallery_one.url}}" class="img-fluid" alt="Gallery image: {{ page.gallery_caption_one }}">
             {% if page.gallery_caption_one %}
-            <figcaption>{{ page.gallery_caption_one }}</figcaption>
+            <figcaption aria-hidden="true">{{ page.gallery_caption_one }}</figcaption>
             {% endif %}
         </figure>
         {% endif %}
@@ -238,9 +238,9 @@
         {% if page.gallery_image_two %}
         <figure>
             {% image page.gallery_image_two max-920x900 as gallery_two %}
-            <img src="{{gallery_two.url}}" class="img-fluid" alt="">
+            <img src="{{gallery_two.url}}" class="img-fluid" alt="Gallery image: {{ page.gallery_caption_two }}">
             {% if page.gallery_caption_two %}
-            <figcaption>{{ page.gallery_caption_two }}</figcaption>
+            <figcaption aria-hidden="true">{{ page.gallery_caption_two }}</figcaption>
             {% endif %}
         </figure>
         {% endif %}
@@ -249,9 +249,9 @@
         {% if page.gallery_image_three %}
         <figure>
             {% image page.gallery_image_three max-920x900 as gallery_three %}
-            <img src="{{gallery_three.url}}" class="img-fluid" alt="">
+            <img src="{{gallery_three.url}}" class="img-fluid" alt="Gallery image: {{ page.gallery_caption_three }}">
             {% if page.gallery_caption_three %}
-            <figcaption>{{ page.gallery_caption_three }}</figcaption>
+            <figcaption aria-hidden="true">{{ page.gallery_caption_three }}</figcaption>
             {% endif %}
         </figure>
         {% endif %}
