@@ -2,10 +2,11 @@
 {% load bootstrap4 %}
 {% load static %}
 {% load waffle_tags %}
+{% load wagtailimages_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>{% block title %}{% endblock %} &mdash; CTL Portfolio</title>
+    <title>{% block title %}{% endblock %} -- CTL Portfolio</title>
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -21,41 +22,58 @@
     {% endcompress %}
     {% block css %}{% endblock %}
     
+    {% image page.thumbnail original as entry_thumbnail %}
+    
 {% flag "seo-meta-jsonld" %}
 <!-- WAFFLE OUT SEO TAGS, till project is done -->
     <!-- Standard Meta Data -->
     <meta name="description"
-        content="{% if page.search_description %}{{page.search_description}}{% else %}The CTL Portfolio is the complete list of CTL projects{% endif %}" />
+        content="{% if page.search_description %}{{page.search_description}}{% else %}The CTL Portfolio showcases CTL projects and services that support excellence and innovation in teaching and learning at Columbia and beyond.{% endif %}" />
+    <meta name="keywords" content="educational technology, teaching and learning, mooc, massive open online course" />
+    <meta name="author" content="Center for Teaching and Learning at Columbia University" />
+    <meta name="copyright" content="Copyright (c) 2022 Center for Teaching and Learning at Columbia University - Code licensed GNU GPLv3, content CC BY-SA 4.0">
+    {% block entry_published_og %}{% endblock %}
 
     <!-- Dublin Core Metadata -->
     <meta name="DC.Title" content="{{page.title}} -- CTL Portfolio" />
-    <meta name="DC.Description" content="{% if page.search_description %}{{page.search_description}}{% else %}The CTL Portfolio is the complete list of CTL projects{% endif %}" />
+    <meta name="DC.Description" content="{% if page.search_description %}{{page.search_description}}{% else %}The CTL Portfolio showcases CTL projects and services that support excellence and innovation in teaching and learning at Columbia and beyond.{% endif %}" />
+    <meta name="DC.Rights" content="Copyright (c) 2022 Center for Teaching and Learning at Columbia University - Code licensed GNU GPLv3, content CC BY-SA 4.0">
+    <meta name="DC.Publisher" content="Center for Teaching and Learning at Columbia University" />
+    <meta name="DC.Contributor" content="Center for Teaching and Learning at Columbia University" />
 
     <!-- Open Graph -->
     <meta property="og:title" content="{{page.title}} -- CTL Portfolio" />
     <meta property="og:site_name" content="CTL Portfolio" />
-    <meta property="og:type" content="article" />
-    <meta property="og:image" content="Entry thumbnail" />
-    <meta property="og:description" content="Search description" />
-    <meta property="og:url" content="Entry URL" />
-    {% block entry_published_og %}{% endblock %}
+    {% block opengraph_metadata %}
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="{{STATIC_URL}}img/og_ctlportfolio.png" />
+    <meta property="og:image:alt" content="A poster image containing a logo, with words CTL Portfolio." />
+    <meta property="og:description" content="The CTL Portfolio showcases CTL projects and services that support excellence and innovation in teaching and learning at Columbia and beyond." />
+    <meta property="og:url" content="https://portfolio.ctl.columbia.edu" />
+    {% endblock %}
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@columbiactl" />
     <meta name="twitter:title" content="{{page.title}} -- CTL Portfolio" />
-    <meta name="twitter:description" content="Search description" />
-    <meta name="twitter:image" content="Entry thumbnail" />
+    {% block twitter_metadata %}
+    <meta name="twitter:description" content="The CTL Portfolio showcases CTL projects and services that support excellence and innovation in teaching and learning at Columbia and beyond." />
+    <meta name="twitter:image" content="{{STATIC_URL}}img/og_ctlportfolio.png" />
+    {% endblock %}
 
-    <!-- JSON Structured data: Webpage -->
+    {% block jsonld_values %}
+    <!-- JSON Structured data: Home page -->
     <script type="application/ld+json">
     {
         "@context": "http://schema.org",
-        "@type": "WebPage",
-        "sameAs": "https://portfolio.ctl.columbia.edu",
-        "relatedLink": "https://ctl.columbia.edu",
+        "@type": "WebSite",
+        "url": "https://portfolio.ctl.columbia.edu/",
+        "sameAs": "https://portfolio.ctl.columbia.edu/",
         "name": "CTL Portfolio",
-        "about": "Portfolio description",
+        "alternateName": "Columbia Center for Teaching and Learning Portfolio",
+        "about": "The CTL Portfolio showcases CTL projects and services that support excellence and innovation in teaching and learning at Columbia and beyond.",
+        "description": "The CTL Portfolio showcases CTL projects and services that support excellence and innovation in teaching and learning at Columbia and beyond.",
+        "keywords": "educational technology, teaching and learning, mooc, massive open online course",
         "publisher": {
             "@type": "EducationalOrganization",
             "url": "https://ctl.columbia.edu",
@@ -66,8 +84,7 @@
             }
     }
     </script>
-
-    {% block entry_jsonld %}{% endblock %}
+    {% endblock %}
 {% endflag %}
 
     <!-- Favicons -->

@@ -109,6 +109,16 @@
             </ul>
         </nav>
 
+        {% else %}
+        <section class="my-5 mx-4 mx-md-0">
+            <p><b>There are no results matching “{{q}}”.</b></p>
+            <p>Here are some suggestions to improve your search:</p>
+            <ul>
+            <li>Check your search for typos</li>
+            <li>Try more generic terms</li>
+            <li>Use different keywords</li>
+            </ul>
+        </section>
         {% endif %}
 
 {% endblock %}
