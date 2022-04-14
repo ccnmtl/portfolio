@@ -10,20 +10,45 @@
 <meta property="article:modified_time" content="{{page.last_published_at|date:"Y-m-d"}}" />
 {% endblock %}
 
-{% block entry_jsonld %}
+{% block opengraph_metadata %}
+<meta property="og:type" content="article" />
+{% if page.thumbnail %}
+    <meta property="og:image" content="{{ entry_thumbnail.url }}" />
+    <meta property="og:image:alt" content="A poster image representing {{page.title}}." />
+{% else %}
+    <meta name="og:image" content="{{STATIC_URL}}img/og_ctlportfolio.png" />
+    <meta property="og:image:alt" content="A poster image containing a logo, with words CTL Portfolio." />
+{% endif %}
+<meta property="og:description" content="{{page.search_description}}" />
+<meta property="og:url" content="{{ page.full_url }}" />
+{% endblock %}
+
+{% block twitter_metadata %}
+<meta name="twitter:description" content="{{page.search_description}}" />
+{% if page.thumbnail %}
+    <meta name="twitter:image" content="{{ entry_thumbnail.url }}" />
+    <meta property="twitter:image:alt" content="A poster image representing {{page.title}}." />
+{% else %}
+    <meta name="twitter:image" content="{{STATIC_URL}}img/og_ctlportfolio.png" />
+    <meta property="twitter:image:alt" content="A poster image containing a logo, with words CTL Portfolio." />
+{% endif %}
+{% endblock %}
+
+{% block jsonld_values %}
     <!-- JSON Structured data: Entry/Article specific -->
     <script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "Article",
         "name": "{{page.title}} -- CTL Portfolio",
+        "about": "{{page.search_description}}",
         "description": "{{page.search_description}}",
-        "url": "url",
-        "mainEntityOfPage": "url",
+        "url": "{{ page.full_url }}",
+        "mainEntityOfPage": "https://portfolio.ctl.columbia.edu/",
         "headline": "{{page.title}}",
         "datePublished": "{{page.first_published_at|date:"Y-m-d"}}",
         "dateModified": "{{page.last_published_at|date:"Y-m-d"}}",
-        "dateCreated": "CCYY-MM-DD",
+        "dateCreated": "{{page.first_published_at|date:"Y-m-d"}}",
         "author": "Center for Teaching and Learning at Columbia University",
         "publisher": {
             "@type": "EducationalOrganization",
