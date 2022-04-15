@@ -168,7 +168,7 @@
                 <span class="field-label">Share:</span>
                 <a rel="nofollow noopener noreferrer" class="share-window" href="http://www.facebook.com/share.php?u={{ page.full_url }}&title={{ page.title }}" aria-label="Share on Facebook"><i class="fa fa-facebook px-1" aria-hidden="true"></i></a>
                 <a rel="nofollow noopener noreferrer" class="share-window" href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ page.full_url }}&via=ColumbiaCTL" aria-label="Share on Twitter"><i class="fa fa-twitter px-1" aria-hidden="true"></i></a>
-                <a rel="nofollow noopener noreferrer" class="share-window" href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.full_url }}&title={{ page.title }}&summary={{page.search_description}}"><i class="fa fa-google-plus px-1" aria-label="Share on LinkedIn"></i></a>
+                <a rel="nofollow noopener noreferrer" class="share-window" href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.full_url }}&title={{ page.title }}&summary={{page.search_description}}" aria-label="Share on LinkedIn"><i class="fa fa-linkedin px-1"></i></a>
             </div>
         </div>
     </section>
@@ -227,9 +227,9 @@
         {% if page.gallery_image_one %}
         <figure>
             {% image page.gallery_image_one max-920x900 as gallery_one %}
-            <img src="{{gallery_one.url}}" class="img-fluid" alt="">
+            <img src="{{gallery_one.url}}" class="img-fluid" alt="Gallery image: {{ page.gallery_caption_one }}">
             {% if page.gallery_caption_one %}
-            <figcaption>{{ page.gallery_caption_one }}</figcaption>
+            <figcaption aria-hidden="true">{{ page.gallery_caption_one }}</figcaption>
             {% endif %}
         </figure>
         {% endif %}
@@ -238,9 +238,9 @@
         {% if page.gallery_image_two %}
         <figure>
             {% image page.gallery_image_two max-920x900 as gallery_two %}
-            <img src="{{gallery_two.url}}" class="img-fluid" alt="">
+            <img src="{{gallery_two.url}}" class="img-fluid" alt="Gallery image: {{ page.gallery_caption_two }}">
             {% if page.gallery_caption_two %}
-            <figcaption>{{ page.gallery_caption_two }}</figcaption>
+            <figcaption aria-hidden="true">{{ page.gallery_caption_two }}</figcaption>
             {% endif %}
         </figure>
         {% endif %}
@@ -249,9 +249,9 @@
         {% if page.gallery_image_three %}
         <figure>
             {% image page.gallery_image_three max-920x900 as gallery_three %}
-            <img src="{{gallery_three.url}}" class="img-fluid" alt="">
+            <img src="{{gallery_three.url}}" class="img-fluid" alt="Gallery image: {{ page.gallery_caption_three }}">
             {% if page.gallery_caption_three %}
-            <figcaption>{{ page.gallery_caption_three }}</figcaption>
+            <figcaption aria-hidden="true">{{ page.gallery_caption_three }}</figcaption>
             {% endif %}
         </figure>
         {% endif %}
