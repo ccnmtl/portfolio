@@ -50,6 +50,11 @@
         "dateModified": "{{page.last_published_at|date:"Y-m-d"}}",
         "dateCreated": "{{page.first_published_at|date:"Y-m-d"}}",
         "author": "Center for Teaching and Learning at Columbia University",
+        "image": {
+            "@type": "ImageObject",
+            "representativeOfPage": "True",
+            {% if page.thumbnail %}"url": "{{ entry_thumbnail.url }}"{% else %}"url": "{{STATIC_URL}}img/og_ctlportfolio.png"{% endif %}
+        },
         "publisher": {
             "@type": "EducationalOrganization",
             "url": "https://ctl.columbia.edu",
@@ -58,15 +63,6 @@
                 "@type": "ImageObject",
                 "url": "{{STATIC_URL}}img/logo-ctl-color.png"
             }
-        }
-        "image": {
-            "@type": "ImageObject",
-            "representativeOfPage": "True",
-        {% if page.thumbnail %}
-            "url": "{{ entry_thumbnail.url }}"
-        {% else %}
-            "url": "{{STATIC_URL}}img/og_ctlportfolio.png"
-        {% endif %}
         }
     }
     </script>
