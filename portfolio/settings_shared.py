@@ -21,7 +21,6 @@ MIDDLEWARE += [  # noqa
 
 INSTALLED_APPS += [  # noqa
     'bootstrap4',
-    'infranil',
     'django_extensions',
     'django_cas_ng',
 
