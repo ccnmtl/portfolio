@@ -1,7 +1,9 @@
-from django.contrib.auth.models import User, Group
 from datetime import datetime
+
+from django.contrib.auth.models import User, Group
 import factory
-from portfolio.main.models import Entry, Partner
+
+from portfolio.main.models import Entry, Partner, AwardType, ProjectType
 
 
 class UserFactory(factory.django.DjangoModelFactory):
@@ -17,6 +19,20 @@ class GroupFactory(factory.django.DjangoModelFactory):
         model = Group
 
 
+class AwardTypeFactory(factory.django.DjangoModelFactory):
+    class Meta:
+        model = AwardType
+
+    name = factory.Sequence(lambda n: 'award%d' % n)
+
+
+class ProjectTypeFactory(factory.django.DjangoModelFactory):
+    class Meta:
+        model = ProjectType
+
+    name = factory.Sequence(lambda n: 'type%d' % n)
+
+
 class EntryFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Entry
@@ -24,6 +40,16 @@ class EntryFactory(factory.django.DjangoModelFactory):
     depth = 1
     release_date = factory.LazyFunction(datetime.now)
     revision_date = factory.LazyFunction(datetime.now)
+
+    @factory.post_generation
+    def project_type(obj, create, extracted, **kwargs):
+        if extracted:
+            obj.project_type.add(extracted)
+
+    @factory.post_generation
+    def award_type(obj, create, extracted, **kwargs):
+        if extracted:
+            obj.award_type.add(extracted)
 
 
 class PartnerFactory(factory.django.DjangoModelFactory):

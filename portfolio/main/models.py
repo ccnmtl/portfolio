@@ -6,6 +6,7 @@ from django import forms
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
 from django.db.models.query_utils import Q
+from django.utils.html import escape
 from django_extensions.db.models import TimeStampedModel
 from modelcluster.fields import ParentalManyToManyField, ParentalKey
 from portfolio.main.utils import (
@@ -144,6 +145,22 @@ class VisualIndex(Page):
     parent_page_types = ['HomePage']
     subpage_types = ['Entry']
 
+    def filter_by_award_type(self, request, entries):
+        award = request.GET.get('award', '')
+        award = escape(award)
+        if award:
+            entries = entries.filter(award_type__name__iexact=award)
+
+        return entries
+
+    def filter_by_project_type(self, request, entries):
+        project_type = request.GET.get('type', '')
+        project_type = escape(project_type)
+        if project_type:
+            entries = entries.filter(project_type__name__iexact=project_type)
+
+        return entries
+
     def get_context(self, request):
         context = super(VisualIndex, self).get_context(request)
 
@@ -151,12 +168,16 @@ class VisualIndex(Page):
         entries = Entry.objects.live().public()
 
         q = request.GET.get('q', '')
+        q = escape(q)
         if q:
             entries = entries.filter(
                 Q(title__icontains=q) | Q(description__icontains=q) |
-                Q(ordered_partners__partner__name__icontains=q)).distinct()
+                Q(ordered_partners__partner__name__icontains=q) |
+                Q(project_type__name__iexact=q))
 
-        entries = entries.order_by(sort_order)
+        entries = self.filter_by_project_type(request, entries)
+        entries = self.filter_by_award_type(request, entries)
+        entries = entries.distinct().order_by(sort_order)
 
         # Pagination
         per_page = 10
@@ -172,6 +193,8 @@ class VisualIndex(Page):
         context['sort'] = request.GET.get('sort', 'releasedate')
         context['q'] = q
         context['entries'] = entries
+        context['type'] = request.GET.get('type', '')
+        context['award'] = request.GET.get('award', '')
         return context
 
     def get_sort(self, request):
