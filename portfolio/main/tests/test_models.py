@@ -2,7 +2,8 @@ from django.test import TestCase
 from django.test.client import RequestFactory
 
 from portfolio.main.models import HomePage, VisualIndex, OrderedPartnerSnippet
-from portfolio.main.tests.factories import EntryFactory, PartnerFactory
+from portfolio.main.tests.factories import (
+    EntryFactory, PartnerFactory, ProjectTypeFactory, AwardTypeFactory)
 
 
 class HomePageTest(TestCase):
@@ -86,6 +87,38 @@ class VisualIndexTest(TestCase):
 
         self.assertEquals(ctx['sort'], 'releasedate')
         self.assertEqual(ctx['q'], 'baz')
+        self.assertEquals(ctx['entries'].object_list.count(), 1)
+        self.assertEquals(ctx['entries'].object_list.first(), e3)
+
+    def test_get_context_search_project_type(self):
+        pt = ProjectTypeFactory(name='MOOC')
+        EntryFactory(live=False, path='0002')
+        EntryFactory(path='0003')
+        e3 = EntryFactory(title='foo', path='0004', project_type=pt)
+
+        v = VisualIndex()
+        r = RequestFactory().get('/?type=mooc')
+
+        ctx = v.get_context(r)
+
+        self.assertEquals(ctx['sort'], 'releasedate')
+        self.assertEqual(ctx['type'], 'mooc')
+        self.assertEquals(ctx['entries'].object_list.count(), 1)
+        self.assertEquals(ctx['entries'].object_list.first(), e3)
+
+    def test_get_context_search_award_type(self):
+        award = AwardTypeFactory(name='Innovative Course Design')
+        EntryFactory(live=False, path='0002')
+        EntryFactory(path='0003')
+        e3 = EntryFactory(title='foo', path='0004', award_type=award)
+
+        v = VisualIndex()
+        r = RequestFactory().get('/?award=innovative course design')
+
+        ctx = v.get_context(r)
+
+        self.assertEquals(ctx['sort'], 'releasedate')
+        self.assertEqual(ctx['award'], 'innovative course design')
         self.assertEquals(ctx['entries'].object_list.count(), 1)
         self.assertEquals(ctx['entries'].object_list.first(), e3)
 
