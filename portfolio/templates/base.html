@@ -102,12 +102,11 @@
 </head>
 <body>
 
-
-<div class="skippy">
-  <div class="container p-0">
-    <a class="sr-only sr-only-focusable d-inline-block p-2 m-1" href="#maincontent">Skip to main content</a>
-  </div>
-</div>
+    <div class="skippy">
+      <div class="container p-0">
+        <a class="sr-only sr-only-focusable d-inline-block p-2 m-1" href="#maincontent">Skip to main content</a>
+      </div>
+    </div>
 
     {% include "main/includes/header_institution.html" %}
 
@@ -142,55 +141,42 @@
 
     {% include "main/includes/footer.html" %}
 
-{% if request.user.is_authenticated %}
-    {% if not request.is_preview %}
-        <!-- Background for Wagtail Editor widget -->
-        <div class="wagtail-widget wagtail-widget__editor row" role="presentation" aria-hidden="true">
-            <div class="col-4 px-3">
-                <a href="/accounts/logout/?next=/cms/" class="btn btn-warning wagtail-widget__logout">Log out</a>
-            </div>
-            <div class="col-4 pl-0 pr-3">
-                <a href="https://wiki.ctl.columbia.edu/index.php/CTL_Portfolio_Editor_Guide" rel="nofollow noopener noreferrer" target="_blank" class="btn btn-info wagtail-widget__guide">Guide</a>
-            </div>
-            <div class="col-4 pl-0">
-                <div class="wagtail-widget__label">
-                CMS
+    {% if request.user.is_authenticated %}
+        {% if not request.is_preview %}
+            <!-- Background for Wagtail Editor widget -->
+            <div class="wagtail-widget wagtail-widget__editor row" role="presentation" aria-hidden="true">
+                <div class="col-4 px-3">
+                    <a href="/accounts/logout/?next=/cms/" class="btn btn-warning wagtail-widget__logout">Log out</a>
+                </div>
+                <div class="col-4 pl-0 pr-3">
+                    <a href="https://wiki.ctl.columbia.edu/index.php/CTL_Portfolio_Editor_Guide" rel="nofollow noopener noreferrer" target="_blank" class="btn btn-info wagtail-widget__guide">Guide</a>
+                </div>
+                <div class="col-4 pl-0">
+                    <div class="wagtail-widget__label">
+                    CMS
+                    </div>
                 </div>
             </div>
-        </div>
-    {% else %}
-        <!-- Background for Wagtail Preview widget -->
-        <div class="wagtail-widget wagtail-widget__preview row" role="presentation" aria-hidden="true">
-            <div class="col-8 pr-0">
-                <div class="wagtail-widget__preview-label">This is a preview</div>
+        {% else %}
+            <!-- Background for Wagtail Preview widget -->
+            <div class="wagtail-widget wagtail-widget__preview row" role="presentation" aria-hidden="true">
+                <div class="col-8 pr-0">
+                    <div class="wagtail-widget__preview-label">This is a preview</div>
+                </div>
+                <div class="col-4 pr-0">
+                    <div class="wagtail-widget__preview-icon"></div>
+                </div>
             </div>
-            <div class="col-4 pr-0">
-                <div class="wagtail-widget__preview-icon"></div>
-            </div>
-        </div>
+        {% endif %}
     {% endif %}
-{% endif %}
-
-
-{% comment %}
-    
-    <div class="d-inline-block mt-2 float-left">Edit
-    
-    
-    </div>
-    <br />
-    <span class="small">(<a href="" target="_blank" class="text-white">Editor's guide</a>)</span>
-
-{% endcomment %}
-
 
 <script src="{{STATIC_URL}}js/lib/jquery-3.2.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script
-     data-main="{{STATIC_URL}}js/src/main.js"
-     src="{{STATIC_URL}}js/lib/require/require.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
 
 {% block js %}{% endblock %}
 
