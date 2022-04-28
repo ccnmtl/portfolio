@@ -7,13 +7,19 @@
     "test": "mocha",
     "build-scss": "sass media/scss/main.scss media/css/main.css --source-map --style=compressed",
     "prefix-scss": "postcss media/css/main.css --use=autoprefixer --replace --map",
-    "scss": "nodemon --watch media/scss --verbose -e scss -x 'npm run build-scss && npm run prefix-scss'"
+    "scss": "nodemon --watch media/scss --verbose -e scss -x 'npm run build-scss && npm run prefix-scss'",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "cypress:test": "start-server-and-test 'make integrationserver' http-get://localhost:8000 cypress:run"
   },
   "repository": {
     "type": "git",
     "url": "git://github.com/ccnmtl/portfolio.git"
   },
   "devDependencies": {
+    "axe-core": "^4.1.4",
+    "cypress": "^9.0.0",
+    "cypress-axe": "^0.14.0",
     "eslint": "~8.14.0",
     "eslint-plugin-security": "~1.5.0",
     "mocha": "~9.2.2",
@@ -22,6 +28,7 @@
     "sinon": "~13.0.2",
     "autoprefixer": "^10.4.4",
     "nodemon": "^2.0.15",
-    "postcss-cli": "^9.1.0"
+    "postcss-cli": "^9.1.0",
+    "start-server-and-test": "^1.11.0"
   }
 }
