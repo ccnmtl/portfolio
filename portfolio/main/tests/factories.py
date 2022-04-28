@@ -3,7 +3,8 @@ from datetime import datetime
 from django.contrib.auth.models import User, Group
 import factory
 
-from portfolio.main.models import Entry, Partner, AwardType, ProjectType
+from portfolio.main.models import Entry, Partner, AwardType, ProjectType, \
+    Discipline
 
 
 class UserFactory(factory.django.DjangoModelFactory):
@@ -23,14 +24,21 @@ class AwardTypeFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = AwardType
 
-    name = factory.Sequence(lambda n: 'award%d' % n)
+    name = factory.Sequence(lambda n: 'Award%d' % n)
+
+
+class DisciplineFactory(factory.django.DjangoModelFactory):
+    class Meta:
+        model = Discipline
+
+    name = factory.Sequence(lambda n: 'Discipline %d' % n)
 
 
 class ProjectTypeFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = ProjectType
 
-    name = factory.Sequence(lambda n: 'type%d' % n)
+    name = factory.Sequence(lambda n: 'Project Type %d' % n)
 
 
 class EntryFactory(factory.django.DjangoModelFactory):

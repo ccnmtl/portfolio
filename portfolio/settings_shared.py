@@ -1,5 +1,6 @@
 # Django settings for portfolio project.
 import os.path
+import sys
 from ccnmtlsettings.shared import common
 
 project = 'portfolio'
@@ -84,3 +85,22 @@ TEMPLATES = [
         },
     },
 ]
+
+if 'integrationserver' in sys.argv:
+    SESSION_COOKIE_SECURE = False
+    CSRF_COOKIE_SECURE = False
+    PASSWORD_HASHERS = (
+        'django.contrib.auth.hashers.MD5PasswordHasher',
+    )
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': ':memory:',
+            'HOST': '',
+            'PORT': '',
+            'USER': '',
+            'PASSWORD': '',
+            'ATOMIC_REQUESTS': True,
+        }
+    }
