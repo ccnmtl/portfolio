@@ -1,5 +1,6 @@
 # Django settings for portfolio project.
 import os.path
+import sys
 from ccnmtlsettings.shared import common
 
 project = 'portfolio'
