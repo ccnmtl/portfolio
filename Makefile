@@ -2,7 +2,7 @@ APP=portfolio
 JS_FILES=media/js/src media/js/src
 SYS_PYTHON=python3
 
-all: jenkins
+all: jenkins cypress
 
 include *.mk
 

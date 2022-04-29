@@ -20,7 +20,6 @@ def add_entry(parent, title, featured):
     entry.release_date = datetime.now()
     entry.revision_date = datetime.now()
     entry.project_url = 'https://ctl.columbia.edu'
-    
 
     parent.add_child(instance=entry)
     entry.save_revision().publish()
