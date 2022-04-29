@@ -23,12 +23,14 @@
     "eslint": "~8.14.0",
     "eslint-plugin-security": "~1.5.0",
     "mocha": "~9.2.2",
-    "requirejs": "~2.3.6",
     "sass": "^1.50.1",
     "sinon": "~13.0.2",
     "autoprefixer": "^10.4.5",
     "nodemon": "^2.0.15",
     "postcss-cli": "^9.1.0",
     "start-server-and-test": "^1.11.0"
-  }
+  },
+  "dependencies": {
+    "requirejs": "~2.3.6"
+  }     
 }

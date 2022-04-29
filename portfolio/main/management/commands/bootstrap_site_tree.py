@@ -18,6 +18,8 @@ def add_entry(parent, title, featured):
     entry.description = \
         'Duis maximus nisi lorem, vel commodo nisi imperdiet in.'
     entry.release_date = datetime.now()
+    entry.revision_date = datetime.now()
+    entry.project_url = 'https://ctl.columbia.edu'
 
     parent.add_child(instance=entry)
     entry.save_revision().publish()
@@ -29,6 +31,7 @@ def add_entry(parent, title, featured):
     if featured > 0:
         entry.feature_on_homepage = True
         entry.feature_slot = featured
+        entry.feature_blurb = ''
         entry.save()
 
 
