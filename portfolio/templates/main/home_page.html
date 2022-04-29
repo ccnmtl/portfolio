@@ -35,7 +35,7 @@
         </section>
         {% endif %}
     {% endwith %}
-        
+
         <section class="intro-blurb">
             {{ page.body|richtext }}
         </section>
@@ -52,7 +52,7 @@
                         {% image entry.thumbnail original as project_thumbnail %}
                         <img src="{{project_thumbnail.url}}" class="entry-thumbnail card-img-top img-fluid" alt="Thumbnail image for {{entry.title}}">
                         {% else %}
-                        <img src="{{STATIC_URL}}img/og_ctlportfolio.png" class="entry-thumbnail card-img-top img-fluid" aria-hidden="true" alt="Thumbnail image for {{entry.title}}" />
+                        <img src="{{STATIC_URL}}img/og_ctlportfolio.png" class="entry-thumbnail card-img-top img-fluid" alt="Thumbnail image for {{entry.title}}" />
                         {% endif %}
                         </a>
                         <div class="card-body px-0 py-3 px-sm-3">
