@@ -21,9 +21,9 @@
     <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/main.css">
     {% endcompress %}
     {% block css %}{% endblock %}
-    
+
     {% image page.thumbnail original as entry_thumbnail %}
-    
+
 {% flag "seo-meta-jsonld" %}
 <!-- WAFFLE OUT SEO TAGS, till project is done -->
     <!-- Standard Meta Data -->
@@ -96,9 +96,11 @@
 
 	{% block feeds %}{% endblock %}
 
+    {% if not debug %}
     <!-- CU Privacy notice -->
     <link rel="stylesheet" href="https://search.sites.columbia.edu/cu-privacy-notice/cu-privacy-notice.css" />
     <script src="https://search.sites.columbia.edu/cu-privacy-notice/cu-privacy-notice.js"></script>
+    {% endif %}
 </head>
 <body>
 
