@@ -1,12 +1,10 @@
 describe('Home Page A11Y', function() {
     beforeEach(() => {
-        cy.clearCookies();
+        cy.visit('/');
+        cy.clear_privacy_notice();
     });
-
     it('Tests a11y on the home page', function() {
         cy.visit('/');
-        cy.get('#cu-privacy-notice-button').click();
-        cy.get('#cu-privacy-notice').should('not.be.visible');
         cy.injectAxe();
         cy.checkA11y('html', {
             runOnly: {

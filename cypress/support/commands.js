@@ -24,3 +24,12 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
+Cypress.Commands.add("clear_privacy_notice", () => {
+    if (cy.get('#cu-privacy-notice-button').then($button => {
+        if ($button.is(':visible')) {
+            //you get here only if button is visible
+            $button.click();
+            cy.get('#cu-privacy-notice').should('not.be.visible');
+        }
+    }));
+})
