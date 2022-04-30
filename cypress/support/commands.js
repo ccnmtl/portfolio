@@ -29,11 +29,13 @@ Cypress.Commands.add("clear_privacy_notice", () => {
         if ($body.find('#cu-privacy-notice-button').length > 0) {
             if (cy.get('#cu-privacy-notice-button').then($button => {
                 if ($button.is(':visible')) {
-                    //you get here only if button is visible
                     $button.click();
                     cy.get('#cu-privacy-notice').should('not.be.visible');
                 }
             }));
+        } else {
+            assert.isOk(true,
+                'Depending on cookie state, button may not exist');
         }
     }));
-})
+});
