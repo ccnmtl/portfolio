@@ -87,7 +87,7 @@ TEMPLATES = [
 ]
 
 if 'integrationserver' in sys.argv:
-    MEDIA_ROOT = '/home/runner/work/portfolio/uploads/'
+    MEDIA_ROOT = './uploads/'
     SESSION_COOKIE_SECURE = False
     CSRF_COOKIE_SECURE = False
     PASSWORD_HASHERS = (
