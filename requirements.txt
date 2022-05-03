@@ -63,7 +63,7 @@ raven==6.10.0
 certifi==2021.10.8  # sentry-sdk
 sentry-sdk==1.5.0
 django-bootstrap4==21.1
-django-debug-toolbar==3.2.2
+django-debug-toolbar==3.4.0
 django-waffle==2.4.1
 
 django-smoketest==1.2.0
