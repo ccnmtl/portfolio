@@ -4,11 +4,27 @@ from django.core.management.base import (
     BaseCommand, CommandError
 )
 from wagtail.core.models import Page, Site
+from wagtail.images.models import Image
+from wagtail.images.tests.utils import get_test_image_file
 
 from portfolio.main.models import (
-    HomePage, VisualIndex, TextualIndex, Entry)
+    HomePage, VisualIndex, TextualIndex, Entry, OrderedPartnerSnippet)
 from portfolio.main.tests.factories import (
-    AwardTypeFactory, DisciplineFactory, ProjectTypeFactory)
+    AwardTypeFactory, DisciplineFactory, ProjectTypeFactory, PartnerFactory)
+
+
+def add_default_entry(parent, title):
+    entry = Entry(title=title)
+    entry.overview = \
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+    entry.description = \
+        'Duis maximus nisi lorem, vel commodo nisi imperdiet in.'
+    entry.release_date = datetime.now()
+
+    parent.add_child(instance=entry)
+    entry.save_revision().publish()
+
+    OrderedPartnerSnippet.objects.create(page=entry, partner=PartnerFactory())
 
 
 def add_entry(parent, title, featured):
@@ -21,6 +37,21 @@ def add_entry(parent, title, featured):
     entry.revision_date = datetime.now()
     entry.project_url = 'https://ctl.columbia.edu'
 
+    entry.thumbnail = Image.objects.create(
+        title='thumbnail',
+        file=get_test_image_file(),
+    )
+
+    entry.poster = Image.objects.create(
+        title='poster',
+        file=get_test_image_file(),
+    )
+
+    if featured > 0:
+        entry.feature_on_homepage = True
+        entry.feature_slot = featured
+        entry.feature_blurb = ''
+
     parent.add_child(instance=entry)
     entry.save_revision().publish()
 
@@ -28,11 +59,13 @@ def add_entry(parent, title, featured):
     entry.project_type.add(ProjectTypeFactory())
     entry.award_type.add(AwardTypeFactory())
 
-    if featured > 0:
-        entry.feature_on_homepage = True
-        entry.feature_slot = featured
-        entry.feature_blurb = ''
-        entry.save()
+    partner = PartnerFactory()
+    partner.headshot = Image.objects.create(
+        title='headshot',
+        file=get_test_image_file(),
+    )
+    partner.save()
+    OrderedPartnerSnippet.objects.create(page=entry, partner=partner)
 
 
 class Command(BaseCommand):
@@ -67,7 +100,7 @@ class Command(BaseCommand):
         textual_index.save_revision().publish()
 
         # Add three entries
-        add_entry(our_work, 'From Bystander to Upstander', 1)
-        add_entry(our_work, 'Footprints', 2)
-        add_entry(our_work, 'Logic Learner', 3)
-        add_entry(our_work, 'Locus Tempus', 0)
+        add_entry(our_work, 'Entry One', 1)
+        add_entry(our_work, 'Entry Two', 2)
+        add_entry(our_work, 'Entry Three', 3)
+        add_default_entry(our_work, 'Default Entry')
