@@ -53,8 +53,16 @@
         
     </div>
 
-
         {% if entries %}
+        <section class="my-0 mx-4 mx-md-0">
+            <p class="text-center text-md-left p-0">
+            {% with total=entries.paginator.count %}
+                {% if q %}{{ total }} result{{ total|pluralize }} matching “{{q}}”.<br />{% endif %}
+                Showing {{ entries.start_index }}&ndash;{{ entries.end_index }} of {{ total }}
+            {% endwith %}
+            </p>
+        </section>
+
         <section class="container px-4 px-sm-3 portfolio-cards">
             <div class="row">
                 {% for post in entries %}
