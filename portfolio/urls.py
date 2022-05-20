@@ -1,18 +1,25 @@
-from django.urls import include, path, re_path
-from django.contrib import admin
 from django.conf import settings
 from django.conf.urls import url
+from django.contrib import admin
+from django.contrib.sitemaps.views import sitemap
+from django.urls import include, path, re_path
 from django.views.generic import TemplateView
 from django.views.static import serve
-from portfolio.main.views import S3DocumentServe
-from wagtail.admin import urls as wagtailadmin_urls
-from wagtail.documents import urls as wagtaildocs_urls
-from wagtail.core import urls as wagtail_urls
 from django_cas_ng import views as cas_views
+from wagtail.admin import urls as wagtailadmin_urls
+from wagtail.core import urls as wagtail_urls
+from wagtail.documents import urls as wagtaildocs_urls
+
+from portfolio.main.views import S3DocumentServe
+from portfolio.sitemaps import EntrySitemap, StaticPageSitemap
 
 
 admin.autodiscover()
 
+sitemaps = {
+    'static': StaticPageSitemap,
+    'entry': EntrySitemap
+}
 
 urlpatterns = [
     url(r'^accounts/', include('django.contrib.auth.urls')),
@@ -32,6 +39,10 @@ urlpatterns = [
             name='wagtaildocs_serve'),
     path('documents/', include(wagtaildocs_urls)),
     path('', include(wagtail_urls)),
+
+    path('sitemap.xml', sitemap,
+         {'sitemaps': sitemaps},
+         name='django.contrib.sitemaps.views.sitemap')
 ]
 
 if settings.DEBUG:

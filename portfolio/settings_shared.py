@@ -38,6 +38,7 @@ INSTALLED_APPS += [  # noqa
     'wagtail.core',
     'modelcluster',
     'taggit',
+    'django.contrib.sitemaps',
 
     'portfolio.main',
     'portfolio.featured'
