@@ -22,6 +22,8 @@
     {% endcompress %}
     {% block css %}{% endblock %}
 
+    <link rel="canonical" href="{{ request.build_absolute_uri }}" />
+
     {% image page.thumbnail original as entry_thumbnail %}
 
 {% flag "seo-meta-jsonld" %}
