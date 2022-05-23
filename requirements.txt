@@ -45,7 +45,7 @@ sqlparse==0.4.2
 s3transfer==0.5.0
 jmespath==1.0.0
 
-botocore>=1.15.0,<1.26.0
+botocore>=1.15.0,<1.27.0
 boto3>=1.12.0,<1.23.0
 
 python-dateutil==2.8.2
@@ -60,7 +60,7 @@ rjsmin==1.2.0  # django-compressor
 django-compressor==3.1
 django-statsd-mozilla==0.4.0
 raven==6.10.0
-certifi==2021.10.8  # sentry-sdk
+certifi==2022.5.18.1  # sentry-sdk
 sentry-sdk==1.5.0
 django-bootstrap4==21.1
 django-debug-toolbar==3.4.0
