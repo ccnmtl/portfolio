@@ -3,14 +3,13 @@ from __future__ import unicode_literals
 import re
 
 from django import forms
+from django.contrib.sites.models import Site
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.db import models
 from django.db.models.query_utils import Q
 from django.utils.html import escape
 from django_extensions.db.models import TimeStampedModel
 from modelcluster.fields import ParentalManyToManyField, ParentalKey
-from portfolio.main.utils import (
-    published_entries_by_date, featured_entries_by_slot)
 from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
 from wagtail.admin.edit_handlers import InlinePanel
 from wagtail.core.fields import RichTextField
@@ -19,6 +18,9 @@ from wagtail.documents.edit_handlers import DocumentChooserPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtail.snippets.models import register_snippet
+
+from portfolio.main.utils import (
+    published_entries_by_date, featured_entries_by_slot)
 
 
 @register_snippet
@@ -388,6 +390,10 @@ class Entry(Page, TimeStampedModel):
     promote_panels = [
         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
     ]
+
+    def get_absolute_url(self):
+        current_site = Site.objects.get_current()
+        return self.relative_url(current_site)
 
     def full_clean(self, *args, **kwargs):
         if not self.revision_date:
