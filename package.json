@@ -27,7 +27,7 @@
     "sinon": "~14.0.0",
     "autoprefixer": "^10.4.7",
     "nodemon": "^2.0.19",
-    "postcss-cli": "^9.1.0",
+    "postcss-cli": "^10.0.0",
     "start-server-and-test": "^1.11.0"
   },
   "dependencies": {
