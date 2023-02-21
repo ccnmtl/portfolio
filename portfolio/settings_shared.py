@@ -41,7 +41,8 @@ INSTALLED_APPS += [  # noqa
     'django.contrib.sitemaps',
 
     'portfolio.main',
-    'portfolio.featured'
+    'portfolio.featured',
+    'waffle'
 ]
 
 INSTALLED_APPS.remove('djangowind') # noqa

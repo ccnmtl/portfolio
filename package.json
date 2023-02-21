@@ -10,7 +10,7 @@
     "scss": "nodemon --watch media/scss --verbose -e scss -x 'npm run build-scss && npm run prefix-scss'",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "cypress:test": "start-server-and-test 'make integrationserver' http-get://localhost:8000 cypress:run"
+    "cypress:test": "start-server-and-test 'make integrationserver' http://127.0.0.1:8000 cypress:run"
   },
   "repository": {
     "type": "git",
