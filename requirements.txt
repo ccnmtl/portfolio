@@ -106,7 +106,7 @@ webencodings==0.5.1 # needed for wagtail
 urllib3==1.26.7 # wagtail elasticsearch backend
 
 django-s3sign<=0.2.1
-django-cacheds3storage==0.2.2
+django-cacheds3storage==0.3.0
 ccnmtlsettings==1.9.5
 text_unidecode==1.3
 
