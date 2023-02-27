@@ -20,7 +20,7 @@
     "axe-core": "^4.6.3",
     "cypress": "^12.6.0",
     "cypress-axe": "^1.4.0",
-    "eslint": "~8.34.0",
+    "eslint": "~8.35.0",
     "eslint-plugin-security": "~1.7.1",
     "mocha": "~10.2.0",
     "sass": "^1.58.3",
