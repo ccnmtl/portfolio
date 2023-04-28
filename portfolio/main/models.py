@@ -10,13 +10,10 @@ from django.db.models.query_utils import Q
 from django.utils.html import escape
 from django_extensions.db.models import TimeStampedModel
 from modelcluster.fields import ParentalManyToManyField, ParentalKey
-from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
-from wagtail.admin.edit_handlers import InlinePanel
-from wagtail.core.fields import RichTextField
-from wagtail.core.models import Page, Orderable
-from wagtail.documents.edit_handlers import DocumentChooserPanel
-from wagtail.images.edit_handlers import ImageChooserPanel
-from wagtail.snippets.edit_handlers import SnippetChooserPanel
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel
+from wagtail.admin.panels import InlinePanel
+from wagtail.fields import RichTextField
+from wagtail.models import Page, Orderable
 from wagtail.snippets.models import register_snippet
 
 from portfolio.main.utils import (
@@ -54,7 +51,7 @@ class Partner(models.Model):
         FieldPanel('short_title'),
         FieldPanel('full_title'),
         FieldPanel('affiliation'),
-        ImageChooserPanel('headshot')
+        FieldPanel('headshot')
     ]
 
 
@@ -65,7 +62,7 @@ class OrderedPartnerSnippet(Orderable):
         'Partner', on_delete=models.CASCADE, related_name='partner')
 
     panels = [
-        SnippetChooserPanel('partner'),
+        FieldPanel('partner'),
     ]
 
     class Meta:
@@ -351,12 +348,12 @@ class Entry(Page, TimeStampedModel):
         FieldPanel('project_url'),
         MultiFieldPanel(
             [
-                ImageChooserPanel('poster'),
-                ImageChooserPanel('thumbnail'),
+                FieldPanel('poster'),
+                FieldPanel('thumbnail'),
             ],
             heading="Representational images"
         ),
-        DocumentChooserPanel('infosheet'),
+        FieldPanel('infosheet'),
         MultiFieldPanel(
             [
                 FieldPanel('video_title'),
@@ -366,21 +363,21 @@ class Entry(Page, TimeStampedModel):
         ),
         MultiFieldPanel(
             [
-                ImageChooserPanel('gallery_image_one'),
+                FieldPanel('gallery_image_one'),
                 FieldPanel('gallery_caption_one')
             ],
             heading='First Gallery Image'
         ),
         MultiFieldPanel(
             [
-                ImageChooserPanel('gallery_image_two'),
+                FieldPanel('gallery_image_two'),
                 FieldPanel('gallery_caption_two')
             ],
             heading='Second Gallery Image'
         ),
         MultiFieldPanel(
             [
-                ImageChooserPanel('gallery_image_three'),
+                FieldPanel('gallery_image_three'),
                 FieldPanel('gallery_caption_three')
             ],
             heading='Third Gallery Image'

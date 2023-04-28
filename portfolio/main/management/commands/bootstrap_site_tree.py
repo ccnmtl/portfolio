@@ -3,7 +3,7 @@ from datetime import datetime
 from django.core.management.base import (
     BaseCommand, CommandError
 )
-from wagtail.core.models import Page, Site
+from wagtail.models import Page, Site
 from wagtail.images.models import Image
 from wagtail.images.tests.utils import get_test_image_file
 

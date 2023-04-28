@@ -35,7 +35,7 @@ INSTALLED_APPS += [  # noqa
     'wagtail.images',
     'wagtail.search',
     'wagtail.admin',
-    'wagtail.core',
+    'wagtail',
     'modelcluster',
     'taggit',
     'django.contrib.sitemaps',
@@ -52,6 +52,7 @@ LOGIN_REDIRECT_URL = "/"
 
 WAGTAIL_SITE_NAME = 'CTL Portfolio'
 WAGTAILIMAGES_MAX_UPLOAD_SIZE = 2 * 1024 * 1024   # 2mb
+WAGTAILADMIN_BASE_URL = 'https://portfolio.ctl.columbia.edu'
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
@@ -107,3 +108,5 @@ if 'integrationserver' in sys.argv:
             'ATOMIC_REQUESTS': True,
         }
     }
+
+WAGTAILADMIN_BASE_URL = 'https://portfolio.ctl.columbia.edu'

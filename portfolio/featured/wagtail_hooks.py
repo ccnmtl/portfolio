@@ -1,5 +1,5 @@
 from django.urls import path, reverse
-from wagtail.core import hooks
+from wagtail import hooks
 from wagtail.admin.menu import MenuItem
 
 from portfolio.featured.views import FeaturedView
