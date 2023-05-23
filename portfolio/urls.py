@@ -7,7 +7,7 @@ from django.views.generic import TemplateView
 from django.views.static import serve
 from django_cas_ng import views as cas_views
 from wagtail.admin import urls as wagtailadmin_urls
-from wagtail.core import urls as wagtail_urls
+from wagtail import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
 from portfolio.main.views import S3DocumentServe
