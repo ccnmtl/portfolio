@@ -108,5 +108,3 @@ if 'integrationserver' in sys.argv:
             'ATOMIC_REQUESTS': True,
         }
     }
-
-WAGTAILADMIN_BASE_URL = 'https://portfolio.ctl.columbia.edu'
