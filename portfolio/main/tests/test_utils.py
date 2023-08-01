@@ -3,8 +3,8 @@ import datetime
 from django.test import TestCase
 
 from portfolio.main.tests.factories import EntryFactory
-from portfolio.main.utils import published_entries_by_date,\
-    featured_entries_by_slot
+from portfolio.main.utils import published_entries_by_date
+from portfolio.main.utils import featured_entries_by_slot
 
 
 class UtilsTest(TestCase):
