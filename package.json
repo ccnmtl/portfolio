@@ -24,7 +24,7 @@
     "eslint-plugin-security": "~1.7.1",
     "mocha": "~10.2.0",
     "sass": "^1.66.1",
-    "sinon": "~15.2.0",
+    "sinon": "~16.0.0",
     "autoprefixer": "^10.4.15",
     "nodemon": "^3.0.1",
     "postcss-cli": "^10.1.0",
