@@ -17,7 +17,7 @@
     "url": "git://github.com/ccnmtl/portfolio.git"
   },
   "devDependencies": {
-    "axe-core": "^4.8.1",
+    "axe-core": "^4.8.2",
     "cypress": "^13.2.0",
     "cypress-axe": "^1.5.0",
     "eslint": "~8.49.0",
