@@ -106,7 +106,7 @@ django-cogwheels==0.3
 
 # needed for django-extensions
 webencodings==0.5.1 # needed for wagtail
-urllib3==1.26.7 # wagtail elasticsearch backend
+urllib3==2.0.5 # wagtail elasticsearch backend
 
 django-s3sign<=0.4.0
 django-cacheds3storage==0.3.0
