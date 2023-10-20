@@ -1,6 +1,6 @@
 from django.conf import settings
 from portfolio.settings_shared import *  # noqa: F403
-from ccnmtlsettings.staging import common
+from ctlsettings.staging import common
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 
@@ -12,6 +12,7 @@ locals().update(
         base=base,  # noqa: F405
         STATIC_ROOT=STATIC_ROOT,  # noqa: F405
         INSTALLED_APPS=INSTALLED_APPS,  # noqa: F405
+        s3prefix='ccnmtl',
     ))
 
 try:

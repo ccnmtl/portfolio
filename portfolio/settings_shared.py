@@ -1,7 +1,7 @@
 # Django settings for portfolio project.
 import os.path
 import sys
-from ccnmtlsettings.shared import common
+from ctlsettings.shared import common
 
 project = 'portfolio'
 base = os.path.dirname(__file__)
@@ -15,7 +15,6 @@ PROJECT_APPS = [
 USE_TZ = True
 
 MIDDLEWARE += [  # noqa
-    'django_cas_ng.middleware.CASMiddleware',
     'wagtail.contrib.legacy.sitemiddleware.SiteMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 ]
@@ -23,7 +22,6 @@ MIDDLEWARE += [  # noqa
 INSTALLED_APPS += [  # noqa
     'bootstrap4',
     'django_extensions',
-    'django_cas_ng',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -45,8 +43,6 @@ INSTALLED_APPS += [  # noqa
     'waffle'
 ]
 
-INSTALLED_APPS.remove('djangowind') # noqa
-
 THUMBNAIL_SUBDIR = "thumbs"
 LOGIN_REDIRECT_URL = "/"
 
@@ -54,14 +50,6 @@ WAGTAIL_SITE_NAME = 'CTL Portfolio'
 WAGTAILIMAGES_MAX_UPLOAD_SIZE = 2 * 1024 * 1024   # 2mb
 WAGTAILADMIN_BASE_URL = 'https://portfolio.ctl.columbia.edu'
 
-AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
-    'django_cas_ng.backends.CASBackend'
-]
-
-CAS_SERVER_URL = 'https://cas.columbia.edu/cas/'
-CAS_VERSION = '3'
-CAS_ADMIN_REDIRECT = False
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 TEMPLATES = [
