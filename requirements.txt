@@ -121,7 +121,7 @@ xlsxwriter==3.1.0
 tablib[xls,xlsx]>=0.14.0
 anyascii==0.3.0
 
-idna==3.4  # requests
+idna==3.6  # requests
 chardet==5.2.0  # requests
 python-cas==1.6.0
 django-cas-ng==5.0.0
