@@ -21,7 +21,7 @@
     "cypress": "^13.6.1",
     "cypress-axe": "^1.5.0",
     "eslint": "~8.55.0",
-    "eslint-plugin-security": "~1.7.1",
+    "eslint-plugin-security": "~2.0.0",
     "mocha": "~10.2.0",
     "sass": "^1.69.5",
     "sinon": "~17.0.1",
