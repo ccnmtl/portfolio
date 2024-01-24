@@ -19,3 +19,8 @@ updates:
     - dependency-name: psycopg2
       versions:
       - <=2.9.1
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: daily
+      time: "10:00"
