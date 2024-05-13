@@ -13,8 +13,8 @@ class HomePageTest(TestCase):
         h = HomePage()
         qs = h.entries()
 
-        self.assertEquals(qs.count(), 1)
-        self.assertEquals(qs.first(), e)
+        self.assertEqual(qs.count(), 1)
+        self.assertEqual(qs.first(), e)
 
     def test_featured_entries(self):
         EntryFactory(feature_on_homepage=False, path='0002')
@@ -22,8 +22,8 @@ class HomePageTest(TestCase):
         h = HomePage()
         qs = h.featured_entries()
 
-        self.assertEquals(qs.count(), 1)
-        self.assertEquals(qs.first(), e)
+        self.assertEqual(qs.count(), 1)
+        self.assertEqual(qs.first(), e)
 
 
 class VisualIndexTest(TestCase):
@@ -36,8 +36,8 @@ class VisualIndexTest(TestCase):
 
         ctx = v.get_context(r)
 
-        self.assertEquals(ctx['sort'], 'releasedate')
-        self.assertEquals(ctx['entries'].object_list.first(), e)
+        self.assertEqual(ctx['sort'], 'releasedate')
+        self.assertEqual(ctx['entries'].object_list.first(), e)
 
     def test_get_context_search(self):
         EntryFactory(live=False, path='0002')
@@ -49,10 +49,10 @@ class VisualIndexTest(TestCase):
 
         ctx = v.get_context(r)
 
-        self.assertEquals(ctx['sort'], 'releasedate')
+        self.assertEqual(ctx['sort'], 'releasedate')
         self.assertEqual(ctx['q'], 'foo')
-        self.assertEquals(ctx['entries'].object_list.count(), 1)
-        self.assertEquals(ctx['entries'].object_list.first(), e3)
+        self.assertEqual(ctx['entries'].object_list.count(), 1)
+        self.assertEqual(ctx['entries'].object_list.first(), e3)
 
     def test_get_context_search_partner(self):
         EntryFactory(live=False, path='0002')
@@ -70,10 +70,10 @@ class VisualIndexTest(TestCase):
 
         ctx = v.get_context(r)
 
-        self.assertEquals(ctx['sort'], 'releasedate')
+        self.assertEqual(ctx['sort'], 'releasedate')
         self.assertEqual(ctx['q'], 'moriarty')
-        self.assertEquals(ctx['entries'].object_list.count(), 1)
-        self.assertEquals(ctx['entries'].object_list.first(), e3)
+        self.assertEqual(ctx['entries'].object_list.count(), 1)
+        self.assertEqual(ctx['entries'].object_list.first(), e3)
 
     def test_get_context_search_description(self):
         EntryFactory(live=False, path='0002')
@@ -85,10 +85,10 @@ class VisualIndexTest(TestCase):
 
         ctx = v.get_context(r)
 
-        self.assertEquals(ctx['sort'], 'releasedate')
+        self.assertEqual(ctx['sort'], 'releasedate')
         self.assertEqual(ctx['q'], 'baz')
-        self.assertEquals(ctx['entries'].object_list.count(), 1)
-        self.assertEquals(ctx['entries'].object_list.first(), e3)
+        self.assertEqual(ctx['entries'].object_list.count(), 1)
+        self.assertEqual(ctx['entries'].object_list.first(), e3)
 
     def test_get_context_search_project_type(self):
         pt = ProjectTypeFactory(name='MOOC')
@@ -101,10 +101,10 @@ class VisualIndexTest(TestCase):
 
         ctx = v.get_context(r)
 
-        self.assertEquals(ctx['sort'], 'releasedate')
+        self.assertEqual(ctx['sort'], 'releasedate')
         self.assertEqual(ctx['type'], 'mooc')
-        self.assertEquals(ctx['entries'].object_list.count(), 1)
-        self.assertEquals(ctx['entries'].object_list.first(), e3)
+        self.assertEqual(ctx['entries'].object_list.count(), 1)
+        self.assertEqual(ctx['entries'].object_list.first(), e3)
 
     def test_get_context_search_award_type(self):
         award = AwardTypeFactory(name='Innovative Course Design')
@@ -117,10 +117,10 @@ class VisualIndexTest(TestCase):
 
         ctx = v.get_context(r)
 
-        self.assertEquals(ctx['sort'], 'releasedate')
+        self.assertEqual(ctx['sort'], 'releasedate')
         self.assertEqual(ctx['award'], 'innovative course design')
-        self.assertEquals(ctx['entries'].object_list.count(), 1)
-        self.assertEquals(ctx['entries'].object_list.first(), e3)
+        self.assertEqual(ctx['entries'].object_list.count(), 1)
+        self.assertEqual(ctx['entries'].object_list.first(), e3)
 
 
 class EntryPageTest(TestCase):

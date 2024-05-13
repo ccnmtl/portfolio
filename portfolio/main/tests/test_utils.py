@@ -17,9 +17,9 @@ class UtilsTest(TestCase):
 
         qs = published_entries_by_date()
 
-        self.assertEquals(qs.count(), 2)
-        self.assertEquals(qs[0], e1)
-        self.assertEquals(qs[1], e2)
+        self.assertEqual(qs.count(), 2)
+        self.assertEqual(qs[0], e1)
+        self.assertEqual(qs[1], e2)
 
     def test_featured_entries(self):
 
@@ -31,6 +31,6 @@ class UtilsTest(TestCase):
 
         qs = featured_entries_by_slot()
 
-        self.assertEquals(qs.count(), 2)
-        self.assertEquals(qs[0], e2)
-        self.assertEquals(qs[1], e1)
+        self.assertEqual(qs.count(), 2)
+        self.assertEqual(qs[0], e2)
+        self.assertEqual(qs[1], e1)
