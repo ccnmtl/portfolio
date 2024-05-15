@@ -1,5 +1,4 @@
 from django.conf import settings
-from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.sitemaps.views import sitemap
 from django.urls import include, path, re_path
@@ -22,7 +21,7 @@ sitemaps = {
 }
 
 urlpatterns = [
-    url(r'^accounts/', include('django.contrib.auth.urls')),
+    re_path(r'^accounts/', include('django.contrib.auth.urls')),
     path('cas/login', cas_views.LoginView.as_view(),
          name='cas_ng_login'),
     path('cas/logout', cas_views.LogoutView.as_view(),
@@ -30,7 +29,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('stats/', TemplateView.as_view(template_name="stats.html")),
     path('smoketest/', include('smoketest.urls')),
-    url(r'^_impersonate/', include('impersonate.urls')),
+    re_path(r'^_impersonate/', include('impersonate.urls')),
     re_path(r'^uploads/(?P<path>.*)$',
             serve, {'document_root': settings.MEDIA_ROOT}),
     path('cms/', include(wagtailadmin_urls)),
