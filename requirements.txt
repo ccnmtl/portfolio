@@ -129,7 +129,7 @@ asgiref==3.8.0
 
 backports.zoneinfo;python_version<"3.9"
 tinycss2==1.2.1 # django-markdownify
-bleach==6.0.0 # django-markdownify
+bleach==6.1.0 # django-markdownify
 django-markdownify==0.9.5
 
 django-courseaffils==2.4.0
