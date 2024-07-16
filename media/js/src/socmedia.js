@@ -12,7 +12,6 @@
                 ',height=' + height +
                 ',top='    + top    +
                 ',left='   + left;
-            // eslint-disable-next-line security/detect-non-literal-fs-filename
             window.open(url, 'sharearticle', opts);
             return false;
         });
