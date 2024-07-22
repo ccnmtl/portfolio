@@ -34,6 +34,6 @@
     "start-server-and-test": "^2.0.4"
   },
   "dependencies": {
-    "requirejs": "~2.3.6"
+    "requirejs": "~2.3.7"
   }
 }
