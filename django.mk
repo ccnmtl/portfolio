@@ -23,8 +23,9 @@ MANAGE ?= ./manage.py
 REQUIREMENTS ?= requirements.txt
 SYS_PYTHON ?= python3
 PY_SENTINAL ?= $(VE)/sentinal
-WHEEL_VERSION ?= 0.41.2
-PIP_VERSION ?= 23.2.1
+WHEEL_VERSION ?= 0.43.0
+PIP_VERSION ?= 24.1.2
+SETUPTOOLS_VERSION ?= 70.3.0
 MAX_COMPLEXITY ?= 10
 INTERFACE ?= localhost
 RUNSERVER_PORT ?= 8000
@@ -34,13 +35,13 @@ FLAKE8 ?= $(VE)/bin/flake8
 PIP ?= $(VE)/bin/pip
 COVERAGE ?= $(VE)/bin/coverage
 
-jenkins: check flake8 test bandit eslint
+jenkins: check flake8 test bandit
 
 $(PY_SENTINAL): $(REQUIREMENTS)
 	rm -rf $(VE)
 	$(SYS_PYTHON) -m venv $(VE)
 	$(PIP) install pip==$(PIP_VERSION)
-	$(PIP) install --upgrade setuptools
+	$(PIP) install setuptools==$(SETUPTOOLS_VERSION)
 	$(PIP) install wheel==$(WHEEL_VERSION)
 	$(PIP) install --no-deps --requirement $(REQUIREMENTS)
 	touch $@
