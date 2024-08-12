@@ -34,6 +34,7 @@ INSTALLED_APPS += [  # noqa
     'wagtail.search',
     'wagtail.admin',
     'wagtail',
+    'wagtail.api.v2',
     'modelcluster',
     'taggit',
     'django.contrib.sitemaps',

@@ -15,6 +15,7 @@ from wagtail.admin.panels import InlinePanel
 from wagtail.fields import RichTextField
 from wagtail.models import Page, Orderable
 from wagtail.snippets.models import register_snippet
+from wagtail.api import APIField
 
 from portfolio.main.utils import (
     published_entries_by_date, featured_entries_by_slot)
@@ -386,6 +387,12 @@ class Entry(Page, TimeStampedModel):
 
     promote_panels = [
         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
+    ]
+
+    api_fields = [
+        APIField('last_published_at'),
+        APIField('thumbnail'),
+        APIField('live'),
     ]
 
     def get_absolute_url(self):
