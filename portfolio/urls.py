@@ -8,7 +8,7 @@ from django_cas_ng import views as cas_views
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
-
+from .api import api_router
 from portfolio.main.views import S3DocumentServe
 from portfolio.sitemaps import EntrySitemap, StaticPageSitemap
 
@@ -37,6 +37,12 @@ urlpatterns = [
             S3DocumentServe.as_view(),
             name='wagtaildocs_serve'),
     path('documents/', include(wagtaildocs_urls)),
+
+    path('api/v2/', api_router.urls),
+    # Ensure that the api_router line appears above the
+    # default Wagtail page serving route
+    re_path(r'^', include(wagtail_urls)),
+
     path('', include(wagtail_urls)),
 
     path('sitemap.xml', sitemap,
