@@ -1,6 +1,6 @@
 from django.conf import settings
-from ctlsettings.production import common, init_sentry
 from portfolio.settings_shared import *  # noqa: F403
+from ctlsettings.production import common, init_sentry
 
 BASE_URL = 'https://portfolio.ctl.columbia.edu'
 
