@@ -38,11 +38,17 @@ INSTALLED_APPS += [  # noqa
     'modelcluster',
     'taggit',
     'django.contrib.sitemaps',
-
+    'rest_framework',
     'portfolio.main',
     'portfolio.featured',
     'waffle'
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+    ),
+}
 
 THUMBNAIL_SUBDIR = "thumbs"
 LOGIN_REDIRECT_URL = "/"
