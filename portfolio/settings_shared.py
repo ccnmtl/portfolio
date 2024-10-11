@@ -78,6 +78,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.messages.context_processors.messages',
                 'stagingcontext.staging_processor',
+                'ctlsettings.context_processors.env',
                 'gacontext.ga_processor',
             ],
         },
@@ -85,6 +86,7 @@ TEMPLATES = [
 ]
 
 if 'integrationserver' in sys.argv:
+    ENVIRONMENT = 'testing'
     MEDIA_ROOT = './uploads/'
     SESSION_COOKIE_SECURE = False
     CSRF_COOKIE_SECURE = False
