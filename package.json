@@ -29,7 +29,7 @@
     "mocha": "~10.7.3",
     "nodemon": "^3.1.7",
     "postcss-cli": "^11.0.0",
-    "sass": "^1.80.1",
+    "sass": "^1.80.2",
     "sinon": "~19.0.2",
     "start-server-and-test": "^2.0.8"
   },
