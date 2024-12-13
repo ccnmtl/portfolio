@@ -27,7 +27,7 @@
     "eslint-plugin-security": "~3.0.1",
     "globals": "^15.13.0",
     "mocha": "~11.0.1",
-    "nodemon": "^3.1.7",
+    "nodemon": "^3.1.9",
     "postcss-cli": "^11.0.0",
     "sass": "^1.83.0",
     "sinon": "~19.0.2",
