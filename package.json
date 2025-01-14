@@ -29,7 +29,7 @@
     "postcss-cli": "^11.0.0",
     "sass": "^1.83.1",
     "sinon": "~19.0.2",
-    "start-server-and-test": "^2.0.9"
+    "start-server-and-test": "^2.0.10"
   },
   "dependencies": {
     "requirejs": "~2.3.7"
