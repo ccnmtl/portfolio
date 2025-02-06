@@ -19,7 +19,7 @@
   "devDependencies": {
     "autoprefixer": "^10.4.20",
     "axe-core": "^4.10.2",
-    "cypress": "^14.0.1",
+    "cypress": "^14.0.2",
     "cypress-axe": "^1.6.0",
     "eslint": "~9.19.0",
     "eslint-plugin-security": "~3.0.1",
