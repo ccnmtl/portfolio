@@ -92,7 +92,6 @@ l18n>=2018.5
 xlsxwriter>=1.2.8,<4.0
 tablib[xls,xlsx]>=0.14.0
 anyascii>=0.1.5
-telepath>=0.1.1,<1
 openpyxl>=3.0.10,<4.0
 
 # wagtail additions
@@ -125,7 +124,7 @@ idna==3.10  # requests
 chardet==5.2.0  # requests
 python-cas==1.6.0
 django-cas-ng==5.0.0
-telepath==0.3
+telepath==0.3.1
 django-smtp-ssl==1.0
 asgiref==3.9.1
 
