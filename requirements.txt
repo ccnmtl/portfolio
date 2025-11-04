@@ -3,7 +3,7 @@ Django>=5.1,<5.2
 pytz==2025.2
 httplib2==0.31.0
 feedparser==6.0.8
-Markdown==3.9
+Markdown==3.10
 psycopg==3.2.1
 Pillow==12.0.0
 versiontools==1.9.1
