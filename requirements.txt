@@ -95,7 +95,7 @@ openpyxl>=3.0.10,<4.0
 
 # wagtail additions
 wagtailfontawesome==1.2.1
-wagtailmenus==4.0
+wagtailmenus==4.0.5
 django-cogwheels==0.3
 
 # needed for django-extensions
