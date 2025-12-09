@@ -132,4 +132,4 @@ tinycss2==1.5.1 # django-markdownify
 bleach==6.3.0 # django-markdownify
 django-markdownify==0.9.5
 
-django-courseaffils==2.4.0
+django-courseaffils==2.5.0
