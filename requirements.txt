@@ -72,7 +72,7 @@ Unidecode==1.4.0
 
 # wagtail requirements
 laces==0.1.1
-wagtail==6.4.2
+wagtail==7.3
 django-tasks==0.12.0  # wagtail
 django-stubs-ext==5.2.8  # wagtail
 django-modelcluster>=6.0,<7.0
