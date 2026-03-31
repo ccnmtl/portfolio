@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.27",
-    "axe-core": "^4.11.1",
+    "axe-core": "^4.11.2",
     "cypress": "^15.13.0",
     "cypress-axe": "^1.7.0",
     "eslint": "~10.1.0",
