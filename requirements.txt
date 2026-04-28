@@ -111,7 +111,7 @@ cffi==2.0.0 # cryptography
 cryptography==47.0.0
 
 pbr==7.0.0
-PyYAML>=3.10.0 # MIT
+PyYAML>=6.0.3 # MIT
 stevedore>=5.7.0 # Apache-2.0
 rich==15.0.0
 bandit==1.9.1
