@@ -17,7 +17,7 @@
     "url": "git://github.com/ccnmtl/portfolio.git"
   },
   "devDependencies": {
-    "autoprefixer": "^10.5.6",
+    "autoprefixer": "^10.6.0",
     "axe-core": "^4.13.0",
     "cypress": "^15.21.1",
     "cypress-axe": "^1.7.0",
