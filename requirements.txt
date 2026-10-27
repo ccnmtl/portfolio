@@ -5,7 +5,7 @@ httplib2==0.32.0
 feedparser==6.0.8
 Markdown==3.11
 psycopg==3.3.0
-Pillow==12.1.1
+Pillow==13.0.0
 versiontools==1.9.1
 statsd==4.0.1
 pep8==1.7.1
@@ -82,7 +82,7 @@ django-treebeard>=7.0.1,<8.0
 djangorestframework>=3.18.0,<4.0
 django-filter>=26.2,<27
 draftjs_exporter>=7.3.1,<8.0
-Pillow>=4.0.0,<13.0.0
+Pillow>=13.0.0,<14.0.0
 html5lib>=1.1,<2
 Willow>=1.12.0,<1.13
 filetype==1.2.0 # willow
